@@ -2,3 +2,4 @@
 /reports/
 /generated/
 .metadata/
+.cache
