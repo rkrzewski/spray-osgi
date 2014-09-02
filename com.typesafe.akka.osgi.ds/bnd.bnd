@@ -1,4 +1,6 @@
 Bundle-Version: 2.3.3
+Export-Package:  \
+	akka.osgi.ds
 -buildpath:  \
 	com.typesafe.akka.actor,\
 	com.typesafe.akka.osgi,\
