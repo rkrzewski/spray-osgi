@@ -1,0 +1,11 @@
+Bundle-Version: 2.3.3
+-buildpath:  \
+	com.typesafe.akka.actor,\
+	com.typesafe.akka.osgi,\
+	osgi.core;version=5.0,\
+	osgi.enterprise;version=5.0,\
+	com.typesafe.config
+Private-Package:  \
+	akka.osgi.ds.impl
+-dsannotations:  \
+	*
