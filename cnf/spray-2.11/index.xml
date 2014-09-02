@@ -1,266 +1,168 @@
 <?xml version='1.0' encoding='utf-8'?>
-<repository increment='1409690157431' name='Spray' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
+<repository increment='1409694583508' name='Spray' xmlns='http://www.osgi.org/xmlns/repository/v1.0.0'>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='org.scala-lang.scala-library'/>
+      <attribute name='osgi.identity' value='io.spray.routing.shapeless2'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='088bcb80f71b6e6a2a31d2fe7288c1fd64f19663ce281b924cdfab3fb105f4f3'/>
-      <attribute name='url' value='org.scala-lang.scala-library/org.scala-lang.scala-library-2.11.1.jar'/>
-      <attribute name='size' type='Long' value='5538130'/>
+      <attribute name='osgi.content' value='2e718ec316e690be86dce218677352b1f2025d182883be9dd3b5b801284e9e1a'/>
+      <attribute name='url' value='io.spray.routing.shapeless2/io.spray.routing.shapeless2-1.3.1.jar'/>
+      <attribute name='size' type='Long' value='1063265'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='osgi.wiring.bundle' value='io.spray.routing.shapeless2'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='osgi.wiring.host' value='io.spray.routing.shapeless2'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.reflect,scala.collection.immutable,scala.collection.generic,scala.math,scala.collection.mutable,scala.collection.parallel,scala.runtime,scala.util.hashing,scala.collection.convert,scala.collection.concurrent,scala.util.control'/>
+      <attribute name='osgi.wiring.package' value='spray.routing'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
+      <attribute name='bundle-symbolic-name' value='io.spray.routing.shapeless2'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
+      <directive name='uses' value='akka.actor,akka.io,akka.spray,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.math,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,shapeless.ops,spray.can.server,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.io,spray.routing.directives,spray.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.immutable'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.collection,scala.reflect,scala.runtime,scala.collection.parallel,scala.collection.generic,scala.collection.parallel.immutable,scala.collection.mutable,scala.math,scala.sys,scala.io,scala.util.matching,scala.compat'/>
+      <attribute name='osgi.wiring.package' value='spray.routing.authentication'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
+      <attribute name='bundle-symbolic-name' value='io.spray.routing.shapeless2'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
+      <directive name='uses' value='com.typesafe.config,javax.naming.directory,javax.naming.ldap,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.caching,spray.http,spray.routing,spray.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.annotation.unchecked'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.annotation,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.sys.process'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.runtime,scala,scala.sys,scala.util,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.collection,scala.concurrent,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.text'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.reflect,scala.collection.immutable'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.concurrent.duration'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.math,scala.collection,scala.reflect,scala.runtime,scala.collection.immutable,scala.collection.generic,scala.collection.mutable'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.runtime,scala.collection.mutable,scala.util,scala.compat,scala.collection.generic,scala.collection,scala.collection.immutable,scala.math,scala.io,scala.collection.parallel,scala.collection.parallel.immutable,scala.util.matching,scala.sys,scala.annotation'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.concurrent'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.concurrent.duration,scala.runtime,scala,scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.concurrent.impl,scala.util,scala.util.control,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.convert'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.collection.mutable,scala.collection.concurrent,scala.reflect,scala.collection.immutable,scala.collection.generic,scala.util.hashing'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.util.hashing'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.reflect,scala.runtime,scala.collection,scala.collection.immutable'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.beans'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.annotation,scala.reflect,scala.runtime,scala,scala.collection.mutable,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.annotation'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.runtime,scala'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.parallel'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.concurrent.forkjoin,scala.collection.generic,scala.reflect,scala.collection.mutable,scala.math,scala.collection.immutable,scala.sys,scala.concurrent,scala.concurrent.impl,scala.concurrent.duration,scala.util,scala.collection.parallel.immutable,scala.collection.parallel.mutable,scala.util.control'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.math'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.runtime,scala,scala.collection.immutable,scala.collection,scala.util.hashing,scala.reflect,scala.util'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.script'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.reflect,scala.collection.mutable'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.util'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.mutable,scala.reflect,scala,scala.collection,scala.runtime,scala.util.control,scala.collection.immutable,scala.collection.generic,scala.math'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.concurrent.forkjoin'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.concurrent.util,sun.misc'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.annotation.meta'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.annotation,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.macros.internal'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.annotation,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.util.control'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala,scala.runtime,scala.collection,scala.collection.generic,scala.util,scala.collection.mutable,scala.sys'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.io'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.runtime,scala,scala.collection,scala.collection.mutable,scala.util,scala.math,scala.collection.immutable,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.immutable,scala.collection.mutable,scala.runtime,scala,scala.collection,scala.sys'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.ref'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.parallel.immutable'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.mutable,scala.runtime,scala,scala.collection.immutable,scala.collection,scala.collection.parallel,scala.collection.generic,scala.reflect,scala.math'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.sys'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.runtime,scala,scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.collection.convert,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.concurrent'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.immutable,scala.collection,scala.collection.mutable,scala.runtime,scala,scala.math,scala.concurrent.forkjoin,scala.reflect,scala.collection.generic,scala.util.control,scala.util.hashing,scala.collection.parallel.mutable,scala.collection.parallel'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.mutable'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.immutable,scala.collection,scala.math,scala.reflect,scala,scala.collection.generic,scala.runtime,scala.sys,scala.collection.script,scala.collection.parallel,scala.collection.parallel.mutable,scala.compat,scala.util,scala.util.hashing,scala.util.matching,scala.collection.convert'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.util.matching'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.collection.immutable,scala.math,scala.collection.mutable,scala.reflect,scala,scala.collection.generic,scala.runtime'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.compat'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.util,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.runtime'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.reflect,scala.math,scala.collection.mutable,scala.collection.immutable,scala.util.control,scala.compat,scala.collection,scala.util.hashing,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.parallel.mutable'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.mutable,scala.reflect,scala,scala.collection.generic,scala.runtime,scala.collection,scala.collection.parallel,scala.collection.immutable,scala.math,scala.sys,scala.collection.parallel.immutable,scala.collection.concurrent'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.concurrent.impl'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.concurrent.util,sun.misc,scala.concurrent,scala.util,scala.util.control,scala.reflect,scala,scala.runtime,scala.concurrent.forkjoin,scala.collection.immutable,scala.math,scala.collection.mutable,scala.concurrent.duration'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.concurrent.util'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='sun.misc'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.collection.generic'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.runtime,scala,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.collection.parallel,scala.math'/>
+      <attribute name='osgi.wiring.package' value='spray.routing.directives'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
+      <attribute name='bundle-symbolic-name' value='io.spray.routing.shapeless2'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
+      <directive name='uses' value='akka.actor,akka.event,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,shapeless.ops,spray.caching,spray.http,spray.http.parser,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.routing,spray.util'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=sun.misc)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.concurrent)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.concurrent.duration)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.sys)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.matching)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=shapeless)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))'/>
       <directive name='resolution' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=shapeless.ops)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))'/>
+      <directive name='resolution' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=shapeless.syntax)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))'/>
+      <directive name='resolution' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.event)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.io)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.pattern)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.util)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.typesafe.config)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.naming)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.naming.directory)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=javax.naming.ldap)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.parboiled.common)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.caching)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.can)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.can.server)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.http)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.http.parser)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.httpx.encoding)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.httpx.marshalling)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.httpx.unmarshalling)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.io)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.util)'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=spray.util.pimps)'/>
     </requirement>
   </resource>
   <resource>
@@ -301,48 +203,48 @@
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='io.spray.httpx'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='40cd3a29b9e765abab58265ab53f4e77c3787e434c68395b8403691ecd7ba8df'/>
+      <attribute name='osgi.content' value='f9ec97e41b4fd12ecdcdebd8848f9cde57d3cdfa633903a4ae34ee3dc9955afc'/>
       <attribute name='url' value='io.spray.httpx/io.spray.httpx-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='417271'/>
+      <attribute name='size' type='Long' value='429913'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.httpx'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-      <directive name='uses' value='akka.actor,akka.event,org.json4s,org.json4s.jackson,org.json4s.native,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.json,twirl.api'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
+      <directive name='uses' value='akka.actor,akka.event,net.liftweb.json,org.json4s,org.json4s.jackson,org.json4s.native,play.api.data.validation,play.api.libs.json,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.json,twirl.api'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.httpx.encoding'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='scala,scala.reflect,scala.runtime,spray.http'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.httpx.marshalling'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.spray,akka.util,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,scala.xml,spray.http'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.httpx.unmarshalling'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.httpx'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='org.jvnet.mimepull,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,scala.util,scala.xml,spray.http'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -398,6 +300,10 @@
       <directive name='resolution ' value='optional'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=net.liftweb.json)'/>
+      <directive name='resolution ' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(osgi.wiring.package=org.json4s)'/>
       <directive name='resolution ' value='optional'/>
     </requirement>
@@ -414,7 +320,15 @@
       <directive name='resolution ' value='optional'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1.20140423))'/>
+      <directive name='filter' value='(osgi.wiring.package=play.api.data.validation)'/>
+      <directive name='resolution ' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=play.api.libs.json)'/>
+      <directive name='resolution ' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
@@ -455,318 +369,238 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='org.scala-lang.scala-reflect'/>
+      <attribute name='osgi.identity' value='com.chuusai.shapeless.core'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='41938d1e89670979dd783102777a8b879999f4fb00a5b811b51c105b02a9d4f8'/>
-      <attribute name='url' value='org.scala-lang.scala-reflect/org.scala-lang.scala-reflect-2.11.1.jar'/>
-      <attribute name='size' type='Long' value='4372892'/>
+      <attribute name='osgi.content' value='2a195ce91651f99a2b4de158cd8c8b03f2c03bed57bac80e48480238e67172cf'/>
+      <attribute name='url' value='com.chuusai.shapeless.core/com.chuusai.shapeless.core-2.0.0.jar'/>
+      <attribute name='size' type='Long' value='2049451'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='osgi.wiring.bundle' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
+      <attribute name='osgi.wiring.host' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.macros'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect.macros.blackbox,scala.reflect.api,scala.reflect,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect.internal.util'/>
+      <attribute name='osgi.wiring.package' value='shapeless'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.reflect,scala.reflect.api,scala.reflect.macros.blackbox,scala.reflect.macros.whitebox,scala.runtime,scala.util,shapeless.ops,shapeless.ops.record,shapeless.syntax'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.runtime,scala,scala.collection.immutable,scala.reflect,scala.collection.mutable,scala.collection,scala.collection.generic,scala.reflect.api,scala.reflect.internal.util,scala.reflect.internal.pickling,scala.compat,scala.math,scala.util.hashing,scala.annotation.unchecked,scala.reflect.internal.settings,scala.beans,scala.annotation,scala.annotation.meta,scala.reflect.macros.internal,scala.reflect.internal.transform,scala.util,scala.ref,scala.collection.convert,scala.reflect.macros,scala.reflect.io,scala.reflect.internal.tpe,scala.io,scala.collection.parallel,scala.sys,scala.reflect.runtime,scala.util.control'/>
+      <attribute name='osgi.wiring.package' value='shapeless.ops'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,shapeless'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.macros.blackbox'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect.macros,scala.reflect.api,scala.reflect'/>
+      <attribute name='osgi.wiring.package' value='shapeless.ops.record'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.reflect,shapeless'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.io'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.runtime,scala,scala.io,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.math,scala.reflect.internal.util,scala.reflect,scala.collection.generic,scala.util,scala.collection.convert,scala.sys'/>
+      <attribute name='osgi.wiring.package' value='shapeless.syntax'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,shapeless,shapeless.ops,shapeless.ops.record'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.api'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.immutable,scala,scala.reflect,scala.collection.mutable,scala.reflect.runtime,scala.reflect.internal,scala.collection,scala.runtime,scala.reflect.internal.util,scala.reflect.internal.settings,scala.collection.generic,scala.util,scala.reflect.io'/>
+      <attribute name='osgi.wiring.package' value='shapeless.syntax.std'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.collection,scala.reflect,scala.runtime,shapeless,shapeless.ops,shapeless.syntax'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.runtime'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala,scala.reflect,scala.reflect.internal,scala.collection.mutable,scala.runtime,scala.ref,scala.collection.immutable,scala.reflect.internal.util,scala.reflect.api,scala.collection,scala.util.matching,scala.reflect.internal.transform,scala.collection.generic,scala.math,scala.reflect.internal.pickling,scala.reflect.io,scala.reflect.internal.settings,scala.reflect.internal.tpe,scala.reflect.macros,scala.sys,scala.reflect.macros.blackbox,scala.util'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.settings'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.runtime'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.annotations'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.annotation'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.macros.whitebox'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect.api,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.reflect.macros.blackbox,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.util'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect.io,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.reflect.internal,scala.collection.generic,scala.math,scala.collection.parallel,scala.reflect.macros,scala.sys,scala.reflect.api,scala.util.control,scala.reflect.runtime,scala.compat,scala.collection.parallel.mutable,scala.collection.script'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.transform'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection.immutable,scala.reflect.internal,scala.runtime,scala,scala.collection,scala.collection.mutable,scala.collection.generic,scala.reflect.internal.tpe,scala.math,scala.reflect'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.pickling'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.runtime,scala,scala.reflect.internal,scala.reflect.internal.util,scala.sys,scala.util,scala.reflect.internal.tpe,scala.reflect.internal.settings,scala.collection.generic'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='scala.reflect.internal.tpe'/>
-      <attribute name='version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
-      <attribute name='bundle-version' type='Version' value='2.11.1.v20140519-130118-1e1defd99c'/>
-      <directive name='uses' value='scala.collection,scala.collection.immutable,scala.reflect.internal,scala.reflect,scala.reflect.internal.util,scala,scala.runtime,scala.collection.mutable,scala.collection.generic,scala.reflect.internal.settings,scala.math,scala.sys,scala.reflect.api'/>
+      <attribute name='osgi.wiring.package' value='shapeless.test'/>
+      <attribute name='version' type='Version' value='2.0.0'/>
+      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless.core'/>
+      <attribute name='bundle-version' type='Version' value='2.0.0'/>
+      <directive name='uses' value='scala,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.annotation)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.annotation.meta)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.annotation.unchecked)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.beans)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.convert)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.generic)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.api)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.immutable)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.internal)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.mutable)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.macros)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.parallel)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.macros.blackbox)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.parallel.mutable)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.macros.whitebox)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.collection.script)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.compat)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.io)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.sys)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.math)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.ref)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.reflect)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.reflect.macros.internal)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.runtime)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.sys)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.tools.nsc)'/>
-      <directive name='resolution' value='optional'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.util)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.util.control)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.util.hashing)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=scala.util.matching)'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='com.typesafe.akka.actor'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='4ccbc821a417f0174c9734fc721f078177cacef94ded09c3775ebf40c6a7bdfd'/>
-      <attribute name='url' value='com.typesafe.akka.actor/com.typesafe.akka.actor-2.3.3.jar'/>
-      <attribute name='size' type='Long' value='2514991'/>
+      <attribute name='osgi.content' value='65181bfa7a4a9ca233464acadf851b21ce6a022973a92946655b285cf86ca606'/>
+      <attribute name='url' value='com.typesafe.akka.actor/com.typesafe.akka.actor-2.3.5.jar'/>
+      <attribute name='size' type='Long' value='2545875'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.event,scala,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.actor'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka,akka.actor.dsl,akka.actor.dungeon,akka.dispatch,akka.dispatch.sysmsg,akka.event,akka.japi,akka.japi.pf,akka.routing,akka.serialization,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime,scala.util,scala.util.control,scala.util.matching'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.actor.dsl'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.event,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.actor.dungeon'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.dispatch,akka.dispatch.sysmsg,akka.serialization,akka.util,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.dispatch'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.dispatch.sysmsg,akka.event,akka.japi,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.concurrent.forkjoin,scala.reflect,scala.runtime,scala.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.dispatch.sysmsg'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,scala,scala.collection,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.event'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka,akka.actor,akka.dispatch.sysmsg,akka.util,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,scala.util.control'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.event.japi'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.event,akka.util,scala,scala.collection.immutable,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.io'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.dispatch,akka.event,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.concurrent,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.japi'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,scala.util.control'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.japi.pf'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,scala,scala.reflect,scala.runtime'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.pattern'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka,akka.actor,akka.dispatch.sysmsg,akka.util,scala,scala.collection,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.control'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.routing'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
-      <directive name='uses' value='akka.actor,akka.dispatch,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
+      <directive name='uses' value='akka.actor,akka.dispatch,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.serialization'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.actor,akka.event,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.runtime,scala.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.util'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
       <attribute name='bundle-symbolic-name' value='com.typesafe.akka.actor'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
       <directive name='uses' value='akka.dispatch,com.typesafe.config,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.concurrent,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -833,11 +667,11 @@
       <directive name='filter' value='(&amp;(osgi.wiring.package=com.typesafe.config)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=com.google.protobuf)'/>
+      <directive name='filter' value='(osgi.wiring.package=akka.testkit)'/>
       <directive name='resolution' value='optional'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=akka.testkit)'/>
+      <directive name='filter' value='(osgi.wiring.package=com.google.protobuf)'/>
       <directive name='resolution' value='optional'/>
     </requirement>
   </resource>
@@ -874,36 +708,302 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='io.spray.http'/>
+      <attribute name='osgi.identity' value='org.scala-lang.scala-library'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='3b4361b7bfbe7cd8ce3ca3ca9a58bd8af1f28848f21fcde010327314a1c60c6d'/>
+      <attribute name='osgi.content' value='9810ab5cef1029a6c4341499ddb7dc7efe17f509fc7758df297653245f21b86c'/>
+      <attribute name='url' value='org.scala-lang.scala-library/org.scala-lang.scala-library-2.11.2.jar'/>
+      <attribute name='size' type='Long' value='5545300'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.reflect,scala.collection.immutable,scala.collection.generic,scala.math,scala.collection.mutable,scala.collection.parallel,scala.runtime,scala.util.hashing,scala.collection.convert,scala.collection.concurrent,scala.util.control'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.immutable'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.collection,scala.reflect,scala.runtime,scala.collection.parallel,scala.collection.generic,scala.collection.parallel.immutable,scala.collection.mutable,scala.math,scala.sys,scala.io,scala.util.matching,scala.compat'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.annotation.unchecked'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.annotation,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.sys.process'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.runtime,scala,scala.sys,scala.util,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.collection,scala.concurrent,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.text'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.reflect,scala.collection.immutable'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.concurrent.duration'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.math,scala.collection,scala.reflect,scala.runtime,scala.collection.immutable,scala.collection.generic,scala.collection.mutable'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.runtime,scala.collection.mutable,scala.util,scala.compat,scala.collection.generic,scala.collection,scala.collection.immutable,scala.math,scala.io,scala.collection.parallel,scala.collection.parallel.immutable,scala.util.matching,scala.sys,scala.annotation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.concurrent'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.concurrent.duration,scala.runtime,scala,scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.concurrent.impl,scala.util,scala.util.control,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.convert'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.collection.mutable,scala.collection.concurrent,scala.reflect,scala.collection.immutable,scala.collection.generic,scala.util.hashing'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.util.hashing'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.reflect,scala.runtime,scala.collection,scala.collection.immutable'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.beans'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.annotation,scala.reflect,scala.runtime,scala,scala.collection.mutable,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.annotation'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.runtime,scala'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.parallel'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.concurrent.forkjoin,scala.collection.generic,scala.reflect,scala.collection.mutable,scala.math,scala.collection.immutable,scala.sys,scala.concurrent,scala.concurrent.impl,scala.concurrent.duration,scala.util,scala.collection.parallel.immutable,scala.collection.parallel.mutable,scala.util.control'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.math'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.runtime,scala,scala.collection.immutable,scala.collection,scala.util.hashing,scala.reflect,scala.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.script'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection,scala.runtime,scala,scala.reflect,scala.collection.mutable'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.util'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.mutable,scala.reflect,scala,scala.collection,scala.runtime,scala.util.control,scala.collection.immutable,scala.collection.generic,scala.math'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.concurrent.forkjoin'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.concurrent.util,sun.misc'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.annotation.meta'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.annotation,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.macros.internal'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.annotation,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.util.control'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala,scala.runtime,scala.collection,scala.collection.generic,scala.util,scala.collection.mutable,scala.sys'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.io'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.runtime,scala,scala.collection,scala.collection.mutable,scala.util,scala.math,scala.collection.immutable,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.immutable,scala.collection.mutable,scala.runtime,scala,scala.collection,scala.sys'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.ref'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.parallel.immutable'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.mutable,scala.runtime,scala,scala.collection.immutable,scala.collection,scala.collection.parallel,scala.collection.generic,scala.reflect,scala.math'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.sys'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.runtime,scala,scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.collection.convert,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.concurrent'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.immutable,scala.collection,scala.collection.mutable,scala.runtime,scala,scala.math,scala.concurrent.forkjoin,scala.reflect,scala.collection.generic,scala.util.control,scala.util.hashing,scala.collection.parallel.mutable,scala.collection.parallel'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.mutable'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.immutable,scala.collection,scala.math,scala.reflect,scala.runtime,scala,scala.collection.generic,scala.sys,scala.collection.script,scala.collection.parallel,scala.collection.parallel.mutable,scala.compat,scala.util,scala.util.hashing,scala.util.matching,scala.collection.convert'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.util.matching'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection,scala.collection.immutable,scala.math,scala.collection.mutable,scala.reflect,scala,scala.collection.generic,scala.runtime'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.compat'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.util,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.runtime'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.reflect,scala.math,scala.collection.mutable,scala.collection.immutable,scala.util.control,scala.compat,scala.collection,scala.util.hashing,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.parallel.mutable'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.mutable,scala.reflect,scala,scala.collection.generic,scala.runtime,scala.collection,scala.collection.parallel,scala.collection.immutable,scala.math,scala.sys,scala.collection.parallel.immutable,scala.collection.concurrent'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.concurrent.impl'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.concurrent.util,sun.misc,scala.concurrent,scala.util,scala.util.control,scala.reflect,scala.runtime,scala,scala.concurrent.forkjoin,scala.collection.immutable,scala.math,scala.collection.mutable,scala.concurrent.duration'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.concurrent.util'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='sun.misc'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.collection.generic'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-library'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.runtime,scala,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.collection.parallel,scala.math'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(osgi.wiring.package=sun.misc)'/>
+      <directive name='resolution' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.ee'>
+      <directive name='filter' value='(|(&amp;(osgi.ee=JavaSE)(version=1.6))(&amp;(osgi.ee=JavaSE)(version=1.7)))'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='io.spray.http'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='27da250cd1171a845ac2912eda9bcef6c60505fd70254310c76d352290076152'/>
       <attribute name='url' value='io.spray.http/io.spray.http-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='1518823'/>
+      <attribute name='size' type='Long' value='1493307'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.http'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.http'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.http'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.http'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.util,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime,scala.util,spray.http.parser,spray.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.http.parser'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.http'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='org.parboiled,org.parboiled.matchers,org.parboiled.scala,org.parboiled.scala.rules,org.parboiled.support,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.runtime,scala.util,spray.http'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -946,7 +1046,7 @@
       <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1.20140423))'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=akka.util)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
@@ -983,79 +1083,6 @@
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(osgi.wiring.package=spray.util.pimps)'/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='com.typesafe.akka.osgi'/>
-      <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
-    </capability>
-    <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='926fcceb8f4bfd8ed3de30ea2e29cebea917bac043fab7ddbf34c33fd7c1b93e'/>
-      <attribute name='url' value='com.typesafe.akka.osgi/com.typesafe.akka.osgi-2.3.3.jar'/>
-      <attribute name='size' type='Long' value='33773'/>
-      <attribute name='mime' value='application/vnd.osgi.bundle'/>
-    </capability>
-    <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='com.typesafe.akka.osgi'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
-    </capability>
-    <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='com.typesafe.akka.osgi'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='akka.osgi'/>
-      <attribute name='version' type='Version' value='2.3.3'/>
-      <attribute name='bundle-symbolic-name' value='com.typesafe.akka.osgi'/>
-      <attribute name='bundle-version' type='Version' value='2.3.3'/>
-      <directive name='uses' value='akka.actor,akka.event,com.typesafe.config,org.osgi.framework,org.osgi.framework.wiring,org.osgi.service.log,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime'/>
-    </capability>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.event)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=com.typesafe.config)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
     </requirement>
   </resource>
   <resource>
@@ -1146,41 +1173,41 @@
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='io.spray.util'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='bb37f919e13fa6df71611a22f6ae4c708165c70609dedefd48c7e3da55c00b37'/>
+      <attribute name='osgi.content' value='29bd504a80aa2b3d265cd99a6a458118822e6ba1b9a3f2f3776787c0c4c37855'/>
       <attribute name='url' value='io.spray.util/io.spray.util-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='129641'/>
+      <attribute name='size' type='Long' value='128380'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.util'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.util'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.util'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.util'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.event,akka.spray,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.math,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,scala.util,scala.util.control,scala.util.matching,spray.util.pimps'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.util.pimps'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.util'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.matching'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='akka.spray'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.util'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.dispatch.sysmsg,akka.util,scala,scala.collection,scala.concurrent,scala.reflect,scala.runtime'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -1260,6 +1287,273 @@
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(osgi.wiring.package=sun.misc)'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='com.typesafe.akka.osgi'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='fae07b588d76a235e313b990145b683f84667b12d754fe3788e00ebecfa9ac2d'/>
+      <attribute name='url' value='com.typesafe.akka.osgi/com.typesafe.akka.osgi-2.3.5.jar'/>
+      <attribute name='size' type='Long' value='33761'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='com.typesafe.akka.osgi'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='com.typesafe.akka.osgi'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='akka.osgi'/>
+      <attribute name='version' type='Version' value='2.3.5'/>
+      <attribute name='bundle-symbolic-name' value='com.typesafe.akka.osgi'/>
+      <attribute name='bundle-version' type='Version' value='2.3.5'/>
+      <directive name='uses' value='akka.actor,akka.event,com.typesafe.config,org.osgi.framework,org.osgi.framework.wiring,org.osgi.service.log,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.event)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=com.typesafe.config)(version&gt;=1.2.0)(!(version&gt;=1.3.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.6.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.framework.wiring)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=org.osgi.service.log)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))'/>
+    </requirement>
+  </resource>
+  <resource>
+    <capability namespace='osgi.identity'>
+      <attribute name='osgi.identity' value='org.scala-lang.scala-reflect'/>
+      <attribute name='type' value='osgi.bundle'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+    </capability>
+    <capability namespace='osgi.content'>
+      <attribute name='osgi.content' value='2afea573cc397fdb64d238e5d56c01c24ea876ce9205b01355257f7cf3a9bfd1'/>
+      <attribute name='url' value='org.scala-lang.scala-reflect/org.scala-lang.scala-reflect-2.11.2.jar'/>
+      <attribute name='size' type='Long' value='4391629'/>
+      <attribute name='mime' value='application/vnd.osgi.bundle'/>
+    </capability>
+    <capability namespace='osgi.wiring.bundle'>
+      <attribute name='osgi.wiring.bundle' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+    </capability>
+    <capability namespace='osgi.wiring.host'>
+      <attribute name='osgi.wiring.host' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.macros'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect.macros.blackbox,scala.reflect.api,scala.reflect,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect.internal.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.runtime,scala,scala.collection.immutable,scala.reflect,scala.collection.mutable,scala.collection,scala.collection.generic,scala.reflect.api,scala.reflect.internal.util,scala.reflect.internal.pickling,scala.compat,scala.math,scala.util.hashing,scala.annotation.unchecked,scala.reflect.internal.settings,scala.beans,scala.annotation,scala.annotation.meta,scala.reflect.macros.internal,scala.reflect.internal.transform,scala.util,scala.ref,scala.collection.convert,scala.reflect.macros,scala.reflect.io,scala.reflect.internal.tpe,scala.io,scala.collection.parallel,scala.sys,scala.reflect.runtime,scala.util.control'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.macros.blackbox'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect.macros,scala.reflect.api,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.io'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.runtime,scala,scala.io,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.math,scala.reflect.internal.util,scala.reflect,scala.collection.generic,scala.util,scala.collection.convert,scala.sys'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.api'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.immutable,scala,scala.reflect,scala.collection.mutable,scala.runtime,scala.reflect.runtime,scala.reflect.internal,scala.collection,scala.reflect.internal.util,scala.reflect.internal.settings,scala.collection.generic,scala.util,scala.reflect.io'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.runtime'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala,scala.reflect,scala.reflect.internal,scala.collection.mutable,scala.runtime,scala.ref,scala.collection.immutable,scala.reflect.internal.util,scala.reflect.api,scala.collection,scala.util.matching,scala.reflect.internal.transform,scala.collection.generic,scala.math,scala.reflect.internal.pickling,scala.reflect.io,scala.reflect.internal.settings,scala.reflect.internal.tpe,scala.reflect.macros,scala.sys,scala.reflect.macros.blackbox,scala.util'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.settings'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.runtime'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.annotations'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.annotation'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.macros.whitebox'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect.api,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.reflect.macros.blackbox,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.util'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect.io,scala.runtime,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.reflect.internal,scala.collection.generic,scala.math,scala.collection.parallel,scala.reflect.macros,scala.sys,scala.reflect.api,scala.util.control,scala.reflect.runtime,scala.compat,scala.collection.parallel.mutable,scala.collection.script'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.transform'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.collection.immutable,scala.reflect.internal,scala.runtime,scala,scala.collection,scala.collection.mutable,scala.collection.generic,scala.reflect.internal.tpe,scala.math,scala.reflect'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.pickling'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect,scala.collection.immutable,scala.collection,scala.collection.mutable,scala.runtime,scala,scala.reflect.internal,scala.reflect.internal.util,scala.sys,scala.util,scala.reflect.internal.tpe,scala.reflect.internal.settings,scala.collection.generic'/>
+    </capability>
+    <capability namespace='osgi.wiring.package'>
+      <attribute name='osgi.wiring.package' value='scala.reflect.internal.tpe'/>
+      <attribute name='version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <attribute name='bundle-symbolic-name' value='org.scala-lang.scala-reflect'/>
+      <attribute name='bundle-version' type='Version' value='2.11.2.v20140721-095018-73fb460c1c'/>
+      <directive name='uses' value='scala.reflect.internal,scala.collection,scala.collection.immutable,scala.runtime,scala.reflect,scala.reflect.internal.util,scala,scala.collection.mutable,scala.collection.generic,scala.reflect.internal.settings,scala.math,scala.sys,scala.reflect.api'/>
+    </capability>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.annotation)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.annotation.meta)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.annotation.unchecked)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.beans)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.parallel)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.parallel.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.script)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.compat)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.io)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.ref)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect.macros.internal)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.sys)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.tools.nsc)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+      <directive name='resolution' value='optional'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.hashing)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.wiring.package'>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.matching)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
+    </requirement>
+    <requirement namespace='osgi.ee'>
+      <directive name='filter' value='(|(&amp;(osgi.ee=JavaSE)(version=1.6))(&amp;(osgi.ee=JavaSE)(version=1.7)))'/>
     </requirement>
   </resource>
   <resource>
@@ -1418,163 +1712,6 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='io.spray.routing'/>
-      <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
-    </capability>
-    <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='188af0df8a25ebaed69adb5cb1f976121fe0e0bbb65ccb126c50483f24bf9b24'/>
-      <attribute name='url' value='io.spray.routing/io.spray.routing-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='1067543'/>
-      <attribute name='mime' value='application/vnd.osgi.bundle'/>
-    </capability>
-    <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='io.spray.routing'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-    </capability>
-    <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='io.spray.routing'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='spray.routing'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
-      <attribute name='bundle-symbolic-name' value='io.spray.routing'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-      <directive name='uses' value='akka.actor,akka.io,akka.spray,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.math,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,spray.can.server,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.io,spray.routing.directives,spray.util'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='spray.routing.authentication'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
-      <attribute name='bundle-symbolic-name' value='io.spray.routing'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-      <directive name='uses' value='com.typesafe.config,javax.naming.directory,javax.naming.ldap,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.caching,spray.http,spray.routing,spray.util'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='spray.routing.directives'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
-      <attribute name='bundle-symbolic-name' value='io.spray.routing'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
-      <directive name='uses' value='akka.actor,akka.event,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,spray.caching,spray.http,spray.http.parser,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.routing,spray.util'/>
-    </capability>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.convert)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.concurrent)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.concurrent.duration)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.sys)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.matching)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=shapeless)'/>
-      <directive name='resolution' value='optional'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1.20140423))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.event)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.io)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.pattern)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.util)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=com.typesafe.config)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=javax.naming)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=javax.naming.directory)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=javax.naming.ldap)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=org.parboiled.common)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.caching)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.can)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.can.server)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.http)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.http.parser)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.httpx.encoding)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.httpx.marshalling)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.httpx.unmarshalling)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.io)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.util)'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(osgi.wiring.package=spray.util.pimps)'/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='org.jvnet.mimepull'/>
       <attribute name='type' value='osgi.bundle'/>
       <attribute name='version' type='Version' value='1.9.4'/>
@@ -1709,115 +1846,57 @@
   </resource>
   <resource>
     <capability namespace='osgi.identity'>
-      <attribute name='osgi.identity' value='com.chuusai.shapeless'/>
-      <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.2.4'/>
-    </capability>
-    <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='12c94570e56c00117bcecde43a2852c470d1f479907df5a0c3472de16074bc96'/>
-      <attribute name='url' value='com.chuusai.shapeless/com.chuusai.shapeless-1.2.4.jar'/>
-      <attribute name='size' type='Long' value='1259632'/>
-      <attribute name='mime' value='application/vnd.osgi.bundle'/>
-    </capability>
-    <capability namespace='osgi.wiring.bundle'>
-      <attribute name='osgi.wiring.bundle' value='com.chuusai.shapeless'/>
-      <attribute name='bundle-version' type='Version' value='1.2.4'/>
-    </capability>
-    <capability namespace='osgi.wiring.host'>
-      <attribute name='osgi.wiring.host' value='com.chuusai.shapeless'/>
-      <attribute name='bundle-version' type='Version' value='1.2.4'/>
-    </capability>
-    <capability namespace='osgi.wiring.package'>
-      <attribute name='osgi.wiring.package' value='shapeless'/>
-      <attribute name='version' type='Version' value='1.2.4'/>
-      <attribute name='bundle-symbolic-name' value='com.chuusai.shapeless'/>
-      <attribute name='bundle-version' type='Version' value='1.2.4'/>
-      <directive name='uses' value='scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.reflect,scala.runtime,scala.util'/>
-    </capability>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.generic)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.immutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.sys)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
-    </requirement>
-    <requirement namespace='osgi.ee'>
-      <directive name='filter' value='(&amp;(osgi.ee=JavaSE)(version=1.6))'/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='io.spray.can'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='0fbeb9c620709984cb968ad427c677045fcff0083a1baed1b87cde86f3604e0b'/>
+      <attribute name='osgi.content' value='0f4c127e2f097a67180a7e2a167ff26a291a11b0eb4857618453e6b11545adc5'/>
       <attribute name='url' value='io.spray.can/io.spray.can-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='724432'/>
+      <attribute name='size' type='Long' value='716296'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.can'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.event,akka.io,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can.client,spray.can.server,spray.http,spray.io'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.can.client'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.event,akka.io,akka.util,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can,spray.can.parsing,spray.can.rendering,spray.http,spray.io,spray.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.can.parsing'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.io,akka.util,com.typesafe.config,org.parboiled.scala.rules,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,spray.http,spray.io,spray.util'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.can.rendering'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.event,akka.io,scala,scala.collection,scala.reflect,scala.runtime,spray.http'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.can.server'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.can'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.event,akka.io,akka.spray,akka.util,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can,spray.can.parsing,spray.can.rendering,spray.http,spray.io,spray.util'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -1863,7 +1942,7 @@
       <directive name='filter' value='(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
-      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1.20140423))'/>
+      <directive name='filter' value='(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))'/>
     </requirement>
     <requirement namespace='osgi.wiring.package'>
       <directive name='filter' value='(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))'/>
@@ -1909,27 +1988,27 @@
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='io.spray.io'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='7b4300cea2d151a4f8189f4cd2c03b77bd5ecfb1287dfd1bcce0ce9b5635cafb'/>
+      <attribute name='osgi.content' value='1e3c69c57edac5a7ea28f2bb5419c9dd2f6b11bc36eba354276395b251330861'/>
       <attribute name='url' value='io.spray.io/io.spray.io-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='188102'/>
+      <attribute name='size' type='Long' value='186217'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.io'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.io'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.io'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.io'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='akka.actor,akka.event,akka.io,akka.util,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,spray.http,spray.util'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>
@@ -1997,27 +2076,27 @@
     <capability namespace='osgi.identity'>
       <attribute name='osgi.identity' value='io.spray.caching'/>
       <attribute name='type' value='osgi.bundle'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.content'>
-      <attribute name='osgi.content' value='2eb78d51ec7bac5702d1355ea6317ec56527574d4db68ea3788baeb1233d322d'/>
+      <attribute name='osgi.content' value='c7776d926b7cebb38ba7cf64353a54683e4f91734aca40e7de392e72db189625'/>
       <attribute name='url' value='io.spray.caching/io.spray.caching-1.3.1.jar'/>
-      <attribute name='size' type='Long' value='23614'/>
+      <attribute name='size' type='Long' value='23292'/>
       <attribute name='mime' value='application/vnd.osgi.bundle'/>
     </capability>
     <capability namespace='osgi.wiring.bundle'>
       <attribute name='osgi.wiring.bundle' value='io.spray.caching'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.host'>
       <attribute name='osgi.wiring.host' value='io.spray.caching'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
     </capability>
     <capability namespace='osgi.wiring.package'>
       <attribute name='osgi.wiring.package' value='spray.caching'/>
-      <attribute name='version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='version' type='Version' value='1.3.1'/>
       <attribute name='bundle-symbolic-name' value='io.spray.caching'/>
-      <attribute name='bundle-version' type='Version' value='1.3.1.20140423'/>
+      <attribute name='bundle-version' type='Version' value='1.3.1'/>
       <directive name='uses' value='com.googlecode.concurrentlinkedhashmap,scala,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util'/>
     </capability>
     <requirement namespace='osgi.wiring.package'>

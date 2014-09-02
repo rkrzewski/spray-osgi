@@ -2,9 +2,9 @@ Bundle-Version: 0.0.0.${tstamp}
 -buildpath:  \
 	com.typesafe.config,\
 	com.typesafe.akka.actor,\
-	com.chuusai.shapeless,\
+	com.chuusai.shapeless.core,\
 	org.parboiled.core,\
-	io.spray.routing,\
+	io.spray.routing.shapeless2,\
 	io.spray.io,\
 	io.spray.util,\
 	io.spray.http,\

@@ -4,7 +4,7 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.fileinstall)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.akka.osgi.ds)',\
-	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless)',\
+	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
@@ -16,10 +16,10 @@
 	javax.naming.directory,\
 	javax.naming.ldap
 -runbundles:  \
-	com.chuusai.shapeless;version=latest,\
+	com.chuusai.shapeless.core;version='[2.0.0,2.0.1)',\
 	com.googlecode.concurrentlinkedhashmap.lru;version='[1.4.0,1.4.1)',\
-	com.typesafe.akka.actor;version='[2.3.3,2.3.4)',\
-	com.typesafe.akka.osgi;version='[2.3.3,2.3.4)',\
+	com.typesafe.akka.actor;version='[2.3.5,2.3.6)',\
+	com.typesafe.akka.osgi;version='[2.3.5,2.3.6)',\
 	com.typesafe.akka.osgi.ds;version=latest,\
 	com.typesafe.config;version='[1.2.1,1.2.2)',\
 	io.spray.caching;version='[1.3.1,1.3.2)',\
@@ -28,7 +28,7 @@
 	io.spray.httpx;version=latest,\
 	io.spray.io;version='[1.3.1,1.3.2)',\
 	io.spray.osgi;version=latest,\
-	io.spray.routing;version='[1.3.1,1.3.2)',\
+	io.spray.routing.shapeless2;version='[1.3.1,1.3.2)',\
 	io.spray.util;version='[1.3.1,1.3.2)',\
 	org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
 	org.apache.felix.fileinstall;version='[3.4.0,3.4.1)',\
@@ -40,7 +40,7 @@
 	org.parboiled.core;version='[1.1.6,1.1.7)',\
 	org.parboiled.scala;version='[1.1.6,1.1.7)',\
 	org.scala-lang.modules.scala-xml;version='[1.0.2,1.0.3)',\
-	org.scala-lang.scala-library;version='[2.11.1,2.11.2)',\
-	org.scala-lang.scala-reflect;version='[2.11.1,2.11.2)',\
+	org.scala-lang.scala-library;version='[2.11.2,2.11.3)',\
+	org.scala-lang.scala-reflect;version='[2.11.2,2.11.3)',\
 	osgi.enterprise;version='[4.2.0,4.2.1)',\
 	osgi.residential;version='[4.3.0,4.3.1)'
