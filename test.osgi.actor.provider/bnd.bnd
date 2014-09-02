@@ -1,0 +1,11 @@
+Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	com.typesafe.akka.actor,\
+	com.typesafe.akka.osgi.ds;version=latest,\
+	osgi.enterprise;version=5.0
+Private-Package:  \
+	test.osgi.actor.impl
+Export-Package:  \
+	test.osgi.actor.api
+-dsannotations:  \
+	*
