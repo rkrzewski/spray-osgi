@@ -1,22 +1,13 @@
 package akka.osgi.ds.impl
 
-import akka.actor.ActorSystem
 import com.typesafe.config.Config
+import akka.actor.Actor
+import akka.actor.ActorSystem
+import org.osgi.framework.BundleContext
 
-class OsgiActorSystemFacade(system: ActorSystem,
-  contextConfig: ThreadContextConfig,
-  bundleConfig: Config,
-  contextClassLoader: ThreadContextClassLoader,
-  bundleClassLoader: ClassLoader) extends ActorSystem {
+class OsgiActorSystemFacade(system: ActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext) extends ActorSystem {
 
-  private def usingBundleContext[T](code: => T): T =
-    contextClassLoader.using(bundleClassLoader) {
-      contextConfig.using(bundleConfig) {
-        code
-      }
-    }
-
-  // Protecetd members declared in akka.actor.ActorRefFactory, inaccessible
+  // Protected members declared in akka.actor.ActorRefFactory, inaccessible
 
   protected def guardian: akka.actor.InternalActorRef = ???
 
@@ -29,14 +20,11 @@ class OsgiActorSystemFacade(system: ActorSystem,
   // Members declared in akka.actor.ActorRefFactory   
 
   def actorOf(props: akka.actor.Props, name: String): akka.actor.ActorRef =
-    usingBundleContext {
-      system.actorOf(props, name)
-    }
+    actorBundleContext.run(context,
+      system.actorOf(props, name))
 
   def actorOf(props: akka.actor.Props): akka.actor.ActorRef =
-    usingBundleContext {
-      system.actorOf(props)
-    }
+    actorBundleContext.run(context, system.actorOf(props))
 
   def stop(actor: akka.actor.ActorRef): Unit =
     system.stop(actor)
@@ -86,9 +74,7 @@ class OsgiActorSystemFacade(system: ActorSystem,
     system.hasExtension(ext)
 
   def registerExtension[T <: akka.actor.Extension](ext: akka.actor.ExtensionId[T]): T =
-    usingBundleContext {
-      system.registerExtension(ext)
-    }
+    actorBundleContext.run(context, system.registerExtension(ext))
 
   def shutdown(): Unit =
     system.shutdown()
@@ -101,16 +87,12 @@ class OsgiActorSystemFacade(system: ActorSystem,
 
   def registerOnTermination(code: Runnable): Unit =
     system.registerOnTermination {
-      usingBundleContext {
-        code
-      }
+      actorBundleContext.run(context, code)
     }
 
   def registerOnTermination[T](code: => T): Unit =
     system.registerOnTermination {
-      usingBundleContext {
-        code
-      }
+      actorBundleContext.run(context, code)
     }
 
   def isTerminated: Boolean =

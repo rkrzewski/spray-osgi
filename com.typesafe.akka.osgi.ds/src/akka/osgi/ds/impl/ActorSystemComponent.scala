@@ -31,25 +31,26 @@ class ActorSystemComponent extends ServiceFactory[ActorSystem] {
   var registration: ServiceRegistration[_] = _
 
   var makeFacade: (BundleContext) => ActorSystem = _
+  
+  var actorBundleContext: ActorBundleContext = _ 
 
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val akkaClassLoader = classOf[ActorSystem].getClassLoader()
     val akkaConfig = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(akkaClassLoader))
-    val threadContextClassLoader = new ThreadContextClassLoader
     val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
-    val classloader = BundleDelegatingClassLoader(ctx, Some(threadContextClassLoader))
-    val threadContextConfig = new ThreadContextConfig(akkaConfig)
-    actorSystem = ActorSystem(actorSystemName, threadContextConfig, classloader)
+
+    actorBundleContext = new ActorBundleContext(akkaClassLoader, akkaConfig)
+    actorSystem = ActorSystem(actorSystemName,
+      Some(actorBundleContext.config),
+      Some(actorBundleContext.classLoader),
+      None)
     makeFacade = {
       bundleContext =>
         val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
-        val bundleConfig = ConfigFactory.load(bundleClassLoader) //.withFallback(akkaConfig)
-        new OsgiActorSystemFacade(actorSystem,
-          threadContextConfig,
-          bundleConfig,
-          threadContextClassLoader,
-          bundleClassLoader)
+        val bundleConfig = ConfigFactory.load(bundleClassLoader)
+        actorBundleContext.add(bundleContext, bundleClassLoader, bundleConfig)
+        new OsgiActorSystemFacade(actorSystem, actorBundleContext, bundleContext)
     }
     registration = ctx.registerService(classOf[ActorSystem].getName(), this, null)
   }
@@ -58,7 +59,7 @@ class ActorSystemComponent extends ServiceFactory[ActorSystem] {
     makeFacade(bundle.getBundleContext())
 
   def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
-    ()
+    actorBundleContext.remove(bundle.getBundleContext)
 
   @Deactivate
   def deactivate: Unit = {
