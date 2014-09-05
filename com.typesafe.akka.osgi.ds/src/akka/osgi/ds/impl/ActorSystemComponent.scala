@@ -24,50 +24,22 @@ import akka.osgi.BundleDelegatingClassLoader
   immediate = true,
   configurationPid = "com.typesafe.akka",
   configurationPolicy = ConfigurationPolicy.REQUIRE)
-class ActorSystemComponent extends ServiceFactory[ActorSystem] {
+class ActorSystemComponent {
 
-  var actorSystem: ActorSystem = _
+  var serviceFactory: ActorSystemServiceFactory = _
 
   var registration: ServiceRegistration[_] = _
 
-  var makeFacade: (BundleContext) => ActorSystem = _
-  
-  var actorBundleContext: ActorBundleContext = _ 
-
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    val akkaClassLoader = classOf[ActorSystem].getClassLoader()
-    val akkaConfig = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(akkaClassLoader))
-    val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
-
-    actorBundleContext = new ActorBundleContext(akkaClassLoader, akkaConfig)
-    actorSystem = ActorSystem(actorSystemName,
-      Some(actorBundleContext.config),
-      Some(actorBundleContext.classLoader),
-      None)
-    makeFacade = {
-      bundleContext =>
-        val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
-        val bundleConfig = ConfigFactory.load(bundleClassLoader)
-        actorBundleContext.add(bundleContext, bundleClassLoader, bundleConfig)
-        new OsgiActorSystemFacade(actorSystem, actorBundleContext, bundleContext)
-    }
-    registration = ctx.registerService(classOf[ActorSystem].getName(), this, null)
+    serviceFactory = new ActorSystemServiceFactory(properties)
+    registration = ctx.registerService(classOf[ActorSystem].getName(), serviceFactory, null)
   }
-
-  def getService(bundle: Bundle, registration: ServiceRegistration[ActorSystem]): ActorSystem =
-    makeFacade(bundle.getBundleContext())
-
-  def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
-    actorBundleContext.remove(bundle.getBundleContext)
 
   @Deactivate
   def deactivate: Unit = {
     registration.unregister()
-    val barrier = new CyclicBarrier(2)
-    actorSystem.registerOnTermination(barrier.await())
-    actorSystem.shutdown()
-    barrier.await()
+    serviceFactory.shutdown()
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =
