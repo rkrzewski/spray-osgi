@@ -33,64 +33,19 @@ class SprayServerComponent {
   @(Reference @setter)
   var actorSystem: ActorSystem = _
 
-  var listenerSettings: ListenerSettings = _
-
-  var http: ActorRef = _
-
-  var serviceActor: ActorRef = _
-
-  var routeServiceTracker: RouteServiceTracker = _
-
-  var staticResourcesTracker: StaticResourcesTracker = _
-
+  var sprayServer: SprayServer = _
+  
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val sprayClassloader = classOf[ServerSettings].getClassLoader
     val classloader = BundleDelegatingClassLoader(ctx, Some(sprayClassloader))
     val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
-    val serverSettings = ServerSettings.fromSubConfig(config.getConfig("spray.can.server"))
-    listenerSettings = ListenerSettings.fromSubConfig(config.getConfig("spray.can.server.listener"))
-
-    http = IO(Http)(actorSystem)
-    serviceActor = actorSystem.actorOf(Props(classOf[RouteManager]))
-    routeServiceTracker = new RouteServiceTracker(ctx, serviceActor)
-    routeServiceTracker.open()
-    staticResourcesTracker = new StaticResourcesTracker(ctx, serviceActor)(actorSystem)
-    staticResourcesTracker.open()
-
-    http.ask(Http.Bind(
-      serviceActor,
-      listenerSettings.interface,
-      listenerSettings.port,
-      listenerSettings.backlog,
-      listenerSettings.socketOptions,
-      Some(serverSettings)))(Timeout(listenerSettings.bindTimeout)).onComplete {
-      case Success(b: Http.Bound) =>
-        println("server started")
-      case Success(Tcp.CommandFailed(b: Http.Bind)) =>
-        println(
-          "Binding failed. Switch on DEBUG-level logging for `akka.io.TcpListener` to log the cause.")
-      case Failure(e: AskTimeoutException) =>
-        println("server start timeout")
-      case _ =>
-        println("server start failure")
-    }(actorSystem.dispatcher)
-
+    sprayServer = new SprayServer(config, actorSystem, ctx)
   }
 
   @Deactivate
   def deactivate: Unit = {
-    routeServiceTracker.close()
-    staticResourcesTracker.close()
-    serviceActor ! PoisonPill
-    http.ask(Http.CloseAll)(Timeout(listenerSettings.bindTimeout)).onComplete {
-      case Success(Http.ClosedAll) =>
-        println("server stopped")
-      case Failure(e: AskTimeoutException) =>
-        println("server stop timeout")
-      case _ =>
-        println("server stop failure")
-    }(actorSystem.dispatcher)
+    sprayServer.shutdown()
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =
