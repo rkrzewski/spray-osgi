@@ -29,6 +29,8 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
   routeServiceTracker.open()
   staticResourcesTracker.open()
 
+  val log: LoggingAdapter = new BusLogging(actorSystem.eventStream, "Spray server", this.getClass)
+
   http.ask(Http.Bind(
     serviceActor,
     listenerSettings.interface,
@@ -37,14 +39,16 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
     listenerSettings.socketOptions,
     Some(serverSettings)))(Timeout(listenerSettings.bindTimeout)).onComplete {
     case Success(b: Http.Bound) =>
-      println("server started")
+      log.info("server started")
     case Success(Tcp.CommandFailed(b: Http.Bind)) =>
-      println(
+      log.error(
         "Binding failed. Switch on DEBUG-level logging for `akka.io.TcpListener` to log the cause.")
+    case Success(u) =>
+      log.error(s"server start failure, unexected message $u")
     case Failure(e: AskTimeoutException) =>
-      println("server start timeout")
-    case _ =>
-      println("server start failure")
+      log.error("server start timeout")
+    case Failure(e) =>
+      log.error("server start failure", e)
   }(actorSystem.dispatcher)
 
   def shutdown(): Unit = {
@@ -53,11 +57,13 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
     serviceActor ! PoisonPill
     http.ask(Http.CloseAll)(Timeout(listenerSettings.bindTimeout)).onComplete {
       case Success(Http.ClosedAll) =>
-        println("server stopped")
+        log.info("server stopped")
+      case Success(u) =>
+        log.error(s"server stop failure, unexected message $u")
       case Failure(e: AskTimeoutException) =>
-        printl("server stop timeout")
-      case _ =>
-        println("server stop failure", e)
+        log.error("server stop timeout")
+      case Failure(e) =>
+        log.error("server stop failure", e)
     }(actorSystem.dispatcher)
   }
 }
