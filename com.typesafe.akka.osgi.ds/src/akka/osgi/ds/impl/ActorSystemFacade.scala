@@ -5,7 +5,7 @@ import akka.actor.Actor
 import akka.actor.ActorSystem
 import org.osgi.framework.BundleContext
 
-class OsgiActorSystemFacade(system: ActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext) extends ActorSystem {
+class ActorSystemFacade(system: ActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext) extends ActorSystem {
 
   // Protected members declared in akka.actor.ActorRefFactory, inaccessible
 
