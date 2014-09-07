@@ -6,7 +6,8 @@
 	osgi.identity;filter:='(osgi.identity=com.typesafe.akka.osgi.ds)',\
 	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)'
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
+	osgi.identity;filter:='(osgi.identity=test)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
 -runee: JavaSE-1.8
 -runsystempackages: \
@@ -43,4 +44,5 @@
 	org.scala-lang.scala-library;version='[2.11.2,2.11.3)',\
 	org.scala-lang.scala-reflect;version='[2.11.2,2.11.3)',\
 	osgi.enterprise;version='[4.2.0,4.2.1)',\
-	osgi.residential;version='[4.3.0,4.3.1)'
+	osgi.residential;version='[4.3.0,4.3.1)',\
+	test;version=latest

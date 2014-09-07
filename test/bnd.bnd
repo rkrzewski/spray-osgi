@@ -1,1 +1,15 @@
 Bundle-Version: 0.0.0.${tstamp}
+-buildpath:  \
+	io.spray.osgi;version=latest,\
+	io.spray.routing.shapeless2,\
+	com.chuusai.shapeless.core,\
+	io.spray.http,\
+	io.spray.httpx,\
+	com.typesafe.akka.actor,\
+	org.scala-lang.modules.scala-xml,\
+	io.spray.util,\
+	osgi.enterprise;version=5.0
+Private-Package:  \
+	test.spray.hello
+-dsannotations:  \
+	*
