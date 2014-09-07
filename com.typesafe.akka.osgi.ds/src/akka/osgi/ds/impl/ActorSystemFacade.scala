@@ -18,11 +18,11 @@ object ActorSystemFacadeExtension extends ExtensionId[ActorSystemFacadeProvider]
 }
 
 class ActorSystemFacadeProvider(system: ExtendedActorSystem) extends Extension {
-  def apply(actorBundleContext: ActorBundleContext, context: BundleContext) =
-    new ActorSystemFacade(system, actorBundleContext, context)
+  def apply(actorBundleContext: ActorBundleContext, context: BundleContext, settings: ActorSystem.Settings) =
+    new ActorSystemFacade(system, actorBundleContext, context, settings)
 }
 
-class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext)
+class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext, val settings: ActorSystem.Settings)
   extends ExtendedActorSystem with Extension {
 
   def provider: akka.actor.ActorRefProvider =
@@ -48,8 +48,7 @@ class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBu
   def name: String =
     system.name
 
-  def settings: akka.actor.ActorSystem.Settings =
-    system.settings
+  // def settings: akka.actor.ActorSystem.Settings implemented through a val
 
   def /(name: Iterable[String]): akka.actor.ActorPath =
     system / name
