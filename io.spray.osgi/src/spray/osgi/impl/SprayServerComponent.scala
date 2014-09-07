@@ -37,8 +37,7 @@ class SprayServerComponent {
   
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    val sprayClassloader = classOf[ServerSettings].getClassLoader
-    val classloader = BundleDelegatingClassLoader(ctx, Some(sprayClassloader))
+    val classloader = BundleDelegatingClassLoader(ctx)
     val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
     sprayServer = new SprayServer(config, actorSystem, ctx)
   }
