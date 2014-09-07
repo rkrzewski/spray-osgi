@@ -14,17 +14,18 @@ class ActorFacade(props: Props, actorBundleContext: ActorBundleContext) extends 
 
   private var behaviorStack: List[Actor.Receive] = ActorCell.emptyBehaviorStack
 
-  val actor = {
+  private val actor = {
     ActorCell.contextStack.set(new ActorContextFacade(context) :: Nil)
     val instance = props.newActor()
     behaviorStack = if (behaviorStack.isEmpty) instance.receive :: behaviorStack else behaviorStack
     instance
   }
-  
 
-  val clazz = props.clazz
+  private val clazz = props.clazz
 
-  def receive = actor.receive
+  def receive = { 
+    case _ => throw new IllegalStateException("should never be invoked")
+  }
 
   override def aroundReceive(receive: Actor.Receive, msg: Any): Unit =
     actorBundleContext.run(clazz, actor.aroundReceive(behaviorStack.head, msg))
