@@ -8,6 +8,7 @@ import akka.actor.ExtendedActorSystem
 import akka.actor.Extension
 import akka.actor.ExtensionId
 import akka.actor.ExtensionIdProvider
+import akka.actor.Props
 
 object ActorSystemFacadeExtension extends ExtensionId[ActorSystemFacadeProvider] with ExtensionIdProvider {
 
@@ -33,12 +34,12 @@ class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBu
 
   // Members declared in akka.actor.ActorRefFactory   
 
-  def actorOf(props: akka.actor.Props, name: String): akka.actor.ActorRef =
+  def actorOf(props: Props, name: String): akka.actor.ActorRef =
     actorBundleContext.run(context,
-      system.actorOf(props, name))
+      system.actorOf(Props(classOf[ActorFacade], props, actorBundleContext), name))
 
   def actorOf(props: akka.actor.Props): akka.actor.ActorRef =
-    actorBundleContext.run(context, system.actorOf(props))
+    actorBundleContext.run(context, system.actorOf(Props(classOf[ActorFacade], props, actorBundleContext)))
 
   def stop(actor: akka.actor.ActorRef): Unit =
     system.stop(actor)
