@@ -4,18 +4,32 @@ import com.typesafe.config.Config
 import akka.actor.Actor
 import akka.actor.ActorSystem
 import org.osgi.framework.BundleContext
+import akka.actor.ExtendedActorSystem
+import akka.actor.Extension
+import akka.actor.ExtensionId
+import akka.actor.ExtensionIdProvider
 
-class ActorSystemFacade(system: ActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext) extends ActorSystem {
+object ActorSystemFacadeExtension extends ExtensionId[ActorSystemFacadeProvider] with ExtensionIdProvider {
 
-  // Protected members declared in akka.actor.ActorRefFactory, inaccessible
+  def lookup = ActorSystemFacadeExtension
 
-  protected def guardian: akka.actor.InternalActorRef = ???
+  override def createExtension(system: ExtendedActorSystem) = new ActorSystemFacadeProvider(system)
 
-  protected def lookupRoot: akka.actor.InternalActorRef = ???
+}
 
-  protected def provider: akka.actor.ActorRefProvider = ???
+class ActorSystemFacadeProvider(system: ExtendedActorSystem) extends Extension {
+  def apply(actorBundleContext: ActorBundleContext, context: BundleContext) =
+    new ActorSystemFacade(system, actorBundleContext, context)
+}
 
-  protected def systemImpl: akka.actor.ActorSystemImpl = ???
+class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext)
+  extends ExtendedActorSystem with Extension {
+
+  def provider: akka.actor.ActorRefProvider =
+    system.provider
+
+  def guardian: akka.actor.InternalActorRef =
+    system.guardian
 
   // Members declared in akka.actor.ActorRefFactory   
 
@@ -97,4 +111,25 @@ class ActorSystemFacade(system: ActorSystem, actorBundleContext: ActorBundleCont
 
   def isTerminated: Boolean =
     system.isTerminated
+
+  def dynamicAccess: akka.actor.DynamicAccess =
+    system.dynamicAccess
+
+  def printTree: String =
+    system.printTree
+
+  def systemActorOf(props: akka.actor.Props, name: String): akka.actor.ActorRef =
+    system.systemActorOf(props, name)
+
+  def systemGuardian: akka.actor.InternalActorRef =
+    system.systemGuardian
+
+  def threadFactory: java.util.concurrent.ThreadFactory =
+    system.threadFactory
+
+  def lookupRoot: akka.actor.InternalActorRef =
+    ???
+
+  def systemImpl: akka.actor.ActorSystemImpl =
+    ???
 }

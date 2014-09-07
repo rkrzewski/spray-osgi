@@ -30,7 +30,7 @@ class ActorSystemServiceFactory(properties: Properties) extends ServiceFactory[A
     val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
     val bundleConfig = ConfigFactory.load(bundleClassLoader)
     actorBundleContext.add(bundleContext, bundleClassLoader, bundleConfig)
-    new ActorSystemFacade(actorSystem, actorBundleContext, bundleContext)
+    ActorSystemFacadeExtension(actorSystem)(actorBundleContext, bundleContext)
   }
 
   def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
