@@ -37,7 +37,7 @@ class StaticResourcesTracker(ctx: BundleContext, routeManager: ActorRef)(implici
     val newRanking = -bundle.adapt(classOf[BundleStartLevel]).getStartLevel()
     val oldRouteOption = holder.getAndSet(newRouteOption)
     oldRouteOption foreach (routeManager ! RouteRemoved(_))
-    newRouteOption foreach (routeManager ! RouteAdded(_, 0))
+    newRouteOption foreach (routeManager ! RouteAdded(_, newRanking))
   }
 
   def route(bundle: Bundle): Option[Route] =
