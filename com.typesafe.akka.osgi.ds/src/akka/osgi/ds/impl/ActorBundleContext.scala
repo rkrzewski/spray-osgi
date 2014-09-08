@@ -14,14 +14,13 @@ import com.typesafe.config.ConfigValue
 import org.osgi.framework.BundleContext
 import org.osgi.framework.FrameworkUtil
 
-class ActorBundleContext(defaultClassLoader: ClassLoader, defaultConfig: Config) {
-  val defaultContext = (defaultClassLoader, defaultConfig)
+class ActorBundleContext(defaultConfig: Config) {
   
   @volatile
-  var contexts: Map[BundleContext, (ClassLoader, Config)] = Map.empty
+  var contexts: Map[BundleContext, Config] = Map.empty
 
-  def add(bundleContext: BundleContext, classLoader: ClassLoader, config: Config) =
-    contexts += bundleContext -> (classLoader, config)
+  def add(bundleContext: BundleContext, config: Config) =
+    contexts += bundleContext -> config
 
   def remove(bundleContext: BundleContext) =
     contexts -= bundleContext
@@ -30,155 +29,144 @@ class ActorBundleContext(defaultClassLoader: ClassLoader, defaultConfig: Config)
     run(FrameworkUtil.getBundle(clazz).getBundleContext, code)
 
   def run[T](context: BundleContext, code: => T): T =
-    run(contexts.getOrElse(context, defaultContext), code)
+    run(contexts.getOrElse(context, defaultConfig), code)
 
-  private def run[T](context: (ClassLoader, Config), code: => T): T =
+  private def run[T](context: Config, code: => T): T =
     try {
       current.set(context)
       code
     } finally {
-      current.set(defaultContext)
+      current.set(defaultConfig)
     }
 
-  val current = new ThreadLocal[(ClassLoader, Config)] {
-    override def initialValue = defaultContext
-  }
-
-  def classLoader = new ClassLoader {
-    override def findClass(name: String): Class[_] =
-      current.get._1.loadClass(name)
-
-    override def findResource(name: String): URL =
-      current.get._1.getResource(name)
-
-    override def findResources(name: String): Enumeration[URL] =
-      current.get._1.getResources(name)
+  val current = new ThreadLocal[Config] {
+    override def initialValue = defaultConfig
   }
 
   def config = new Config {
 
     def atKey(key: String): Config =
-      current.get._2.atKey(key)
+      current.get.atKey(key)
 
     def atPath(path: String): Config =
-      current.get._2.atPath(path)
+      current.get.atPath(path)
 
     def checkValid(reference: Config, restrictToPaths: java.lang.String*): Unit =
-      current.get._2.checkValid(reference, restrictToPaths: _*)
+      current.get.checkValid(reference, restrictToPaths: _*)
 
     def entrySet(): java.util.Set[java.util.Map.Entry[String, ConfigValue]] =
-      current.get._2.entrySet()
+      current.get.entrySet()
 
     def getAnyRef(path: String): Object =
-      current.get._2.getAnyRef(path)
+      current.get.getAnyRef(path)
 
     def getAnyRefList(path: String): java.util.List[_] =
-      current.get._2.getAnyRefList(path)
+      current.get.getAnyRefList(path)
 
     def getBoolean(path: String): Boolean =
-      current.get._2.getBoolean(path)
+      current.get.getBoolean(path)
 
     def getBooleanList(path: String): java.util.List[java.lang.Boolean] =
-      current.get._2.getBooleanList(path)
+      current.get.getBooleanList(path)
 
     def getBytes(path: String): java.lang.Long =
-      current.get._2.getBytes(path)
+      current.get.getBytes(path)
 
     def getBytesList(path: String): java.util.List[java.lang.Long] =
-      current.get._2.getBytesList(path)
+      current.get.getBytesList(path)
 
     def getConfig(path: String): Config =
-      current.get._2.getConfig(path)
+      current.get.getConfig(path)
 
     def getConfigList(path: String): java.util.List[_ <: Config] =
-      current.get._2.getConfigList(path)
+      current.get.getConfigList(path)
 
     def getDouble(path: String): Double =
-      current.get._2.getDouble(path)
+      current.get.getDouble(path)
 
     def getDoubleList(path: String): java.util.List[java.lang.Double] =
-      current.get._2.getDoubleList(path)
+      current.get.getDoubleList(path)
 
     def getDuration(path: String, unit: java.util.concurrent.TimeUnit): Long =
-      current.get._2.getDuration(path, unit)
+      current.get.getDuration(path, unit)
 
     def getDurationList(path: String, unit: java.util.concurrent.TimeUnit): java.util.List[java.lang.Long] =
-      current.get._2.getDurationList(path, unit)
+      current.get.getDurationList(path, unit)
 
     def getInt(path: String): Int =
-      current.get._2.getInt(path)
+      current.get.getInt(path)
 
     def getIntList(path: String): java.util.List[Integer] =
-      current.get._2.getIntList(path)
+      current.get.getIntList(path)
 
     def getList(path: String): ConfigList =
-      current.get._2.getList(path)
+      current.get.getList(path)
 
     def getLong(path: String): Long =
-      current.get._2.getLong(path)
+      current.get.getLong(path)
 
     def getLongList(path: String): java.util.List[java.lang.Long] =
-      current.get._2.getLongList(path)
+      current.get.getLongList(path)
 
     def getMilliseconds(path: String): java.lang.Long =
-      current.get._2.getMilliseconds(path)
+      current.get.getMilliseconds(path)
 
     def getMillisecondsList(path: String): java.util.List[java.lang.Long] =
-      current.get._2.getMillisecondsList(path)
+      current.get.getMillisecondsList(path)
 
     def getNanoseconds(path: String): java.lang.Long =
-      current.get._2.getNanoseconds(path)
+      current.get.getNanoseconds(path)
 
     def getNanosecondsList(path: String): java.util.List[java.lang.Long] =
-      current.get._2.getNanosecondsList(path)
+      current.get.getNanosecondsList(path)
 
     def getNumber(path: String): Number =
-      current.get._2.getNumber(path)
+      current.get.getNumber(path)
 
     def getNumberList(path: String): java.util.List[Number] =
-      current.get._2.getNumberList(path)
+      current.get.getNumberList(path)
 
     def getObject(path: String): ConfigObject =
-      current.get._2.getObject(path)
+      current.get.getObject(path)
 
     def getObjectList(path: String): java.util.List[_ <: ConfigObject] =
-      current.get._2.getObjectList(path)
+      current.get.getObjectList(path)
 
     def getString(path: String): String =
-      current.get._2.getString(path)
+      current.get.getString(path)
 
     def getStringList(path: String): java.util.List[String] =
-      current.get._2.getStringList(path)
+      current.get.getStringList(path)
 
     def getValue(path: String): ConfigValue =
-      current.get._2.getValue(path)
+      current.get.getValue(path)
 
     def hasPath(path: String): Boolean =
-      current.get._2.hasPath(path)
+      current.get.hasPath(path)
 
     def isEmpty(): Boolean =
-      current.get._2.isEmpty()
+      current.get.isEmpty()
 
     def isResolved(): Boolean =
-      current.get._2.isResolved()
+      current.get.isResolved()
 
     def origin(): ConfigOrigin =
-      current.get._2.origin()
+      current.get.origin()
 
     def resolve(options: ConfigResolveOptions): Config =
-      current.get._2.resolve(options)
+      current.get.resolve(options)
 
     def resolve(): Config =
-      current.get._2.resolve()
+      current.get.resolve()
 
     def resolveWith(source: Config, options: ConfigResolveOptions): Config =
-      current.get._2.resolveWith(source, options)
+      current.get.resolveWith(source, options)
 
     def resolveWith(source: Config): Config =
-      current.get._2.resolveWith(source)
+      current.get.resolveWith(source)
 
     def root(): ConfigObject =
-      current.get._2.root()
+      current.get.root()
 
     /* Note! This is a hack that prevents ActorSystemImpl.Settings from severing ties 
      * with our dynamic Config facility. */
@@ -186,13 +174,13 @@ class ActorBundleContext(defaultClassLoader: ClassLoader, defaultConfig: Config)
       this
 
     def withOnlyPath(path: String): Config =
-      current.get._2.withOnlyPath(path)
+      current.get.withOnlyPath(path)
 
     def withValue(path: String, value: ConfigValue): Config =
-      current.get._2.withValue(path, value)
+      current.get.withValue(path, value)
 
     def withoutPath(path: String): Config =
-      current.get._2.withoutPath(path)
+      current.get.withoutPath(path)
   }
 
 }

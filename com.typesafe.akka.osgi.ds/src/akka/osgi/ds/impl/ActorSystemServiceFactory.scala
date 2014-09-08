@@ -18,18 +18,18 @@ class ActorSystemServiceFactory(properties: Properties) extends ServiceFactory[A
 
   val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
 
-  val actorBundleContext = new ActorBundleContext(akkaClassLoader, akkaConfig)
+  val actorBundleContext = new ActorBundleContext(akkaConfig)
 
   val actorSystem = ActorSystem(actorSystemName,
     Some(actorBundleContext.config),
-    Some(actorBundleContext.classLoader),
+    Some(akkaClassLoader),
     None)
 
   def getService(bundle: Bundle, registration: ServiceRegistration[ActorSystem]): ActorSystem = {
     val bundleContext = bundle.getBundleContext
     val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
     val bundleConfig = ConfigFactory.load(bundleClassLoader)
-    actorBundleContext.add(bundleContext, bundleClassLoader, bundleConfig)
+    actorBundleContext.add(bundleContext, bundleConfig)
     val bundleSettings = new ActorSystem.Settings(bundleClassLoader, bundleConfig, actorSystemName)
     ActorSystemFacadeExtension(actorSystem)(actorBundleContext, bundleContext, bundleSettings)
   }
