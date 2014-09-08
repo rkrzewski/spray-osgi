@@ -10,7 +10,7 @@ import akka.actor.ActorSystem
 import scala.concurrent.duration.Duration
 import akka.actor.ActorRef
 
-class ActorFacade(props: Props, actorBundleContext: ActorBundleContext) extends Actor {
+class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
   private var behaviorStack: List[Actor.Receive] = ActorCell.emptyBehaviorStack
 
@@ -28,7 +28,7 @@ class ActorFacade(props: Props, actorBundleContext: ActorBundleContext) extends 
   }
 
   override def aroundReceive(receive: Actor.Receive, msg: Any): Unit =
-    actorBundleContext.run(clazz, actor.aroundReceive(behaviorStack.head, msg))
+    dynamicConfig.run(clazz, actor.aroundReceive(behaviorStack.head, msg))
 
   class ActorContextFacade(context: ActorContext) extends ActorContext {
 

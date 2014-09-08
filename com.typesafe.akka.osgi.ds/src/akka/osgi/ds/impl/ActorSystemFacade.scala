@@ -19,11 +19,11 @@ object ActorSystemFacadeExtension extends ExtensionId[ActorSystemFacadeProvider]
 }
 
 class ActorSystemFacadeProvider(system: ExtendedActorSystem) extends Extension {
-  def apply(actorBundleContext: ActorBundleContext, context: BundleContext, settings: ActorSystem.Settings) =
-    new ActorSystemFacade(system, actorBundleContext, context, settings)
+  def apply(dynamicConfig: DynamicConfig, context: BundleContext, settings: ActorSystem.Settings) =
+    new ActorSystemFacade(system, dynamicConfig, context, settings)
 }
 
-class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBundleContext, context: BundleContext, val settings: ActorSystem.Settings)
+class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfig, context: BundleContext, val settings: ActorSystem.Settings)
   extends ExtendedActorSystem with Extension {
 
   def provider: akka.actor.ActorRefProvider =
@@ -35,11 +35,11 @@ class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBu
   // Members declared in akka.actor.ActorRefFactory   
 
   def actorOf(props: Props, name: String): akka.actor.ActorRef =
-    actorBundleContext.run(context,
-      system.actorOf(Props(classOf[ActorFacade], props, actorBundleContext), name))
+    dynamicConfig.run(context,
+      system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig), name))
 
   def actorOf(props: akka.actor.Props): akka.actor.ActorRef =
-    actorBundleContext.run(context, system.actorOf(Props(classOf[ActorFacade], props, actorBundleContext)))
+    dynamicConfig.run(context, system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig)))
 
   def stop(actor: akka.actor.ActorRef): Unit =
     system.stop(actor)
@@ -88,7 +88,7 @@ class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBu
     system.hasExtension(ext)
 
   def registerExtension[T <: akka.actor.Extension](ext: akka.actor.ExtensionId[T]): T =
-    actorBundleContext.run(context, system.registerExtension(ext))
+    dynamicConfig.run(context, system.registerExtension(ext))
 
   def shutdown(): Unit =
     system.shutdown()
@@ -101,12 +101,12 @@ class ActorSystemFacade(system: ExtendedActorSystem, actorBundleContext: ActorBu
 
   def registerOnTermination(code: Runnable): Unit =
     system.registerOnTermination {
-      actorBundleContext.run(context, code)
+      dynamicConfig.run(context, code)
     }
 
   def registerOnTermination[T](code: => T): Unit =
     system.registerOnTermination {
-      actorBundleContext.run(context, code)
+      dynamicConfig.run(context, code)
     }
 
   def isTerminated: Boolean =

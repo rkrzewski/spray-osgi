@@ -18,10 +18,10 @@ class ActorSystemServiceFactory(properties: Properties) extends ServiceFactory[A
 
   val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
 
-  val actorBundleContext = new ActorBundleContext(akkaConfig)
+  val dynamicConfig = new DynamicConfig(akkaConfig)
 
   val actorSystem = ActorSystem(actorSystemName,
-    Some(actorBundleContext.config),
+    Some(dynamicConfig.config),
     Some(akkaClassLoader),
     None)
 
@@ -29,13 +29,13 @@ class ActorSystemServiceFactory(properties: Properties) extends ServiceFactory[A
     val bundleContext = bundle.getBundleContext
     val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
     val bundleConfig = ConfigFactory.load(bundleClassLoader)
-    actorBundleContext.add(bundleContext, bundleConfig)
+    dynamicConfig.add(bundleContext, bundleConfig)
     val bundleSettings = new ActorSystem.Settings(bundleClassLoader, bundleConfig, actorSystemName)
-    ActorSystemFacadeExtension(actorSystem)(actorBundleContext, bundleContext, bundleSettings)
+    ActorSystemFacadeExtension(actorSystem)(dynamicConfig, bundleContext, bundleSettings)
   }
 
   def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
-    actorBundleContext.remove(bundle.getBundleContext)
+    dynamicConfig.remove(bundle.getBundleContext)
 
   def shutdown(): Unit = {
     val barrier = new CyclicBarrier(2)

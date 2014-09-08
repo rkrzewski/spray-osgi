@@ -14,33 +14,33 @@ import com.typesafe.config.ConfigValue
 import org.osgi.framework.BundleContext
 import org.osgi.framework.FrameworkUtil
 
-class ActorBundleContext(defaultConfig: Config) {
+class DynamicConfig(default: Config) {
   
   @volatile
-  var contexts: Map[BundleContext, Config] = Map.empty
+  var configs: Map[BundleContext, Config] = Map.empty
 
   def add(bundleContext: BundleContext, config: Config) =
-    contexts += bundleContext -> config
+    configs += bundleContext -> config
 
   def remove(bundleContext: BundleContext) =
-    contexts -= bundleContext
+    configs -= bundleContext
 
   def run[T](clazz: Class[_], code: => T): T =
     run(FrameworkUtil.getBundle(clazz).getBundleContext, code)
 
   def run[T](context: BundleContext, code: => T): T =
-    run(contexts.getOrElse(context, defaultConfig), code)
+    run(configs.getOrElse(context, default), code)
 
   private def run[T](context: Config, code: => T): T =
     try {
       current.set(context)
       code
     } finally {
-      current.set(defaultConfig)
+      current.set(default)
     }
 
   val current = new ThreadLocal[Config] {
-    override def initialValue = defaultConfig
+    override def initialValue = default
   }
 
   def config = new Config {
