@@ -1,0 +1,9 @@
+Bundle-Version: 0.0.0.${tstamp}
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+-buildpath:  \
+	osgi.core;version=5.0,\
+	osgi.enterprise;version=5.0,\
+	com.typesafe.config
+Private-Package:  \
+	com.typesafe.config.osgi
+Bundle-Activator: com.typesafe.config.osgi.Activator
