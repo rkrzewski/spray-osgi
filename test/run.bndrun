@@ -1,7 +1,6 @@
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.scr)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
-	osgi.identity;filter:='(osgi.identity=org.apache.felix.fileinstall)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.akka.osgi.ds)',\
 	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
@@ -9,7 +8,8 @@
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=test)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.bootstrap)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.angularjs)'
+	osgi.identity;filter:='(osgi.identity=org.webjars.angularjs)',\
+	osgi.identity;filter:='(osgi.identity=com.typesafe.config.osgi)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
 -runee: JavaSE-1.8
 -runsystempackages: \
@@ -25,6 +25,7 @@
 	com.typesafe.akka.osgi;version='[2.3.5,2.3.6)',\
 	com.typesafe.akka.osgi.ds;version=latest,\
 	com.typesafe.config;version='[1.2.1,1.2.2)',\
+	com.typesafe.config.osgi;version=latest,\
 	io.spray.caching;version='[1.3.1,1.3.2)',\
 	io.spray.can;version='[1.3.1,1.3.2)',\
 	io.spray.http;version='[1.3.1,1.3.2)',\
@@ -34,7 +35,6 @@
 	io.spray.routing.shapeless2;version='[1.3.1,1.3.2)',\
 	io.spray.util;version='[1.3.1,1.3.2)',\
 	org.apache.felix.configadmin;version='[1.8.0,1.8.1)',\
-	org.apache.felix.fileinstall;version='[3.4.0,3.4.1)',\
 	org.apache.felix.gogo.command;version='[0.12.0,0.12.1)',\
 	org.apache.felix.gogo.runtime;version='[0.10.0,0.10.1)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
@@ -47,6 +47,5 @@
 	org.scala-lang.scala-reflect;version='[2.11.2,2.11.3)',\
 	org.webjars.angularjs;version=latest,\
 	org.webjars.bootstrap;version=latest,\
-	osgi.enterprise;version='[4.2.0,4.2.1)',\
 	osgi.residential;version='[4.3.0,4.3.1)',\
 	test;version=latest
