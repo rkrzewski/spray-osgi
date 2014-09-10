@@ -44,6 +44,6 @@ class StaticResourcesTracker(ctx: BundleContext, routeManager: ActorRef)(implici
     Option(bundle.getEntry(basePath)) map (_.toURI) map { baseURI =>
       val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
       val paths = URIs.map(baseURI.relativize(_).toString)
-      getStaticResource(paths, basePath, bundle)
+      getBundleResources(bundle, paths, basePath)
     }
 }
