@@ -1,3 +1,9 @@
-Bundle-Version: 0.0.0.${tstamp}
--buildpath: lib/angularjs-1.2.22.jar;version=file
--includeresource: @angularjs-1.2.22.jar!/META-INF/resources/**
+module: angularjs
+version: 1.2.22
+release:
+
+depVersion: ${if;${isempty;${release}};${version};${version}-${release}}
+Bundle-Version: ${depVersion}
+-buildpath: lib/${module}-${depVersion}.jar;version=file
+-includeresource: @${module}-${depVersion}.jar!/META-INF/resources/**
+Provide-Capability: org.webjars; module=${module}; version:Version="${version}"

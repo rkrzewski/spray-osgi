@@ -1,3 +1,10 @@
-Bundle-Version: 3.2.0.${tstamp}
--buildpath: lib/bootstrap-3.2.0.jar;version=file
--includeresource: @bootstrap-3.2.0.jar!/META-INF/resources/**
+module: bootstrap
+version: 3.2.0
+release:
+Require-Capability: org.webjars; filter:="(&(module=jquery)(version=1.11.1))"; resolution:=optional
+
+depVersion: ${if;${isempty;${release}};${version};${version}-${release}}
+Bundle-Version: ${depVersion}
+-buildpath: lib/${module}-${depVersion}.jar;version=file
+-includeresource: @${module}-${depVersion}.jar!/META-INF/resources/**
+Provide-Capability: org.webjars; module=${module}; version:Version="${version}"
