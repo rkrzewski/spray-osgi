@@ -1,0 +1,19 @@
+Bundle-Version: 0.0.0.${tstamp}
+
+Require-Capability: org.webjars; filter:="(&(module=requirejs))"
+
+-buildpath:  \
+	io.spray.osgi;version=latest,\
+	osgi.enterprise;version=5.0,\
+	osgi.core;version=5.0,\
+	io.spray.routing.shapeless2,\
+	io.spray.http,\
+	com.typesafe.akka.actor,\
+	com.chuusai.shapeless.core,\
+	io.spray.httpx,\
+	io.spray.util,\
+	org.scala-lang.modules.scala-xml
+-dsannotations:  \
+	*
+Private-Package:  \
+	io.spray.osgi.webjars
