@@ -13,7 +13,8 @@ Bundle-Version: 0.0.0.${tstamp}
 	osgi.core;version=5.0,\
 	osgi.enterprise;version=5.0,\
 	org.scala-lang.modules.scala-xml,\
-	com.typesafe.akka.osgi
+	com.typesafe.akka.osgi,\
+	com.typesafe.akka.osgi.ds;version=latest
 Export-Package:  \
 	spray.osgi
 Private-Package:  \

@@ -27,9 +27,7 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
   val http = IO(Http)(actorSystem)
   val serviceActor = actorSystem.actorOf(Props(classOf[RouteManagerActor]))
   val routeServiceTracker = new RouteServiceTracker(ctx, serviceActor)
-  val staticResourcesTracker = new StaticResourcesTracker(ctx, serviceActor)(actorSystem)
   routeServiceTracker.open()
-  staticResourcesTracker.open()
 
   val log: LoggingAdapter = new BusLogging(actorSystem.eventStream, "Spray server", this.getClass)
 
@@ -58,7 +56,6 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
 
   def shutdown(): Unit = {
     routeServiceTracker.close()
-    staticResourcesTracker.close()
     serviceActor ! PoisonPill
     http.ask(Http.CloseAll)(Timeout(listenerSettings.bindTimeout)).onComplete {
       case Success(Http.ClosedAll) =>

@@ -1,62 +1,83 @@
 package io.spray.osgi.webjars
 
-import java.net.URL
 import scala.annotation.meta.setter
 import scala.collection.JavaConversions._
-import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
-import org.osgi.framework.wiring.BundleWire
-import org.osgi.framework.wiring.BundleWiring
+import org.osgi.framework.Version
 import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
-import org.osgi.resource.Wire
 import spray.osgi.BundleResourcesRouteService
-import spray.osgi.RouteService
+import spray.osgi.RouteManager
 import spray.routing.Route
-import spray.routing.Directives.complete
-import spray.routing.Directives.path
-import spray.routing.Directives.reject
-import spray.routing.PathMatcher._
-import spray.httpx.marshalling.BasicMarshallers._
+import org.osgi.framework.Bundle
 
-@Component
-class WebjarsComponent extends RouteService {
+@Component(configurationPid = "io.spray.webjars")
+class WebjarsComponent {
 
   @(Reference @setter)
   var routeService: BundleResourcesRouteService = _
 
-  var requireJs: Option[(Bundle, String)] = None
+  @(Reference @setter)
+  var routeManager: RouteManager = _
+
+  var tracker: WebjarBundleTracker = _
+
+  var ranking: Int = _
 
   @Activate
-  def activate(ctx: BundleContext): Unit = {
-    val ourWiring = ctx.getBundle.adapt(classOf[BundleWiring])
-    val webjarWires: Seq[BundleWire] = ourWiring.getRequiredWires("org.webjars")
-    val requireJsBundle = webjarWires match {
-      case Seq(requireJsWire) => Some(requireJsWire.getProvider.getBundle)
-      case _ => None
-    }
-    requireJs = for {
-      bundle <- requireJsBundle
-      val urls = bundle.findEntries("/META-INF/resources", "require.min.js", true)
-      url <- if (urls == null || !urls.hasMoreElements()) None else Some(urls.nextElement())
-    } yield ((bundle, url.getPath))
-  }
-
-  def apply(): Route = {
-    requireJs.map { case ((bundle, res)) =>
-      path("webjars" / "require.js") {
-        routeService.getBundleResource(bundle, res)
-      }
-    }.getOrElse {
-      reject
-    }
+  def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
+    ranking = getRanking(properties)
+    tracker = new WebjarBundleTracker(ctx, this)
+    tracker.open()
   }
 
   @Deactivate
   def deactivate: Unit = {
-
+    tracker.close()
   }
+
+  private def getRanking(properties: java.util.Map[String, _]): Int =
+    properties.get("spray.webjars.ranking") match {
+      case s: String =>
+        Integer.parseInt(s)
+      case _ =>
+        0
+    }
+
+  val basePath = "META-INF/resources"
+
+  val webjarPath = basePath + "/webjars"
+
+  def loadWebjar(bundle: Bundle): Option[Webjar] = {
+    Option(bundle.getEntry(webjarPath)) match {
+      case Some(b) =>
+        bundle.findEntries(b.getPath, "*", false).toSeq match {
+          case Seq(u) =>
+            bundle.findEntries(u.getPath, "*", false).toSeq match {
+              case Seq(v) =>
+                val p = v.getPath.split("/").toSeq.reverse
+                Some(Webjar(p(1), new Version(p(0).replace('-', '.')), route(bundle)))
+              case _ => None
+            }
+          case _ => None
+        }
+      case _ => None
+    }
+  }
+
+  private def route(bundle: Bundle): Route = {
+    val baseURI = bundle.getEntry(basePath).toURI
+    val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
+    val paths = URIs.map(baseURI.relativize(_).toString)
+    routeService.getBundleResources(bundle, paths, basePath)
+  }
+
+  def register(webjar: Webjar): Unit =
+    routeManager ! RouteManager.RouteAdded(webjar.resourcesRoute, ranking)
+
+  def unregister(webjar: Webjar): Unit =
+    routeManager ! RouteManager.RouteRemoved(webjar.resourcesRoute)
 
 }
