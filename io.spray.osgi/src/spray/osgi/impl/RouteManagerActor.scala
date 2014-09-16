@@ -3,11 +3,12 @@ package spray.osgi.impl
 import akka.actor.Actor
 import akka.actor.ActorRef
 import akka.actor.Props
+import spray.osgi.RouteManager
 import spray.routing.Route
 import spray.routing.HttpServiceActor
 import spray.routing.RouteConcatenation._
 
-class RouteManager extends HttpServiceActor {
+class RouteManagerActor extends HttpServiceActor {
   import RouteManager._
 
   case class RouteWithRanking(route: Route, ranking: Int)
@@ -35,10 +36,4 @@ class RouteManager extends HttpServiceActor {
     })
 
   def receive = watchRoutes(Seq())
-}
-
-object RouteManager {
-  case class RouteAdded(route: Route, ranking: Int)
-  case class RouteModified(route: Route, ranking: Int)
-  case class RouteRemoved(route: Route)
 }

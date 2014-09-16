@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicReference
 class StaticResourcesTracker(ctx: BundleContext, routeManager: ActorRef)(implicit val actorSystem: ActorSystem)
   extends BundleTracker[AtomicReference[Option[Route]]](ctx, Bundle.RESOLVED | Bundle.STARTING | Bundle.ACTIVE, null) {
 
-  import RouteManager._
+  import spray.osgi.RouteManager._
   import StaticResourcesDirective._
 
   val basePath = "/META-INF/resources"

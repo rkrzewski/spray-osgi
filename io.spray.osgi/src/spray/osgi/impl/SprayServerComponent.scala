@@ -24,6 +24,8 @@ import akka.pattern.AskTimeoutException
 import scala.util.Failure
 import akka.actor.PoisonPill
 import akka.osgi.BundleDelegatingClassLoader
+import spray.osgi.RouteManager
+import org.osgi.framework.ServiceRegistration
 
 @Component(
   configurationPid = "io.spray.can",
@@ -35,16 +37,20 @@ class SprayServerComponent {
 
   var sprayServer: SprayServer = _
   
+  var routeManagerReg: ServiceRegistration[RouteManager] = _
+  
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val classloader = BundleDelegatingClassLoader(ctx)
     val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
     sprayServer = new SprayServer(config, actorSystem, ctx)
+    routeManagerReg = ctx.registerService(classOf[RouteManager], sprayServer, null)
   }
 
   @Deactivate
   def deactivate: Unit = {
     sprayServer.shutdown()
+    routeManagerReg.unregister()
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =

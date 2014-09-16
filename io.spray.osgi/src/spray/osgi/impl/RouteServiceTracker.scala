@@ -18,7 +18,7 @@ import spray.osgi.RouteService
 
 class RouteServiceTracker(ctx: BundleContext, routeManager: ActorRef)
   extends ServiceTracker[RouteService, Route](ctx, classOf[RouteService], null) {
-  import RouteManager._
+  import spray.osgi.RouteManager._
 
   override def addingService(ref: ServiceReference[RouteService]): Route = {
     val route = ctx.getService(ref)()
