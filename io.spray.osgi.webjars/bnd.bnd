@@ -1,6 +1,6 @@
 Bundle-Version: 0.0.0.${tstamp}
 
-Require-Capability: org.webjars; filter:="(&(module=requirejs))"
+Require-Capability: org.webjars; filter:="(&(module=requirejs))"; resolution:=optional
 
 -buildpath:  \
 	io.spray.osgi;version=latest,\

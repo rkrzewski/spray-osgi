@@ -10,7 +10,8 @@
 	osgi.identity;filter:='(osgi.identity=org.webjars.bootstrap)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.angularjs)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.config.osgi)',\
-	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)'
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
+	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
 -runee: JavaSE-1.8
 -runsystempackages: \
