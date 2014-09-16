@@ -7,3 +7,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Private-Package:  \
 	com.typesafe.config.osgi
 Bundle-Activator: com.typesafe.config.osgi.Activator
+javac.source=1.7
+javac.target=1.7
