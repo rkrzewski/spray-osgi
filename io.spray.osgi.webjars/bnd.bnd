@@ -15,5 +15,7 @@ Require-Capability: org.webjars; filter:="(&(module=requirejs))"
 	org.scala-lang.modules.scala-xml
 -dsannotations:  \
 	*
+-includeresource: \
+	resources	
 Private-Package:  \
 	io.spray.osgi.webjars
