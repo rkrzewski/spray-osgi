@@ -12,7 +12,9 @@ Require-Capability: org.webjars; filter:="(&(module=requirejs))"; resolution:=op
 	com.chuusai.shapeless.core,\
 	io.spray.httpx,\
 	io.spray.util,\
-	org.scala-lang.modules.scala-xml
+	org.scala-lang.modules.scala-xml,\
+	com.fasterxml.jackson.core.jackson-core,\
+	com.fasterxml.jackson.core.jackson-databind
 -dsannotations:  \
 	*
 -includeresource: \

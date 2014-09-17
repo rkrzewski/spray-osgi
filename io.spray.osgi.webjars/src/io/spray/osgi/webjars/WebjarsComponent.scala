@@ -50,23 +50,6 @@ class WebjarsComponent {
 
   val webjarPath = basePath + "/webjars"
 
-  def loadWebjar(bundle: Bundle): Option[Webjar] = {
-    Option(bundle.getEntry(webjarPath)) match {
-      case Some(b) =>
-        bundle.findEntries(b.getPath, "*", false).toSeq match {
-          case Seq(u) =>
-            bundle.findEntries(u.getPath, "*", false).toSeq match {
-              case Seq(v) =>
-                val p = v.getPath.split("/").toSeq.reverse
-                Some(Webjar(p(1), new Version(p(0).replace('-', '.')), route(bundle)))
-              case _ => None
-            }
-          case _ => None
-        }
-      case _ => None
-    }
-  }
-
   private def route(bundle: Bundle): Route = {
     val baseURI = bundle.getEntry(basePath).toURI
     val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
@@ -74,10 +57,12 @@ class WebjarsComponent {
     routeService.getBundleResources(bundle, paths, basePath)
   }
 
-  def register(webjar: Webjar): Unit =
-    routeManager ! RouteManager.RouteAdded(webjar.resourcesRoute, ranking)
+  def register(webjar: Webjar): Unit = {
+    routeManager ! RouteManager.RouteAdded(route(webjar.bundle), ranking)
+  }
 
-  def unregister(webjar: Webjar): Unit =
-    routeManager ! RouteManager.RouteRemoved(webjar.resourcesRoute)
+  def unregister(webjar: Webjar): Unit = {
+    routeManager ! RouteManager.RouteRemoved(route(webjar.bundle))
+  }
 
 }

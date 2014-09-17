@@ -15,7 +15,7 @@ class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
   extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.RESOLVED | Bundle.STARTING | Bundle.ACTIVE, null) {
 
   override def addingBundle(bundle: Bundle, event: BundleEvent): AtomicReference[Option[Webjar]] = {
-    new AtomicReference(manager.loadWebjar(bundle).map { w =>
+    new AtomicReference(Webjar.load(bundle).map { w =>
       manager.register(w)
       w
     })
@@ -26,7 +26,7 @@ class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
   }
 
   override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjar: AtomicReference[Option[Webjar]]): Unit = {
-    manager.loadWebjar(bundle).flatMap { w =>
+    Webjar.load(bundle).flatMap { w =>
       manager.register(w)
       webjar.getAndSet(Some(w))
     }.orElse {
