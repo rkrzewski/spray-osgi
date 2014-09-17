@@ -1,6 +1,5 @@
 package com.typesafe.config.osgi;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.StandardWatchEventKinds;
