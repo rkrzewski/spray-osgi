@@ -1,6 +1,8 @@
 package com.typesafe.config.osgi;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -10,21 +12,26 @@ import org.osgi.util.tracker.ServiceTracker;
 
 public class Activator implements BundleActivator {
 
-	ServiceTracker<ConfigurationAdmin, ConfigurationWatcher> configAdminTracker;
+	private static final String BASE_PATH = "conf";
+
+	private ServiceTracker<ConfigurationAdmin, ConfigurationWatcher> configAdminTracker;
 
 	@Override
 	public void start(BundleContext context) throws Exception {
+
+		final Path basePath = Paths.get(BASE_PATH);
+
 		configAdminTracker = new ServiceTracker<ConfigurationAdmin, ConfigurationWatcher>(
 				context, ConfigurationAdmin.class, null) {
-			
+
 			@Override
 			public ConfigurationWatcher addingService(
 					ServiceReference<ConfigurationAdmin> reference) {
 				ConfigurationAdmin configAdmin = context.getService(reference);
 				ConfigurationHandler handler = new ConfigurationHandler(
-						configAdmin);
+						basePath, configAdmin);
 				try {
-					return new ConfigurationWatcher("conf", handler);
+					return new ConfigurationWatcher(basePath, handler);
 				} catch (IOException e) {
 					e.printStackTrace();
 					return null;

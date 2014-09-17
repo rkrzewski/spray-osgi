@@ -19,17 +19,19 @@ public class ConfigurationWatcher {
 
 	private ConfigurationHandler handler;
 
-	public ConfigurationWatcher(String path, ConfigurationHandler handler)
+	private Path basePath;
+
+	public ConfigurationWatcher(Path basePath, ConfigurationHandler handler)
 			throws IOException {
+		this.basePath = basePath;
 		this.handler = handler;
 		FileSystem fileSystem = FileSystems.getDefault();
 		watchService = fileSystem.newWatchService();
-		Path directory = fileSystem.getPath(path);
-		WatchKey key = directory.register(watchService,
+		WatchKey key = basePath.register(watchService,
 				StandardWatchEventKinds.ENTRY_CREATE,
 				StandardWatchEventKinds.ENTRY_DELETE,
 				StandardWatchEventKinds.ENTRY_MODIFY);
-		worker = new Worker(Files.newDirectoryStream(directory, "*.conf"), key);
+		worker = new Worker(Files.newDirectoryStream(basePath, "*.conf"), key);
 		worker.start();
 	}
 
@@ -51,7 +53,7 @@ public class ConfigurationWatcher {
 		@Override
 		public void run() {
 			for (Path path : initialFiles) {
-				handler.handleEvent(mockEvent(path));
+				handler.handleEvent(mockEvent(basePath.relativize(path)));
 			}
 			try {
 				WatchKey key = initialKey;

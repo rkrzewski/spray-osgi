@@ -1,5 +1,6 @@
 package com.typesafe.config.osgi;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.StandardWatchEventKinds;
@@ -28,9 +29,13 @@ import com.typesafe.config.ConfigValueType;
 public class ConfigurationHandler {
 
 	private static final String CONFIG_KEY = "com.typesafe.config.source";
+
+	private Path basePath;
+
 	private ConfigurationAdmin configAdmin;
 
-	public ConfigurationHandler(ConfigurationAdmin configAdmin) {
+	public ConfigurationHandler(Path basePath, ConfigurationAdmin configAdmin) {
+		this.basePath = basePath;
 		this.configAdmin = configAdmin;
 	}
 
@@ -142,8 +147,8 @@ public class ConfigurationHandler {
 	}
 
 	private Dictionary<String, Object> loadConfig(Path path) {
-		Config config = ConfigFactory.load(ConfigFactory.parseFile(path
-				.toFile()));
+		Config config = ConfigFactory.load(ConfigFactory.parseFile(basePath
+				.resolve(path).toFile()));
 		Dictionary<String, Object> dict = new Hashtable<>();
 		for (java.util.Map.Entry<java.lang.String, ConfigValue> entry : config
 				.entrySet()) {
