@@ -1,11 +1,5 @@
+-include: ${build}/webjar.bnd
 module: bootstrap
 version: 3.2.0
 release:
 Require-Capability: org.webjars; filter:="(&(module=jquery)(version=1.11.1))"; resolution:=optional
-
-depVersion: ${if;${isempty;${release}};${version};${version}-${release}}
-Bundle-Version: ${depVersion}
--buildpath: lib/${module}-${depVersion}.jar;version=file
--includeresource: @${module}-${depVersion}.jar!/META-INF/resources/**,\
-	@${module}-${depVersion}.jar!/META-INF/maven/**
-Provide-Capability: org.webjars; module=${module}; version:Version="${version}"
