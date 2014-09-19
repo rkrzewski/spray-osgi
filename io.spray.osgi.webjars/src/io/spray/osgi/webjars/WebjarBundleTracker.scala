@@ -12,7 +12,7 @@ import spray.routing.Route
 
 
 class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
-  extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.RESOLVED | Bundle.STARTING | Bundle.ACTIVE, null) {
+  extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.ACTIVE, null) {
 
   override def addingBundle(bundle: Bundle, event: BundleEvent): AtomicReference[Option[Webjar]] = {
     new AtomicReference(Webjar.load(bundle).map { w =>
