@@ -21,6 +21,9 @@ class WebjarsComponent extends BaseComponent {
 
   @(Reference @setter)
   var routeManager: RouteManager = _
+  
+  @(Reference @setter)
+  var requireJs : RequireJs = _
 
   var tracker: WebjarBundleTracker = _
 
@@ -51,10 +54,12 @@ class WebjarsComponent extends BaseComponent {
 
   def register(webjar: Webjar): Unit = {
     routeManager ! RouteManager.RouteAdded(route(webjar.bundle), config.ranking)
+    requireJs.ref ! RequireJs.Added(webjar)
   }
 
   def unregister(webjar: Webjar): Unit = {
     routeManager ! RouteManager.RouteRemoved(route(webjar.bundle))
+    requireJs.ref ! RequireJs.Removed(webjar)
   }
 
 }
