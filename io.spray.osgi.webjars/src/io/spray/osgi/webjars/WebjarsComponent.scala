@@ -14,7 +14,7 @@ import spray.routing.Route
 import org.osgi.framework.Bundle
 
 @Component(configurationPid = "io.spray.webjars")
-class WebjarsComponent {
+class WebjarsComponent extends BaseComponent {
 
   @(Reference @setter)
   var routeService: BundleResourcesRouteService = _
@@ -24,11 +24,11 @@ class WebjarsComponent {
 
   var tracker: WebjarBundleTracker = _
 
-  var ranking: Int = _
+  var config: Config = _
 
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    ranking = getRanking(properties)
+    config = Config(properties)
     tracker = new WebjarBundleTracker(ctx, this)
     tracker.open()
   }
@@ -37,14 +37,6 @@ class WebjarsComponent {
   def deactivate: Unit = {
     tracker.close()
   }
-
-  private def getRanking(properties: java.util.Map[String, _]): Int =
-    properties.get("spray.webjars.ranking") match {
-      case s: String =>
-        Integer.parseInt(s)
-      case _ =>
-        0
-    }
 
   val basePath = "META-INF/resources"
 
@@ -58,7 +50,7 @@ class WebjarsComponent {
   }
 
   def register(webjar: Webjar): Unit = {
-    routeManager ! RouteManager.RouteAdded(route(webjar.bundle), ranking)
+    routeManager ! RouteManager.RouteAdded(route(webjar.bundle), config.ranking)
   }
 
   def unregister(webjar: Webjar): Unit = {
