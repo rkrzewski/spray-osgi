@@ -39,18 +39,23 @@ class SprayServerComponent {
   
   var routeManagerReg: ServiceRegistration[RouteManager] = _
   
+  var resourcesTracker: BundleResourcesTracker = _
+  
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val classloader = BundleDelegatingClassLoader(ctx)
     val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
     sprayServer = new SprayServer(config, actorSystem, ctx)
     routeManagerReg = ctx.registerService(classOf[RouteManager], sprayServer, null)
+    resourcesTracker = new BundleResourcesTracker(ctx, sprayServer)
+    resourcesTracker.open()
   }
 
   @Deactivate
   def deactivate: Unit = {
     sprayServer.shutdown()
     routeManagerReg.unregister()
+    resourcesTracker.close()
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =
