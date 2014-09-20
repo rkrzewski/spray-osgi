@@ -53,12 +53,12 @@ class WebjarsComponent extends BaseComponent {
   }
 
   def register(webjar: Webjar): Unit = {
-    routeManager ! RouteManager.RouteAdded(route(webjar.bundle), config.ranking)
+    routeManager.ref ! RouteManager.RouteAdded(route(webjar.bundle), config.ranking)
     requireJs.ref ! RequireJs.Added(webjar)
   }
 
   def unregister(webjar: Webjar): Unit = {
-    routeManager ! RouteManager.RouteRemoved(route(webjar.bundle))
+    routeManager.ref ! RouteManager.RouteRemoved(route(webjar.bundle))
     requireJs.ref ! RequireJs.Removed(webjar)
   }
 

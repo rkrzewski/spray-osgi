@@ -51,7 +51,7 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
       log.error("server start failure", e)
   }(actorSystem.dispatcher)
   
-  def apply(): ActorRef = 
+  def ref: ActorRef = 
     serviceActor
 
   def shutdown(): Unit = {

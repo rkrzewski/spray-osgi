@@ -51,7 +51,7 @@ class RequireJsComponent extends BaseComponent with RequireJs {
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     config = Config(properties)
-    requireJsActor = actorSystem.actorOf(Props(classOf[RequireJsActor], routeManager(), routeService, config))
+    requireJsActor = actorSystem.actorOf(Props(classOf[RequireJsActor], routeManager.ref, routeService, config))
   }
 
   @Deactivate

@@ -1,9 +1,0 @@
-Bundle-Version: 0.0.0.${tstamp}
--buildpath:  \
-	test.osgi.actor.provider;version=latest,\
-	osgi.enterprise;version=5.0,\
-	com.typesafe.akka.actor
-Private-Package:  \
-	test.osgi.actor.consumer
--dsannotations:  \
-	*
