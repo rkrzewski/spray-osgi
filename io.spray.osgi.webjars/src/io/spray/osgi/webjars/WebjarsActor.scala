@@ -76,8 +76,6 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
 
   def makeResourcesRoute(bundle: Bundle): Route = {
     val basePath = "META-INF/resources"
-    val webjarPath = basePath + "/webjars"
-
     val baseURI = bundle.getEntry(basePath).toURI
     val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
     val paths = URIs.map(baseURI.relativize(_).toString)
