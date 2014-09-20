@@ -8,8 +8,11 @@ Bundle-Version: 0.0.0.${tstamp}
 	com.typesafe.akka.actor,\
 	org.scala-lang.modules.scala-xml,\
 	io.spray.util,\
-	osgi.enterprise;version=5.0
+	osgi.enterprise;version=5.0,\
+	osgi.core;version=5.0
 Private-Package:  \
 	test.spray.hello
 -dsannotations:  \
 	*
+-includeresource: static=static
+X-Spray-Resources: static
