@@ -1,17 +1,17 @@
 -runrequires:  \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.scr)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
-	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.akka.osgi.ds)',\
 	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
-	osgi.identity;filter:='(osgi.identity=test)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.bootstrap)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.angularjs)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.config.osgi)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)'
+	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)',\
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
 -runee: JavaSE-1.8
 -runsystempackages: \
@@ -37,6 +37,7 @@
 	io.spray.httpx;version=latest,\
 	io.spray.io;version='[1.3.1,1.3.2)',\
 	io.spray.osgi;version=latest,\
+	io.spray.osgi.test;version=latest,\
 	io.spray.osgi.webjars;version=latest,\
 	io.spray.routing.shapeless2;version='[1.3.1,1.3.2)',\
 	io.spray.util;version='[1.3.1,1.3.2)',\
@@ -54,5 +55,4 @@
 	org.webjars.angularjs;version=latest,\
 	org.webjars.bootstrap;version=latest,\
 	org.webjars.requirejs;version=latest,\
-	osgi.residential;version='[4.3.0,4.3.1)',\
-	test;version=latest
+	osgi.residential;version='[4.3.0,4.3.1)'
