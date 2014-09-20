@@ -82,8 +82,6 @@ object Webjar {
       sw.toString
     }
 
-    readConfig.map(adjustPaths(_)).filterNot { c =>
-      c == "{}"
-    }
+    readConfig.map(adjustPaths(_)).filterNot(_ == "{}")
   }
 }
