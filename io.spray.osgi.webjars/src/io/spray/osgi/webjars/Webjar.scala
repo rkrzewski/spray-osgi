@@ -72,7 +72,7 @@ object Webjar {
     def adjustPaths(rawConfig: String): String = {
       val tree = mapper.reader().readTree(rawConfig)
       val pathsNode = tree.findPath("paths")
-      val basePath = s"webjars/$artifact/$version/"
+      val basePath = s"/webjars/$artifact/$version/"
       if (pathsNode.getNodeType == JsonNodeType.OBJECT) {
         val paths = pathsNode.asInstanceOf[ObjectNode]
         paths.fieldNames.foreach { field => paths.put(field, basePath + paths.get(field).asText()) }
