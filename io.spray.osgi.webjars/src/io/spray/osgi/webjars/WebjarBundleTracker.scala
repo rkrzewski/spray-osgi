@@ -1,6 +1,5 @@
 package io.spray.osgi.webjars
 
-import java.nio.file.Paths
 import java.util.concurrent.atomic.AtomicReference
 
 import org.osgi.framework.BundleContext
@@ -9,7 +8,6 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleEvent
 import spray.osgi.RouteManager
 import spray.routing.Route
-
 
 class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
   extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.ACTIVE, null) {
@@ -21,18 +19,13 @@ class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
     })
   }
 
-  override def removedBundle(bundle: Bundle, event: BundleEvent, webjar: AtomicReference[Option[Webjar]]): Unit = {
-    webjar.get.foreach(w => manager.unregister(w))
+  override def removedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
+    webjarRef.get.foreach(w => manager.unregister(w))
   }
 
-  override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjar: AtomicReference[Option[Webjar]]): Unit = {
-    Webjar.load(bundle).flatMap { w =>
-      manager.register(w)
-      webjar.getAndSet(Some(w))
-    }.orElse {
-      webjar.getAndSet(None)
-    }.foreach { w =>
-      manager.unregister(w)
-    }
+  override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
+    val newWebjar = Webjar.load(bundle)
+    newWebjar.foreach(manager.register(_))
+    webjarRef.getAndSet(newWebjar).foreach(manager.unregister(_))
   }
 }
