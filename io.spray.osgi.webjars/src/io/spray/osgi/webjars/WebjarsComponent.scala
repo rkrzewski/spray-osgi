@@ -37,24 +37,11 @@ class WebjarsComponent extends BaseComponent {
     tracker.close()
   }
 
-  val basePath = "META-INF/resources"
-
-  val webjarPath = basePath + "/webjars"
-
-  private def route(bundle: Bundle): Route = {
-    val baseURI = bundle.getEntry(basePath).toURI
-    val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
-    val paths = URIs.map(baseURI.relativize(_).toString)
-    routeManager.getBundleResources(bundle, paths, basePath)
-  }
-
   def register(webjar: Webjar): Unit = {
-    routeManager.ref ! RouteManager.RouteAdded(route(webjar.bundle), config.ranking)
     requireJs.ref ! RequireJs.Added(webjar)
   }
 
   def unregister(webjar: Webjar): Unit = {
-    routeManager.ref ! RouteManager.RouteRemoved(route(webjar.bundle))
     requireJs.ref ! RequireJs.Removed(webjar)
   }
 

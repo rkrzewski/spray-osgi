@@ -63,6 +63,8 @@ class RequireJsComponent extends BaseComponent with RequireJs {
 class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
 
   var rjsWebjars: Set[Webjar] = Set()
+  
+  var resourceRoutes: Map[Bundle, Route] = Map()
 
   val configRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
 
@@ -70,6 +72,10 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
 
   def receive = {
     case Added(w) =>
+      val r = makeResourcesRoute(w.bundle)
+      resourceRoutes += w.bundle -> r
+      routeManager.ref ! RouteAdded(r, config.ranking)
+      
       w match {
         case Webjar("requirejs", _, _, bundle) =>
           updateRoute(Some(makeShorthandRoute(bundle)), shorthandRoute)
@@ -77,7 +83,11 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
           rjsWebjars += w
           updateRoute(makeConfigRoute(rjsWebjars), configRoute)
       }
+      
     case Removed(w) =>
+      resourceRoutes.get(w.bundle).foreach(r => routeManager.ref ! RouteRemoved(r))
+      resourceRoutes -= w.bundle
+      
       w match {
         case Webjar("requirejs", _, _, _) =>
           updateRoute(None, shorthandRoute)
@@ -85,6 +95,16 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
           rjsWebjars -= w
           updateRoute(makeConfigRoute(rjsWebjars), configRoute)
       }
+  }
+
+  def makeResourcesRoute(bundle: Bundle): Route = {
+    val basePath = "META-INF/resources"
+    val webjarPath = basePath + "/webjars"
+
+    val baseURI = bundle.getEntry(basePath).toURI
+    val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
+    val paths = URIs.map(baseURI.relativize(_).toString)
+    routeManager.getBundleResources(bundle, paths, basePath)
   }
 
   def makeShorthandRoute(bundle: Bundle): Route = {
@@ -119,7 +139,7 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
   }
 
   def updateRoute(newRoute: Option[Route], routeRef: AtomicReference[Option[Route]]) = {
-	  routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
+    routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
     newRoute.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
   }
 }
