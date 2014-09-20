@@ -9,9 +9,9 @@ import spray.routing.Route
  * configuration appropriately. {@link org.osgi.framework.Constants.SERVICE_RANKING} service property
  * values will be used for order of precedence of available routes.</p>
  */
-trait RouteService {
+trait RouteProvider {
 
   /** Returns a route definition */
-  def apply(): Route
+  def route: Route
 
 }

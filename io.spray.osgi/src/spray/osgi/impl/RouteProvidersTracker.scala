@@ -14,23 +14,23 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer
 import akka.actor.ActorSystem
 import akka.actor.ActorRef
 import spray.routing.Route
-import spray.osgi.RouteService
+import spray.osgi.RouteProvider
 
-class RouteServiceTracker(ctx: BundleContext, routeManager: ActorRef)
-  extends ServiceTracker[RouteService, Route](ctx, classOf[RouteService], null) {
+class RouteProvidersTracker(ctx: BundleContext, routeManager: ActorRef)
+  extends ServiceTracker[RouteProvider, Route](ctx, classOf[RouteProvider], null) {
   import spray.osgi.RouteManager._
 
-  override def addingService(ref: ServiceReference[RouteService]): Route = {
-    val route = ctx.getService(ref)()
+  override def addingService(ref: ServiceReference[RouteProvider]): Route = {
+    val route = ctx.getService(ref).route
     routeManager ! RouteAdded(route, ranking(ref))
     route
   }
 
-  override def modifiedService(ref: ServiceReference[RouteService], route: Route): Unit = {
+  override def modifiedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {
     routeManager ! RouteModified(route, ranking(ref))
   }
 
-  override def removedService(ref: ServiceReference[RouteService], route: Route): Unit = {
+  override def removedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {
     ctx.ungetService(ref)
     routeManager ! RouteRemoved(route)
   }

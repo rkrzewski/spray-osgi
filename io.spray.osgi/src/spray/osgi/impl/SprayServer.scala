@@ -26,7 +26,7 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
 
   val http = IO(Http)(actorSystem)
   val serviceActor = actorSystem.actorOf(Props(classOf[RouteManagerActor]))
-  val routeServiceTracker = new RouteServiceTracker(ctx, serviceActor)
+  val routeServiceTracker = new RouteProvidersTracker(ctx, serviceActor)
   routeServiceTracker.open()
 
   val log: LoggingAdapter = new BusLogging(actorSystem.eventStream, "Spray server", this.getClass)
