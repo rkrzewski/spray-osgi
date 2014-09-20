@@ -36,7 +36,7 @@ object WebjarsActor {
   case class WebjarRemoved(webjar: Webjar)
 }
 
-class WebjarsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
+class WebjarsActor(routeManager: RouteManager) extends Actor {
   import WebjarsActor._
 
   var rjsWebjars: Set[Webjar] = Set()
@@ -51,7 +51,7 @@ class WebjarsActor(routeManager: RouteManager, config: BaseComponent#Config) ext
     case WebjarAdded(w) =>
       val r = makeResourcesRoute(w.bundle)
       resourceRoutes += w.bundle -> r
-      routeManager.ref ! RouteAdded(r, config.ranking)
+      routeManager.ref ! RouteAdded(r, 0)
       
       w match {
         case Webjar("requirejs", _, _, bundle) =>
@@ -117,6 +117,6 @@ class WebjarsActor(routeManager: RouteManager, config: BaseComponent#Config) ext
 
   def updateRoute(newRoute: Option[Route], routeRef: AtomicReference[Option[Route]]) = {
     routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
-    newRoute.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
+    newRoute.foreach(routeManager.ref ! RouteAdded(_, 0))
   }
 }

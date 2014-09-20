@@ -22,25 +22,22 @@ import akka.actor.PoisonPill
 import spray.osgi.RouteManager
 import spray.routing.Route
 
-@Component(configurationPid = "io.spray.webjars")
-class WebjarsComponent extends BaseComponent {
+@Component
+class WebjarsComponent {
 
   @(Reference @setter)
   private var actorSystem: ActorSystem = _
 
   @(Reference @setter)
   var routeManager: RouteManager = _
+  
+  var webjarsActor: ActorRef = _
 
   var tracker: WebjarBundleTracker = _
 
-  var config: Config = _
-
-  var webjarsActor: ActorRef = _
-
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    config = Config(properties)
-    webjarsActor = actorSystem.actorOf(Props(classOf[WebjarsActor], routeManager, config))
+    webjarsActor = actorSystem.actorOf(Props(classOf[WebjarsActor], routeManager))
     tracker = new WebjarBundleTracker(ctx)
     tracker.open()
   }

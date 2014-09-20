@@ -17,7 +17,5 @@ Require-Capability: org.webjars; filter:="(&(module=requirejs))"; resolution:=op
 	com.fasterxml.jackson.core.jackson-databind
 -dsannotations:  \
 	*
--includeresource: \
-	resources	
 Private-Package:  \
 	io.spray.osgi.webjars
