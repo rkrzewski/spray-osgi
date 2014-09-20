@@ -119,7 +119,7 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
   }
 
   def updateRoute(newRoute: Option[Route], routeRef: AtomicReference[Option[Route]]) = {
+	  routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
     newRoute.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
-    routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
   }
 }

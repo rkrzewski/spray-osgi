@@ -25,7 +25,7 @@ class WebjarBundleTracker(ctx: BundleContext, manager: WebjarsComponent)
 
   override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
     val newWebjar = Webjar.load(bundle)
-    newWebjar.foreach(manager.register(_))
     webjarRef.getAndSet(newWebjar).foreach(manager.unregister(_))
+    newWebjar.foreach(manager.register(_))
   }
 }
