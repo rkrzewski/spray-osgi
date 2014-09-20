@@ -22,22 +22,15 @@ class RouteProvidersTracker(ctx: BundleContext, routeManager: ActorRef)
 
   override def addingService(ref: ServiceReference[RouteProvider]): Route = {
     val route = ctx.getService(ref).route
-    routeManager ! RouteAdded(route, ranking(ref))
+    routeManager ! RouteAdded(route)
     route
   }
 
-  override def modifiedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {
-    routeManager ! RouteModified(route, ranking(ref))
+  override def modifiedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {    
   }
 
   override def removedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {
     ctx.ungetService(ref)
     routeManager ! RouteRemoved(route)
   }
-
-  private def ranking(s: ServiceReference[_]): Int =
-    s.getProperty(Constants.SERVICE_RANKING) match {
-      case r: Integer => r
-      case _ => 0
-    }
 }

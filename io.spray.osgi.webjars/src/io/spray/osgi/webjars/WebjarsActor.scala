@@ -51,7 +51,7 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
     case WebjarAdded(w) =>
       val r = makeResourcesRoute(w.bundle)
       resourceRoutes += w.bundle -> r
-      routeManager.ref ! RouteAdded(r, 0)
+      routeManager.ref ! RouteAdded(r)
       
       w match {
         case Webjar("requirejs", _, _, bundle) =>
@@ -117,6 +117,6 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
 
   def updateRoute(newRoute: Option[Route], routeRef: AtomicReference[Option[Route]]) = {
     routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
-    newRoute.foreach(routeManager.ref ! RouteAdded(_, 0))
+    newRoute.foreach(routeManager.ref ! RouteAdded(_))
   }
 }
