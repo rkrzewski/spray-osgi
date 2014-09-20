@@ -8,16 +8,12 @@ import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
-import spray.osgi.BundleResourcesRouteService
 import spray.osgi.RouteManager
 import spray.routing.Route
 import org.osgi.framework.Bundle
 
 @Component(configurationPid = "io.spray.webjars")
 class WebjarsComponent extends BaseComponent {
-
-  @(Reference @setter)
-  var routeService: BundleResourcesRouteService = _
 
   @(Reference @setter)
   var routeManager: RouteManager = _
@@ -49,7 +45,7 @@ class WebjarsComponent extends BaseComponent {
     val baseURI = bundle.getEntry(basePath).toURI
     val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
     val paths = URIs.map(baseURI.relativize(_).toString)
-    routeService.getBundleResources(bundle, paths, basePath)
+    routeManager.getBundleResources(bundle, paths, basePath)
   }
 
   def register(webjar: Webjar): Unit = {

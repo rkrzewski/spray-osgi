@@ -18,8 +18,10 @@ import akka.event.BusLogging
 import akka.event.LoggingAdapter
 import spray.osgi.RouteManager
 import akka.actor.ActorRef
+import spray.routing.Route
+import org.osgi.framework.Bundle
 
-class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) extends RouteManager {
+class SprayServer(config: Config, implicit val actorSystem: ActorSystem, ctx: BundleContext) extends RouteManager {
 
   val serverSettings = ServerSettings.fromSubConfig(config.getConfig("spray.can.server"))
   val listenerSettings = ListenerSettings.fromSubConfig(config.getConfig("spray.can.server.listener"))
@@ -67,5 +69,13 @@ class SprayServer(config: Config, actorSystem: ActorSystem, ctx: BundleContext) 
       case Failure(e) =>
         log.error("server stop failure", e)
     }(actorSystem.dispatcher)
+  }
+  
+  def getBundleResource(bundle: Bundle, path: String): Route = {
+    StaticResourcesDirective.getBundleResource(bundle, path)
+  }
+
+  def getBundleResources(bundle: Bundle, paths: Seq[String], resBasePath: String): Route = {
+    StaticResourcesDirective.getBundleResources(bundle, paths, resBasePath)
   }
 }

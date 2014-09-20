@@ -20,7 +20,6 @@ import akka.actor.Props
 import akka.actor.actorRef2Scala
 import spray.http.MediaTypes._
 import spray.httpx.marshalling.ToResponseMarshallable.isMarshallable
-import spray.osgi.BundleResourcesRouteService
 import spray.osgi.RouteManager
 import spray.osgi.RouteManager.RouteAdded
 import spray.osgi.RouteManager.RouteRemoved
@@ -41,9 +40,6 @@ class RequireJsComponent extends BaseComponent with RequireJs {
   @(Reference @setter)
   private var routeManager: RouteManager = _
 
-  @(Reference @setter)
-  private var routeService: BundleResourcesRouteService = _
-
   private var requireJsActor: ActorRef = _
 
   private var config: Config = _
@@ -51,7 +47,7 @@ class RequireJsComponent extends BaseComponent with RequireJs {
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     config = Config(properties)
-    requireJsActor = actorSystem.actorOf(Props(classOf[RequireJsActor], routeManager.ref, routeService, config))
+    requireJsActor = actorSystem.actorOf(Props(classOf[RequireJsActor], routeManager, config))
   }
 
   @Deactivate
@@ -62,9 +58,9 @@ class RequireJsComponent extends BaseComponent with RequireJs {
   def ref = requireJsActor
 }
 
-class RequireJsActor(routeManager: ActorRef, routeService: BundleResourcesRouteService, config: BaseComponent#Config) extends Actor {
+class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
   val configActor = context.actorOf(Props(classOf[RequireJsConfigActor], routeManager, config))
-  val shorthandActor = context.actorOf(Props(classOf[RequireJsShorthandActor], routeManager, routeService, config))
+  val shorthandActor = context.actorOf(Props(classOf[RequireJsShorthandActor], routeManager, config))
   def receive = {
     case msg =>
       configActor ! msg
@@ -72,7 +68,7 @@ class RequireJsActor(routeManager: ActorRef, routeService: BundleResourcesRouteS
   }
 }
 
-class RequireJsShorthandActor(routeManager: ActorRef, routeService: BundleResourcesRouteService, config: BaseComponent#Config) extends Actor {
+class RequireJsShorthandActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
   import RequireJs._
   import RouteManager._
 
@@ -81,9 +77,9 @@ class RequireJsShorthandActor(routeManager: ActorRef, routeService: BundleResour
   def receive = {
     case Added(Webjar("requirejs", _, _, bundle)) =>
       route = makeRoute(bundle)
-      routeManager ! RouteAdded(route, config.ranking)
+      routeManager.ref ! RouteAdded(route, config.ranking)
     case Removed(Webjar("requirejs", _, _, _)) =>
-      routeManager ! RouteRemoved(route)
+      routeManager.ref ! RouteRemoved(route)
   }
 
   def makeRoute(bundle: Bundle): Route = {
@@ -91,13 +87,13 @@ class RequireJsShorthandActor(routeManager: ActorRef, routeService: BundleResour
     urls.map { url =>
       val file = url.getPath.split("/").toSeq.reverse.head
       path("webjars" / file) {
-        routeService.getBundleResource(bundle, url.getPath)
+        routeManager.getBundleResource(bundle, url.getPath)
       }
     }.reduceRight(_ ~ _)
   }
 }
 
-class RequireJsConfigActor(routeManager: ActorRef, config: BaseComponent#Config) extends Actor {
+class RequireJsConfigActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
 
   import RequireJs._
   import RouteManager._
@@ -116,9 +112,9 @@ class RequireJsConfigActor(routeManager: ActorRef, config: BaseComponent#Config)
   }
 
   def updateRoute: Unit = {
-    route.foreach(routeManager ! RouteRemoved(_))
+    route.foreach(routeManager.ref ! RouteRemoved(_))
     route = makeRoute
-    route.foreach(routeManager ! RouteAdded(_, config.ranking))
+    route.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
   }
 
   def makeRoute: Option[Route] = {

@@ -1,5 +1,7 @@
 package spray.osgi
 
+import org.osgi.framework.Bundle
+
 import spray.routing.Route
 import akka.actor.ActorRef
 
@@ -10,10 +12,14 @@ trait RouteManager {
 
   /**
    * Reference to actor managing Spray routes.
-   * 
+   *
    * <p>See companion object documentation for supported messages.</p>
    */
   def ref: ActorRef
+
+  def getBundleResource(bundle: Bundle, path: String): Route
+
+  def getBundleResources(bundle: Bundle, paths: Seq[String], resBasePath: String): Route
 }
 
 /**
