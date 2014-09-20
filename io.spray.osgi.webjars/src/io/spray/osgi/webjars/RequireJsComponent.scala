@@ -1,5 +1,7 @@
 package io.spray.osgi.webjars
 
+import java.util.concurrent.atomic.AtomicReference
+
 import scala.annotation.meta.setter
 import scala.collection.JavaConversions.enumerationAsScalaIterator
 
@@ -59,30 +61,33 @@ class RequireJsComponent extends BaseComponent with RequireJs {
 }
 
 class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
-  val configActor = context.actorOf(Props(classOf[RequireJsConfigActor], routeManager, config))
-  val shorthandActor = context.actorOf(Props(classOf[RequireJsShorthandActor], routeManager, config))
-  def receive = {
-    case msg =>
-      configActor ! msg
-      shorthandActor ! msg
-  }
-}
 
-class RequireJsShorthandActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
-  import RequireJs._
-  import RouteManager._
+  var rjsWebjars: Set[Webjar] = Set()
 
-  var route: Route = _
+  val configRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
+
+  val shorthandRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
 
   def receive = {
-    case Added(Webjar("requirejs", _, _, bundle)) =>
-      route = makeRoute(bundle)
-      routeManager.ref ! RouteAdded(route, config.ranking)
-    case Removed(Webjar("requirejs", _, _, _)) =>
-      routeManager.ref ! RouteRemoved(route)
+    case Added(w) =>
+      w match {
+        case Webjar("requirejs", _, _, bundle) =>
+          updateRoute(Some(makeShorthandRoute(bundle)), shorthandRoute)
+        case Webjar(_, _, Some(_), _) =>
+          rjsWebjars += w
+          updateRoute(makeConfigRoute(rjsWebjars), configRoute)
+      }
+    case Removed(w) =>
+      w match {
+        case Webjar("requirejs", _, _, _) =>
+          updateRoute(None, shorthandRoute)
+        case Webjar(_, _, Some(_), _) =>
+          rjsWebjars -= w
+          updateRoute(makeConfigRoute(rjsWebjars), configRoute)
+      }
   }
 
-  def makeRoute(bundle: Bundle): Route = {
+  def makeShorthandRoute(bundle: Bundle): Route = {
     val urls = bundle.findEntries("/META-INF/resources", "*.js", true)
     urls.map { url =>
       val file = url.getPath.split("/").toSeq.reverse.head
@@ -91,33 +96,8 @@ class RequireJsShorthandActor(routeManager: RouteManager, config: BaseComponent#
       }
     }.reduceRight(_ ~ _)
   }
-}
 
-class RequireJsConfigActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
-
-  import RequireJs._
-  import RouteManager._
-
-  var webjars: Set[Webjar] = Set()
-
-  var route: Option[Route] = None
-
-  def receive = {
-    case Added(w @ Webjar(_, _, Some(_), _)) =>
-      webjars += w
-      updateRoute
-    case Removed(w @ Webjar(_, _, Some(_), _)) =>
-      webjars -= w
-      updateRoute
-  }
-
-  def updateRoute: Unit = {
-    route.foreach(routeManager.ref ! RouteRemoved(_))
-    route = makeRoute
-    route.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
-  }
-
-  def makeRoute: Option[Route] = {
+  def makeConfigRoute(webjars: Set[Webjar]): Option[Route] = {
     if (webjars.isEmpty) {
       None
     } else {
@@ -136,5 +116,10 @@ class RequireJsConfigActor(routeManager: RouteManager, config: BaseComponent#Con
         }
       })
     }
+  }
+
+  def updateRoute(newRoute: Option[Route], routeRef: AtomicReference[Option[Route]]) = {
+    newRoute.foreach(routeManager.ref ! RouteAdded(_, config.ranking))
+    routeRef.getAndSet(newRoute).foreach(routeManager.ref ! RouteRemoved(_))
   }
 }
