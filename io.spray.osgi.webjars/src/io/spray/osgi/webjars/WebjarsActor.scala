@@ -12,8 +12,6 @@ import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
 
-import RequireJs.Added
-import RequireJs.Removed
 import akka.actor.Actor
 import akka.actor.ActorRef
 import akka.actor.ActorSystem
@@ -33,34 +31,13 @@ import spray.routing.PathMatcher.segmentStringToPathMatcher
 import spray.routing.Route
 import spray.routing.RouteConcatenation.pimpRouteWithConcatenation
 
-@Component
-class RequireJsComponent extends BaseComponent with RequireJs {
-
-  @(Reference @setter)
-  private var actorSystem: ActorSystem = _
-
-  @(Reference @setter)
-  private var routeManager: RouteManager = _
-
-  private var requireJsActor: ActorRef = _
-
-  private var config: Config = _
-
-  @Activate
-  def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    config = Config(properties)
-    requireJsActor = actorSystem.actorOf(Props(classOf[RequireJsActor], routeManager, config))
-  }
-
-  @Deactivate
-  def deactivate: Unit = {
-    requireJsActor ! PoisonPill
-  }
-
-  def ref = requireJsActor
+object WebjarsActor {
+  case class WebjarAdded(webjar: Webjar)
+  case class WebjarRemoved(webjar: Webjar)
 }
 
-class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
+class WebjarsActor(routeManager: RouteManager, config: BaseComponent#Config) extends Actor {
+  import WebjarsActor._
 
   var rjsWebjars: Set[Webjar] = Set()
   
@@ -71,7 +48,7 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
   val shorthandRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
 
   def receive = {
-    case Added(w) =>
+    case WebjarAdded(w) =>
       val r = makeResourcesRoute(w.bundle)
       resourceRoutes += w.bundle -> r
       routeManager.ref ! RouteAdded(r, config.ranking)
@@ -84,7 +61,7 @@ class RequireJsActor(routeManager: RouteManager, config: BaseComponent#Config) e
           updateRoute(makeConfigRoute(rjsWebjars), configRoute)
       }
       
-    case Removed(w) =>
+    case WebjarRemoved(w) =>
       resourceRoutes.get(w.bundle).foreach(r => routeManager.ref ! RouteRemoved(r))
       resourceRoutes -= w.bundle
       

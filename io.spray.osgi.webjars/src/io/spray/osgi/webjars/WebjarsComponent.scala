@@ -1,36 +1,46 @@
 package io.spray.osgi.webjars
 
+import java.util.concurrent.atomic.AtomicReference
+
 import scala.annotation.meta.setter
 import scala.collection.JavaConversions._
+
+import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
+import org.osgi.framework.BundleEvent
 import org.osgi.framework.Version
 import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
+import org.osgi.util.tracker.BundleTracker
+
+import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.Props
+import akka.actor.PoisonPill
 import spray.osgi.RouteManager
 import spray.routing.Route
-import org.osgi.framework.Bundle
-import org.osgi.util.tracker.BundleTracker
-import java.util.concurrent.atomic.AtomicReference
-import org.osgi.framework.BundleEvent
 
 @Component(configurationPid = "io.spray.webjars")
 class WebjarsComponent extends BaseComponent {
 
   @(Reference @setter)
-  var routeManager: RouteManager = _
+  private var actorSystem: ActorSystem = _
 
   @(Reference @setter)
-  var requireJs: RequireJs = _
+  var routeManager: RouteManager = _
 
   var tracker: WebjarBundleTracker = _
 
   var config: Config = _
 
+  var webjarsActor: ActorRef = _
+
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     config = Config(properties)
+    webjarsActor = actorSystem.actorOf(Props(classOf[WebjarsActor], routeManager, config))
     tracker = new WebjarBundleTracker(ctx)
     tracker.open()
   }
@@ -38,14 +48,17 @@ class WebjarsComponent extends BaseComponent {
   @Deactivate
   def deactivate: Unit = {
     tracker.close()
+    webjarsActor ! PoisonPill
   }
 
+  import WebjarsActor._
+
   def register(webjar: Webjar): Unit = {
-    requireJs.ref ! RequireJs.Added(webjar)
+    webjarsActor ! WebjarAdded(webjar)
   }
 
   def unregister(webjar: Webjar): Unit = {
-    requireJs.ref ! RequireJs.Removed(webjar)
+    webjarsActor ! WebjarRemoved(webjar)
   }
 
   class WebjarBundleTracker(ctx: BundleContext)
