@@ -11,15 +11,18 @@ import org.osgi.service.component.annotations.Reference
 import spray.osgi.RouteManager
 import spray.routing.Route
 import org.osgi.framework.Bundle
+import org.osgi.util.tracker.BundleTracker
+import java.util.concurrent.atomic.AtomicReference
+import org.osgi.framework.BundleEvent
 
 @Component(configurationPid = "io.spray.webjars")
 class WebjarsComponent extends BaseComponent {
 
   @(Reference @setter)
   var routeManager: RouteManager = _
-  
+
   @(Reference @setter)
-  var requireJs : RequireJs = _
+  var requireJs: RequireJs = _
 
   var tracker: WebjarBundleTracker = _
 
@@ -28,7 +31,7 @@ class WebjarsComponent extends BaseComponent {
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     config = Config(properties)
-    tracker = new WebjarBundleTracker(ctx, this)
+    tracker = new WebjarBundleTracker(ctx)
     tracker.open()
   }
 
@@ -45,4 +48,24 @@ class WebjarsComponent extends BaseComponent {
     requireJs.ref ! RequireJs.Removed(webjar)
   }
 
+  class WebjarBundleTracker(ctx: BundleContext)
+    extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.ACTIVE, null) {
+
+    override def addingBundle(bundle: Bundle, event: BundleEvent): AtomicReference[Option[Webjar]] = {
+      new AtomicReference(Webjar.load(bundle).map { w =>
+        register(w)
+        w
+      })
+    }
+
+    override def removedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
+      webjarRef.get.foreach(w => unregister(w))
+    }
+
+    override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
+      val newWebjar = Webjar.load(bundle)
+      webjarRef.getAndSet(newWebjar).foreach(unregister(_))
+      newWebjar.foreach(register(_))
+    }
+  }
 }
