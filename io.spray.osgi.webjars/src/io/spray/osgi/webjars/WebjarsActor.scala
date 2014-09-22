@@ -106,7 +106,7 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
               |${conf.map(c => s"    requirejs.config($c);").mkString("\n")}
               |  }
               |};
-            """.stripMargin
+            """.stripMargin.trim
           }
         }
       })
