@@ -15,4 +15,3 @@ Private-Package:  \
 -dsannotations:  \
 	*
 -includeresource: static=static
-X-Spray-Resources: static

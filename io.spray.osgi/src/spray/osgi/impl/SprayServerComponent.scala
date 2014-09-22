@@ -47,7 +47,7 @@ class SprayServerComponent {
     val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
     sprayServer = new SprayServer(config, actorSystem, ctx)
     routeManagerReg = ctx.registerService(classOf[RouteManager], sprayServer, null)
-    resourcesTracker = new BundleResourcesTracker(ctx, sprayServer)
+    resourcesTracker = new BundleResourcesTracker(ctx, sprayServer, config.getConfig("spray.can.resources"))
     resourcesTracker.open()
   }
 
