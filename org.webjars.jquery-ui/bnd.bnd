@@ -2,3 +2,4 @@
 module: jquery-ui
 version: 1.11.1
 release:
+Require-Capability: org.webjars; filter:="(module=jquery")

@@ -2,3 +2,5 @@
 module: angular-ui-bootstrap
 version: 0.11.0
 release: 3
+Require-Capability: org.webjars; filter:="(module=bootstrap"),\
+	org.webjars; filter:="(module=angularjs")
