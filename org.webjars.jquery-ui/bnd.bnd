@@ -1,0 +1,4 @@
+-include: ${build}/webjar.bnd
+module: jquery-ui
+version: 1.11.1
+release:

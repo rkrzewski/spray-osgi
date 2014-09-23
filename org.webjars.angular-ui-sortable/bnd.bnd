@@ -1,0 +1,4 @@
+-include: ${build}/webjar.bnd
+module: angular-ui-sortable
+version: 0.12.11
+release:

@@ -1,0 +1,4 @@
+-include: ${build}/webjar.bnd
+module: angular-ui-bootstrap
+version: 0.11.0
+release: 3
