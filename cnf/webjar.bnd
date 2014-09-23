@@ -1,6 +1,7 @@
-depVersion: ${if;${isempty;${release}};${version};${version}-${release}}
-Bundle-Version: ${depVersion}
--buildpath: lib/${module}-${depVersion}.jar;version=file
--includeresource: @${module}-${depVersion}.jar!/META-INF/resources/**,\
-	@${module}-${depVersion}.jar!/META-INF/maven/**
+dashVersion: ${if;${isempty;${release}};${version};${version}-${release}}
+dotVersion: ${if;${isempty;${release}};${version};${version}.${release}}
+Bundle-Version: ${dotVersion}
+-buildpath:org.webjars:${module};version=${dotVersion}
+-includeresource: @${module}-${dashVersion}.jar!/META-INF/resources/**,\
+	@${module}-${dashVersion}.jar!/META-INF/maven/**
 Provide-Capability: org.webjars; module=${module}; version:Version="${version}"
