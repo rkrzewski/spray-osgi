@@ -8,10 +8,10 @@
 	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.bootstrap)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.angularjs)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)',\
-	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)'
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)',\
+	osgi.identity;filter:='(osgi.identity=org.webjars.angular-ui-sortable)',\
+	osgi.identity;filter:='(osgi.identity=org.webjars.angular-ui-bootstrap)'
 -runfw: org.apache.felix.framework;version='[4.4.0,4.4.0]'
 -runee: JavaSE-1.8
 -runsystempackages: \
@@ -52,8 +52,12 @@
 	org.scala-lang.modules.scala-xml;version='[1.0.2,1.0.3)',\
 	org.scala-lang.scala-library;version='[2.11.2,2.11.3)',\
 	org.scala-lang.scala-reflect;version='[2.11.2,2.11.3)',\
+	org.webjars.angular-ui-bootstrap;version=latest,\
+	org.webjars.angular-ui-sortable;version=latest,\
 	org.webjars.angularjs;version=latest,\
 	org.webjars.bootstrap;version=latest,\
+	org.webjars.jquery;version=latest,\
+	org.webjars.jquery-ui;version=latest,\
 	org.webjars.requirejs;version=latest,\
 	osgi.enterprise;version='[4.2.0,4.2.1)',\
 	osgi.residential;version='[4.3.0,4.3.1)'
