@@ -2,7 +2,10 @@ package akka.osgi.ds.impl
 
 import java.net.URL
 import java.util.Enumeration
-import akka.osgi.BundleDelegatingClassLoader
+
+import org.osgi.framework.BundleContext
+import org.osgi.framework.FrameworkUtil
+
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 import com.typesafe.config.ConfigList
@@ -11,27 +14,27 @@ import com.typesafe.config.ConfigObject
 import com.typesafe.config.ConfigOrigin
 import com.typesafe.config.ConfigResolveOptions
 import com.typesafe.config.ConfigValue
-import org.osgi.framework.BundleContext
-import org.osgi.framework.FrameworkUtil
+
+import akka.osgi.BundleDelegatingClassLoader
 
 class DynamicConfig(default: Config) {
-  
+
   @volatile
   var configs: Map[BundleContext, Config] = Map.empty
 
   def add(bundleContext: BundleContext, config: Config) =
-    configs += bundleContext -> config
+    configs += bundleContext → config
 
   def remove(bundleContext: BundleContext) =
     configs -= bundleContext
 
-  def run[T](clazz: Class[_], code: => T): T =
+  def run[T](clazz: Class[_], code: ⇒ T): T =
     run(FrameworkUtil.getBundle(clazz).getBundleContext, code)
 
-  def run[T](context: BundleContext, code: => T): T =
+  def run[T](context: BundleContext, code: ⇒ T): T =
     run(configs.getOrElse(context, default), code)
 
-  private def run[T](context: Config, code: => T): T =
+  private def run[T](context: Config, code: ⇒ T): T =
     try {
       current.set(context)
       code

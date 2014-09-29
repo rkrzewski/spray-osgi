@@ -22,7 +22,7 @@ case class Webjar(artifact: String, version: String, requireJsConfig: Option[Str
 object Webjar {
 
   def load(bundle: Bundle): Option[Webjar] = {
-    readPom(bundle).map { pom =>
+    readPom(bundle).map { pom ⇒
       val x = xpathFactory.newXPath()
       x.setNamespaceContext(nsContext)
       val artifact = x.evaluate("/project/artifactId/text()", pom)
@@ -47,9 +47,9 @@ object Webjar {
 
   private def readPom(bundle: Bundle): Option[Document] = {
     val entriesOpt = Option(bundle.findEntries("META-INF/maven/org.webjars", "pom.xml", true))
-    entriesOpt.flatMap { entries =>
+    entriesOpt.flatMap { entries ⇒
       entries.toStream.headOption
-    }.map { url =>
+    }.map { url ⇒
       val conn = url.openConnection();
       conn.setUseCaches(false)
       try {
@@ -75,7 +75,7 @@ object Webjar {
       val basePath = s"/webjars/$artifact/$version/"
       if (pathsNode.getNodeType == JsonNodeType.OBJECT) {
         val paths = pathsNode.asInstanceOf[ObjectNode]
-        paths.fieldNames.foreach { field => paths.put(field, basePath + paths.get(field).asText()) }
+        paths.fieldNames.foreach { field ⇒ paths.put(field, basePath + paths.get(field).asText()) }
       }
       val sw = new StringWriter
       mapper.writer().writeValue(sw, tree)

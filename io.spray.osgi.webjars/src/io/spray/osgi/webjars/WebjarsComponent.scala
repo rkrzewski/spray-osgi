@@ -30,7 +30,7 @@ class WebjarsComponent {
 
   @(Reference @setter)
   var routeManager: RouteManager = _
-  
+
   var webjarsActor: ActorRef = _
 
   var tracker: WebjarBundleTracker = _
@@ -62,14 +62,14 @@ class WebjarsComponent {
     extends BundleTracker[AtomicReference[Option[Webjar]]](ctx, Bundle.ACTIVE, null) {
 
     override def addingBundle(bundle: Bundle, event: BundleEvent): AtomicReference[Option[Webjar]] = {
-      new AtomicReference(Webjar.load(bundle).map { w =>
+      new AtomicReference(Webjar.load(bundle).map { w ⇒
         register(w)
         w
       })
     }
 
     override def removedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {
-      webjarRef.get.foreach(w => unregister(w))
+      webjarRef.get.foreach(w ⇒ unregister(w))
     }
 
     override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Webjar]]): Unit = {

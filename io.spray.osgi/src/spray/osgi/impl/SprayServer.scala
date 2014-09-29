@@ -2,10 +2,18 @@ package spray.osgi.impl
 
 import scala.util.Failure
 import scala.util.Success
+
+import org.osgi.framework.Bundle
+import org.osgi.framework.BundleContext
+
 import com.typesafe.config.Config
+
+import akka.actor.ActorRef
 import akka.actor.ActorSystem
 import akka.actor.PoisonPill
 import akka.actor.Props
+import akka.event.BusLogging
+import akka.event.LoggingAdapter
 import akka.io.IO
 import akka.io.Tcp
 import akka.pattern.ask
@@ -13,13 +21,8 @@ import akka.pattern.AskTimeoutException
 import akka.util.Timeout
 import spray.can.Http
 import spray.can.server.ServerSettings
-import org.osgi.framework.BundleContext
-import akka.event.BusLogging
-import akka.event.LoggingAdapter
 import spray.osgi.RouteManager
-import akka.actor.ActorRef
 import spray.routing.Route
-import org.osgi.framework.Bundle
 
 class SprayServer(config: Config, implicit val actorSystem: ActorSystem, ctx: BundleContext) extends RouteManager {
 
@@ -40,37 +43,37 @@ class SprayServer(config: Config, implicit val actorSystem: ActorSystem, ctx: Bu
     listenerSettings.backlog,
     listenerSettings.socketOptions,
     Some(serverSettings)))(Timeout(listenerSettings.bindTimeout)).onComplete {
-    case Success(b: Http.Bound) =>
+    case Success(b: Http.Bound) ⇒
       log.info("server started")
-    case Success(Tcp.CommandFailed(b: Http.Bind)) =>
+    case Success(Tcp.CommandFailed(b: Http.Bind)) ⇒
       log.error(
         "Binding failed. Switch on DEBUG-level logging for `akka.io.TcpListener` to log the cause.")
-    case Success(u) =>
+    case Success(u) ⇒
       log.error(s"server start failure, unexected message $u")
-    case Failure(e: AskTimeoutException) =>
+    case Failure(e: AskTimeoutException) ⇒
       log.error("server start timeout")
-    case Failure(e) =>
+    case Failure(e) ⇒
       log.error("server start failure", e)
   }(actorSystem.dispatcher)
-  
-  def ref: ActorRef = 
+
+  def ref: ActorRef =
     serviceActor
 
   def shutdown(): Unit = {
     routeServiceTracker.close()
     serviceActor ! PoisonPill
     http.ask(Http.CloseAll)(Timeout(listenerSettings.bindTimeout)).onComplete {
-      case Success(Http.ClosedAll) =>
+      case Success(Http.ClosedAll) ⇒
         log.info("server stopped")
-      case Success(u) =>
+      case Success(u) ⇒
         log.error(s"server stop failure, unexected message $u")
-      case Failure(e: AskTimeoutException) =>
+      case Failure(e: AskTimeoutException) ⇒
         log.error("server stop timeout")
-      case Failure(e) =>
+      case Failure(e) ⇒
         log.error("server stop failure", e)
     }(actorSystem.dispatcher)
   }
-  
+
   def getBundleResource(bundle: Bundle, path: String): Route = {
     StaticResourcesDirective.getBundleResource(bundle, path)
   }

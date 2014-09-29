@@ -43,10 +43,10 @@ class ActorSystemComponent {
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =
-    map.keySet().foldLeft(new Properties) { (props, key) =>
+    map.keySet().foldLeft(new Properties) { (props, key) ⇒
       map.get(key) match {
-        case strVal: String => props.put(key, strVal)
-        case _ =>
+        case strVal: String ⇒ props.put(key, strVal)
+        case _ ⇒
       }
       props
     }

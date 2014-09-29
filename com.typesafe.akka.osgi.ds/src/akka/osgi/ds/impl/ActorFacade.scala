@@ -1,14 +1,14 @@
 package akka.osgi.ds.impl
 
-import akka.actor.Props
-import akka.actor.Actor
-import akka.actor.ActorContext
-import akka.actor.ActorCell
-import akka.japi.Procedure
 import scala.concurrent.ExecutionContextExecutor
-import akka.actor.ActorSystem
 import scala.concurrent.duration.Duration
+
+import akka.actor.Actor
+import akka.actor.ActorCell
+import akka.actor.ActorContext
 import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.Props
 
 class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
@@ -23,8 +23,8 @@ class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
   private val clazz = props.clazz
 
-  def receive = { 
-    case _ => throw new IllegalStateException("should never be invoked")
+  def receive = {
+    case _ ⇒ throw new IllegalStateException("should never be invoked")
   }
 
   override def aroundReceive(receive: Actor.Receive, msg: Any): Unit =

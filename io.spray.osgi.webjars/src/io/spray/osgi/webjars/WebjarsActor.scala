@@ -40,7 +40,7 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
   import WebjarsActor._
 
   var rjsWebjars: Set[Webjar] = Set()
-  
+
   var resourceRoutes: Map[Bundle, Route] = Map()
 
   val configRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
@@ -48,27 +48,27 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
   val shorthandRoute: AtomicReference[Option[Route]] = new AtomicReference(None)
 
   def receive = {
-    case WebjarAdded(w) =>
+    case WebjarAdded(w) ⇒
       val r = makeResourcesRoute(w.bundle)
-      resourceRoutes += w.bundle -> r
+      resourceRoutes += w.bundle → r
       routeManager.ref ! RouteAdded(r)
-      
+
       w match {
-        case Webjar("requirejs", _, _, bundle) =>
+        case Webjar("requirejs", _, _, bundle) ⇒
           updateRoute(Some(makeShorthandRoute(bundle)), shorthandRoute)
-        case Webjar(_, _, Some(_), _) =>
+        case Webjar(_, _, Some(_), _) ⇒
           rjsWebjars += w
           updateRoute(makeConfigRoute(rjsWebjars), configRoute)
       }
-      
-    case WebjarRemoved(w) =>
-      resourceRoutes.get(w.bundle).foreach(r => routeManager.ref ! RouteRemoved(r))
+
+    case WebjarRemoved(w) ⇒
+      resourceRoutes.get(w.bundle).foreach(r ⇒ routeManager.ref ! RouteRemoved(r))
       resourceRoutes -= w.bundle
-      
+
       w match {
-        case Webjar("requirejs", _, _, _) =>
+        case Webjar("requirejs", _, _, _) ⇒
           updateRoute(None, shorthandRoute)
-        case Webjar(_, _, Some(_), _) =>
+        case Webjar(_, _, Some(_), _) ⇒
           rjsWebjars -= w
           updateRoute(makeConfigRoute(rjsWebjars), configRoute)
       }
@@ -84,7 +84,7 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
 
   def makeShorthandRoute(bundle: Bundle): Route = {
     val urls = bundle.findEntries("/META-INF/resources", "*.js", true)
-    urls.map { url =>
+    urls.map { url ⇒
       val file = url.getPath.split("/").toSeq.reverse.head
       path("webjars" / file) {
         routeManager.getBundleResource(bundle, url.getPath)
@@ -103,7 +103,7 @@ class WebjarsActor(routeManager: RouteManager) extends Actor {
             s"""
               |var require = {
               |  callback : function() {
-              |${conf.map(c => s"    requirejs.config($c);").mkString("\n")}
+              |${conf.map(c ⇒ s"    requirejs.config($c);").mkString("\n")}
               |  }
               |};
             """.stripMargin.trim

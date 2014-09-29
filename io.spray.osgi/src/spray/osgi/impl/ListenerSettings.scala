@@ -1,13 +1,15 @@
 package spray.osgi.impl
 
+import java.util.concurrent.TimeUnit
+
 import scala.collection.immutable
+import scala.collection.mutable.ListBuffer
+import scala.concurrent.duration._
+
+import com.typesafe.config.Config
+
 import akka.io.Inet
 import akka.io.Tcp
-import com.typesafe.config.Config
-import scala.collection.mutable.ListBuffer
-import scala.concurrent.duration.Duration
-import scala.concurrent.duration._
-import java.util.concurrent.TimeUnit
 
 case class ListenerSettings(
   interface: String,
@@ -18,12 +20,12 @@ case class ListenerSettings(
   socketOptions: immutable.Traversable[Inet.SocketOption] = Nil)
 
 object ListenerSettings {
-  
+
   implicit class ConfigWithDuration(c: Config) {
-    def getDuration(name: String): FiniteDuration = 
+    def getDuration(name: String): FiniteDuration =
       FiniteDuration(c.getDuration(name, TimeUnit.MILLISECONDS), TimeUnit.MILLISECONDS)
   }
-  
+
   def fromSubConfig(c: Config) = apply(
     c getString "interface",
     c getInt "port",

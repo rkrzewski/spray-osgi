@@ -1,31 +1,35 @@
 package spray.osgi.impl
 
+import java.util.Properties
+
 import scala.annotation.meta.setter
 import scala.collection.JavaConversions.asScalaSet
-import java.util.Properties
+import scala.util.Failure
+import scala.util.Success
+
 import org.osgi.framework.BundleContext
+import org.osgi.framework.ServiceRegistration
 import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.ConfigurationPolicy
 import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
-import akka.actor.ActorSystem
+
+import com.typesafe.config.ConfigFactory
+
 import akka.actor.ActorRef
+import akka.actor.ActorSystem
+import akka.actor.PoisonPill
+import akka.actor.Props
 import akka.io.IO
+import akka.io.Tcp
+import akka.osgi.BundleDelegatingClassLoader
+import akka.pattern.AskTimeoutException
 import akka.pattern.ask
 import akka.util.Timeout
-import com.typesafe.config.ConfigFactory
 import spray.can.Http
 import spray.can.server.ServerSettings
-import akka.actor.Props
-import akka.io.Tcp
-import scala.util.Success
-import akka.pattern.AskTimeoutException
-import scala.util.Failure
-import akka.actor.PoisonPill
-import akka.osgi.BundleDelegatingClassLoader
 import spray.osgi.RouteManager
-import org.osgi.framework.ServiceRegistration
 
 @Component(
   configurationPid = "io.spray.can",
@@ -36,11 +40,11 @@ class SprayServerComponent {
   var actorSystem: ActorSystem = _
 
   var sprayServer: SprayServer = _
-  
+
   var routeManagerReg: ServiceRegistration[RouteManager] = _
-  
+
   var resourcesTracker: BundleResourcesTracker = _
-  
+
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val classloader = BundleDelegatingClassLoader(ctx)
@@ -59,10 +63,10 @@ class SprayServerComponent {
   }
 
   implicit def toProprties(map: java.util.Map[String, _]): Properties =
-    map.keySet().foldLeft(new Properties) { (props, key) =>
+    map.keySet().foldLeft(new Properties) { (props, key) ⇒
       map.get(key) match {
-        case strVal: String => props.put(key, strVal)
-        case _ =>
+        case strVal: String ⇒ props.put(key, strVal)
+        case _ ⇒
       }
       props
     }

@@ -27,14 +27,14 @@ class BundleResourcesTracker(ctx: BundleContext, routeManager: SprayServer, conf
   import RouteManager._
 
   override def addingBundle(bundle: Bundle, event: BundleEvent): AtomicReference[Option[Route]] = {
-    new AtomicReference(makeRoute(bundle).map { route =>
+    new AtomicReference(makeRoute(bundle).map { route ⇒
       routeManager.ref ! RouteAdded(route)
       route
     })
   }
 
   override def removedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Route]]): Unit = {
-    webjarRef.get.foreach(route => routeManager.ref ! RouteRemoved(route))
+    webjarRef.get.foreach(route ⇒ routeManager.ref ! RouteRemoved(route))
   }
 
   override def modifiedBundle(bundle: Bundle, event: BundleEvent, webjarRef: AtomicReference[Option[Route]]): Unit = {
@@ -46,9 +46,9 @@ class BundleResourcesTracker(ctx: BundleContext, routeManager: SprayServer, conf
   private def makeRoute(bundle: Bundle): Option[Route] = {
     Seq(resources(bundle), welcomeFiles(bundle)).flatten.reduceRightOption(_ ~ _)
   }
-  
+
   private def resources(bundle: Bundle): Option[Route] = {
-    Option(bundle.getEntry(basePath)).map { _ =>
+    Option(bundle.getEntry(basePath)).map { _ ⇒
       val baseURI = bundle.getEntry(basePath).toURI
       val URIs = bundle.findEntries(basePath, "*", true).map(_.toURI).toSeq
       val paths = URIs.map(baseURI.relativize(_).toString)
@@ -57,10 +57,10 @@ class BundleResourcesTracker(ctx: BundleContext, routeManager: SprayServer, conf
   }
 
   private def welcomeFiles(bundle: Bundle): Option[Route] = {
-    Option(bundle.findEntries(basePath, welcomeFile, true)).flatMap { e =>
+    Option(bundle.findEntries(basePath, welcomeFile, true)).flatMap { e ⇒
       val baseURI = bundle.getEntry(basePath).toURI
       e.map {
-        u =>
+        u ⇒
           val p = baseURI.relativize(u.toURI).toString
           val dir = p.substring(0, math.max(p.lastIndexOf('/'), 0))
           println(s"serving $p as $dir")

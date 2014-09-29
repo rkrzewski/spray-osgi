@@ -11,6 +11,7 @@ import org.osgi.service.component.annotations.Deactivate
 import org.osgi.service.component.annotations.Reference
 import org.osgi.util.tracker.ServiceTracker
 import org.osgi.util.tracker.ServiceTrackerCustomizer
+
 import akka.actor.ActorSystem
 import akka.actor.ActorRef
 import spray.routing.Route
@@ -26,7 +27,7 @@ class RouteProvidersTracker(ctx: BundleContext, routeManager: ActorRef)
     route
   }
 
-  override def modifiedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {    
+  override def modifiedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {
   }
 
   override def removedService(ref: ServiceReference[RouteProvider], route: Route): Unit = {

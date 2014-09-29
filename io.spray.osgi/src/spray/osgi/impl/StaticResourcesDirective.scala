@@ -48,8 +48,8 @@ object StaticResourcesDirective {
 
   private def contentType(path: String): ContentType =
     path match {
-      case Extension(ext) => MediaTypes.forExtension(ext) map (ContentType(_)) getOrElse (NoContentType)
-      case _ => NoContentType
+      case Extension(ext) ⇒ MediaTypes.forExtension(ext) map (ContentType(_)) getOrElse (NoContentType)
+      case _ ⇒ NoContentType
     }
 
   /**
@@ -70,7 +70,7 @@ object StaticResourcesDirective {
                 conn.setUseCaches(false) // otherwise the JDK will keep the JAR file open when we close!
                 val len = conn.getContentLength
                 val lm = conn.getLastModified
-                len -> lm
+                len → lm
               } finally { conn.getInputStream.close() }
             }
             implicit val bufferMarshaller = BasicMarshallers.byteArrayMarshaller(contentType(resourceName))
@@ -99,13 +99,13 @@ object StaticResourcesDirective {
       val groupedPaths = pathSegments.groupBy(_.head).toSeq
       groupedPaths.map {
         // only one path starting with given segments
-        case (_, Seq(p)) =>
+        case (_, Seq(p)) ⇒
           val uniquePath = p.mkString("/")
           path(uniquePath).apply {
             getBundleResource(bundle, resBasePath + basePath + "/" + uniquePath)
           }
         // multiple paths starting with given segments
-        case (segment, paths) =>
+        case (segment, paths) ⇒
           pathPrefix(segment).apply {
             // strip leading segment from paths
             val nestedPaths = paths.map(_.tail).filterNot(_.isEmpty)

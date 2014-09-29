@@ -1,9 +1,11 @@
 package akka.osgi.ds.impl
 
+import org.osgi.framework.BundleContext
+
 import com.typesafe.config.Config
+
 import akka.actor.Actor
 import akka.actor.ActorSystem
-import org.osgi.framework.BundleContext
 import akka.actor.ExtendedActorSystem
 import akka.actor.Extension
 import akka.actor.ExtensionId
@@ -104,7 +106,7 @@ class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfi
       dynamicConfig.run(context, code)
     }
 
-  def registerOnTermination[T](code: => T): Unit =
+  def registerOnTermination[T](code: ⇒ T): Unit =
     system.registerOnTermination {
       dynamicConfig.run(context, code)
     }
