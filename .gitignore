@@ -3,3 +3,4 @@
 /generated/
 .metadata/
 .cache
+*.md.html
