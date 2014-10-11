@@ -29,6 +29,18 @@ class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
   override def aroundReceive(receive: Actor.Receive, msg: Any): Unit =
     dynamicConfig.run(clazz, actor.aroundReceive(behaviorStack.head, msg))
+    
+  override def aroundPreStart() =
+    dynamicConfig.run(clazz, actor.aroundPreStart())
+    
+  override def aroundPostStop() = 
+    dynamicConfig.run(clazz, actor.aroundPostStop())
+    
+  override def aroundPreRestart(reason: Throwable, message: Option[Any]) =
+    dynamicConfig.run(clazz, actor.aroundPreRestart(reason, message))
+    
+  override def aroundPostRestart(reason: Throwable) =
+    dynamicConfig.run(clazz, actor.aroundPostRestart(reason))
 
   class ActorContextFacade(context: ActorContext) extends ActorContext {
 
