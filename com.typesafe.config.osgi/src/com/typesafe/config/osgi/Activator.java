@@ -42,8 +42,8 @@ public class Activator implements BundleActivator {
 			public void removedService(
 					ServiceReference<ConfigurationAdmin> reference,
 					ConfigurationWatcher watcher) {
-				context.ungetService(reference);
 				watcher.close();
+				context.ungetService(reference);
 			}
 		};
 		configAdminTracker.open();
