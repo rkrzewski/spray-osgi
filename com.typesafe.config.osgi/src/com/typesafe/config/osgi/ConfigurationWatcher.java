@@ -57,6 +57,9 @@ public class ConfigurationWatcher {
 			}
 			try {
 				WatchKey key = initialKey;
+				// release initial data before going into long running main loop
+				initialFiles = null;
+				initialKey = null;
 				while (!Thread.interrupted()) {
 					for (WatchEvent<?> event : key.pollEvents()) {
 						if (event.context() instanceof Path) {
