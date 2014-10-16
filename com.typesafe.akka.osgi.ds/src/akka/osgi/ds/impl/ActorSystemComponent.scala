@@ -16,6 +16,7 @@ import org.osgi.service.component.annotations.ConfigurationPolicy
 import org.osgi.service.component.annotations.Deactivate
 
 import com.typesafe.config.ConfigFactory
+import com.typesafe.config.osgi.ConfigRecovery
 
 import akka.actor.ActorSystem
 import akka.osgi.BundleDelegatingClassLoader
@@ -34,7 +35,7 @@ class ActorSystemComponent {
 
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    serviceFactory = new ActorSystemServiceFactory(toConfig(properties))
+    serviceFactory = new ActorSystemServiceFactory(ConfigRecovery.fromProperties(properties))
     registration = ctx.registerService(classOf[ActorSystem].getName(), serviceFactory, null)
   }
 

@@ -6,7 +6,8 @@ Export-Package:  \
 	com.typesafe.akka.osgi,\
 	osgi.core;version=5.0,\
 	osgi.enterprise;version=5.0,\
-	com.typesafe.config
+	com.typesafe.config,\
+	com.typesafe.config.osgi;version=latest
 Private-Package:  \
 	akka.osgi.ds.impl
 -dsannotations:  \

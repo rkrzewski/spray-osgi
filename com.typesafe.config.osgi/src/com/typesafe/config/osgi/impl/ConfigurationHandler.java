@@ -1,4 +1,4 @@
-package com.typesafe.config.osgi;
+package com.typesafe.config.osgi.impl;
 
 import java.io.IOException;
 import java.nio.file.Path;

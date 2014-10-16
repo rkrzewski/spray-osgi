@@ -5,7 +5,9 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 	osgi.enterprise;version=5.0,\
 	com.typesafe.config
 Private-Package:  \
-	com.typesafe.config.osgi
-Bundle-Activator: com.typesafe.config.osgi.Activator
+	com.typesafe.config.osgi.impl
+Bundle-Activator: com.typesafe.config.osgi.impl.Activator
 javac.source=1.7
 javac.target=1.7
+Export-Package:  \
+	com.typesafe.config.osgi
