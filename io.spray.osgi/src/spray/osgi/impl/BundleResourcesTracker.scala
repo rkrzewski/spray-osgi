@@ -63,7 +63,6 @@ class BundleResourcesTracker(ctx: BundleContext, routeManager: SprayServer, conf
         u ⇒
           val p = baseURI.relativize(u.toURI).toString
           val dir = p.substring(0, math.max(p.lastIndexOf('/'), 0))
-          println(s"serving $p as $dir")
           path(dir) {
             routeManager.getBundleResource(bundle, s"$basePath/$p")
           }
