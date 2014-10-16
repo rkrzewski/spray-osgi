@@ -1,15 +1,18 @@
 package akka.osgi.ds.impl
 
-import akka.actor.ActorSystem
-import org.osgi.framework.ServiceFactory
-import akka.osgi.BundleDelegatingClassLoader
-import org.osgi.framework.BundleContext
-import com.typesafe.config.ConfigFactory
-import java.util.Properties
-import org.osgi.framework.ServiceRegistration
-import org.osgi.framework.Bundle
 import java.util.concurrent.CyclicBarrier
+import java.util.Properties
+
+import org.osgi.framework.Bundle
+import org.osgi.framework.BundleContext
+import org.osgi.framework.ServiceFactory
+import org.osgi.framework.ServiceRegistration
+
 import com.typesafe.config.Config
+import com.typesafe.config.ConfigFactory
+
+import akka.actor.ActorSystem
+import akka.osgi.BundleDelegatingClassLoader
 
 class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSystem] {
 
