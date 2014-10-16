@@ -15,7 +15,6 @@ import org.osgi.service.cm.ConfigurationAdmin;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigValue;
-import com.typesafe.config.ConfigValueType;
 
 /**
  * Part of this code was adapted from Apache Felix Fileinstall.
@@ -151,12 +150,9 @@ public class ConfigurationHandler {
 		Dictionary<String, Object> dict = new Hashtable<>();
 		for (java.util.Map.Entry<java.lang.String, ConfigValue> entry : config
 				.entrySet()) {
-			String value = entry.getValue().render();
-			if (entry.getValue().valueType() == ConfigValueType.STRING) {
-				dict.put(entry.getKey(), value.substring(1, value.length() - 1));
-			} else {
-				dict.put(entry.getKey(), value);
-			}
+			dict.put(entry.getKey(), entry.getValue().unwrapped());
+			dict.put(entry.getKey() + ".origin", entry.getValue().origin()
+					.description());
 		}
 		return dict;
 	}

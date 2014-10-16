@@ -47,7 +47,14 @@ reusing parts of it's implemenation (as noted in source files) with the followin
    *   Supports HOCON files with `<pid> ( '-' <subname> )? '.conf'` instead of Java properties
    *   Uses `java.nio.file.WatchService` (available in JDK7+) instead of polling
 
-All configuration properties read from the HOCON files are flattened to `String -> String` pairs.
+For each setting in the original configuration file, two entries are created in the configuration
+dictionary passed to ConfigurationAdmin:
+
+   *   `<complete entry path>` -> actual value (may be a String, Integer, Long, Double, or Boolean)
+   *   `<complete entry path>.origin` -> value origin description (a String)
+   
+This information can be used by the target bundle to reconstruct the original `Configuration` object
+with fidelity.   
 
 ## Caveats / further work
 
@@ -67,13 +74,6 @@ All configuration properties read from the HOCON files are flattened to `String 
        existing HOCON file and update it, preserving grouping and formatting. New properties could
        be added at the end of the most nested section of the file matching the property key prefix.
        I haven't explored this possibility though.
-   *   Typesafe Config has much richer API than `java.util.Dictionary` used by ConfigurationAdmin. 
-       For example it provides `ConfigOrigin` specifying file and line location for each of property
-       definitions. This information is lost when passing properties through ConfigurationAdmin. 
-       This facilitates interoperability with arbitrary OSGi components that use ConfiurationAdmin 
-       service, but when target components use Typesafe Config internally, it might be desirable to 
-       amend the configuration object with additional information in String encoded form that could 
-       be used to reconstruct the original Config with more fidelity.  
    *   On several occasions my Declarative Components failed to start, and examining their status
        showed that configurations were not available. Touching the configuration files on disk
        triggered loading the configuration and activating components. I haven't determined yet

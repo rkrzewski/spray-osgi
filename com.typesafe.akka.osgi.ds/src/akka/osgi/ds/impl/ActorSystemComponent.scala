@@ -19,6 +19,8 @@ import com.typesafe.config.ConfigFactory
 
 import akka.actor.ActorSystem
 import akka.osgi.BundleDelegatingClassLoader
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigValueFactory
 
 @Component(
   immediate = true,
@@ -32,7 +34,7 @@ class ActorSystemComponent {
 
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    serviceFactory = new ActorSystemServiceFactory(properties)
+    serviceFactory = new ActorSystemServiceFactory(toConfig(properties))
     registration = ctx.registerService(classOf[ActorSystem].getName(), serviceFactory, null)
   }
 
@@ -42,12 +44,10 @@ class ActorSystemComponent {
     serviceFactory.shutdown()
   }
 
-  implicit def toProprties(map: java.util.Map[String, _]): Properties =
-    map.keySet().foldLeft(new Properties) { (props, key) ⇒
-      map.get(key) match {
-        case strVal: String ⇒ props.put(key, strVal)
-        case _ ⇒
-      }
-      props
+  def toConfig(map: java.util.Map[String, _]): Config =
+    map.keySet().filter(_.endsWith(".origin")).foldLeft(ConfigFactory.empty) { (config, originKey) ⇒
+      val key = originKey.replaceAll("\\.origin$", "")
+      val originDesc = map.get(originKey).asInstanceOf[String]
+      config.withValue(key, ConfigValueFactory.fromAnyRef(map.get(key), originDesc))
     }
 }

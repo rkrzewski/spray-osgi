@@ -30,6 +30,8 @@ import akka.util.Timeout
 import spray.can.Http
 import spray.can.server.ServerSettings
 import spray.osgi.RouteManager
+import com.typesafe.config.Config
+import com.typesafe.config.ConfigValueFactory
 
 @Component(
   configurationPid = "io.spray.can",
@@ -48,7 +50,7 @@ class SprayServerComponent {
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val classloader = BundleDelegatingClassLoader(ctx)
-    val config = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(classloader))
+    val config = toConfig(properties).withFallback(ConfigFactory.load(classloader))
     sprayServer = new SprayServer(config, actorSystem, ctx)
     routeManagerReg = ctx.registerService(classOf[RouteManager], sprayServer, null)
     resourcesTracker = new BundleResourcesTracker(ctx, sprayServer, config.getConfig("spray.can.resources"))
@@ -62,12 +64,10 @@ class SprayServerComponent {
     resourcesTracker.close()
   }
 
-  implicit def toProprties(map: java.util.Map[String, _]): Properties =
-    map.keySet().foldLeft(new Properties) { (props, key) ⇒
-      map.get(key) match {
-        case strVal: String ⇒ props.put(key, strVal)
-        case _ ⇒
-      }
-      props
+  def toConfig(map: java.util.Map[String, _]): Config =
+    map.keySet().filter(_.endsWith(".origin")).foldLeft(ConfigFactory.empty) { (config, originKey) ⇒
+      val key = originKey.replaceAll("\\.origin$", "")
+      val originDesc = map.get(originKey).asInstanceOf[String]
+      config.withValue(key, ConfigValueFactory.fromAnyRef(map.get(key), originDesc))
     }
 }

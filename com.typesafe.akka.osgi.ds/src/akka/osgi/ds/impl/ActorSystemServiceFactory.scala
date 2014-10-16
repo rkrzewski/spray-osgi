@@ -9,12 +9,13 @@ import java.util.Properties
 import org.osgi.framework.ServiceRegistration
 import org.osgi.framework.Bundle
 import java.util.concurrent.CyclicBarrier
+import com.typesafe.config.Config
 
-class ActorSystemServiceFactory(properties: Properties) extends ServiceFactory[ActorSystem] {
+class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSystem] {
 
   val akkaClassLoader = classOf[ActorSystem].getClassLoader()
 
-  val akkaConfig = ConfigFactory.parseProperties(properties).withFallback(ConfigFactory.load(akkaClassLoader))
+  val akkaConfig = config.withFallback(ConfigFactory.load(akkaClassLoader))
 
   val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
 
