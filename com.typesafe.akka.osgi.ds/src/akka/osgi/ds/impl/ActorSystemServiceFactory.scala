@@ -42,10 +42,8 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
     dynamicConfig.remove(bundle.getBundleContext)
 
   def shutdown(): Unit = {
-    val barrier = new CyclicBarrier(2)
-    actorSystem.registerOnTermination(barrier.await())
     actorSystem.shutdown()
-    barrier.await()
+    actorSystem.awaitTermination()
   }
 
 }
