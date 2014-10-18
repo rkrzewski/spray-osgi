@@ -16,9 +16,17 @@ import com.typesafe.config.ConfigValueFactory;
  * When passing Configuration properties loaded from files to OSGi
  * {@code ConfigurationAdmin}, the management agent encodes origin information
  * for all configuration values (file name and line number) into additional
- * properties, named {@code <complete entry path>.origin}.
- * {@link #fromProperties(Dictionary)} method recovers original {@code Config}
- * object with as much fidelity as possible.
+ * properties, named {@code <complete entry path>.origin}. Properties using
+ * string substitutions are encoded as {@code <complete entry path>.expr}
+ * holding the relevant expression. {@link #fromProperties(Dictionary)} method
+ * recover original {@code Config} object with as much fidelity as possible.
+ * </p>
+ * 
+ * <p>
+ * Note that recovered configuration is equivalent to a result of
+ * {@code com.typesafe.config.ConfigFactory.parseFile(File)} - it needs to be
+ * combined with default settings from classpath, and have
+ * {@code Config.resolve()} called in order to execute substitutions.
  * </p>
  *
  * @author Rafał Krzewski
@@ -43,8 +51,16 @@ public class ConfigRecovery {
 			if (key.endsWith(".origin")) {
 				String originDesc = (String) properties.get(key);
 				String valueKey = key.replaceAll("\\.origin$", "");
-				config = config.withValue(valueKey, ConfigValueFactory
-						.fromAnyRef(properties.get(valueKey), originDesc));
+				Object value = properties.get(valueKey);
+				if (value != null) {
+					config = config.withValue(valueKey,
+							ConfigValueFactory.fromAnyRef(value, originDesc));
+				} else {
+					String s = valueKey + "="
+							+ properties.get(valueKey + ".expr");
+					Config c = ConfigFactory.parseString(s);
+					config = c.withFallback(config);
+				}
 			}
 		}
 		return config;
@@ -66,8 +82,16 @@ public class ConfigRecovery {
 			if (key.endsWith(".origin")) {
 				String originDesc = (String) entry.getValue();
 				String valueKey = key.replaceAll("\\.origin$", "");
-				config = config.withValue(valueKey, ConfigValueFactory
-						.fromAnyRef(properties.get(valueKey), originDesc));
+				Object value = properties.get(valueKey);
+				if (value != null) {
+					config = config.withValue(valueKey,
+							ConfigValueFactory.fromAnyRef(value, originDesc));
+				} else {
+					String s = valueKey + "="
+							+ properties.get(valueKey + ".expr");
+					Config c = ConfigFactory.parseString(s);
+					config = c.withFallback(config);
+				}
 			}
 		}
 		return config;

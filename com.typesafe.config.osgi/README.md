@@ -47,14 +47,23 @@ reusing parts of it's implemenation (as noted in source files) with the followin
    *   Supports HOCON files with `<pid> ( '-' <subname> )? '.conf'` instead of Java properties
    *   Uses `java.nio.file.WatchService` (available in JDK7+) instead of polling
 
-For each setting in the original configuration file, two entries are created in the configuration
-dictionary passed to ConfigurationAdmin:
+For each setting in the original configuration file, the following entries are created in the 
+configuration dictionary passed to ConfigurationAdmin: If the value is a substitution (`${setting}`)
+`<complete entry path>.expr` entry is created, otherwise `<complete entry path>` is created,
+holding actual value (may be either a String, Integer, Long, Double, or Boolean). Additionally
+`<complete entry path>.origin` String entry is created, holding origin description (file path and 
+line number).
 
-   *   `<complete entry path>` -> actual value (may be a String, Integer, Long, Double, or Boolean)
-   *   `<complete entry path>.origin` -> value origin description (a String)
-   
-This information can be used by the target bundle to reconstruct the original `Configuration` object
-with fidelity.   
+In order to reconstruct `Config` object inside the target `ManagedService` or component, 
+`com.typesafe.config.osgi.ConfigRecovery` utility class is provided. Using it is preferable to 
+decoding the configuration by hand, because it hides the details of encoding the configuration 
+values in `ConfigurationAdmin` properties, and using it shields the application from possible 
+issues should those details change in the future. 
+
+The `Config` object recovered from `ConfigurationAdmin` properties needs to be combined with
+`reference.conf` settings (`akka.osgi.BundleDelegatingClassLoader` implements the correct strategy
+for accessing classpath resources in OSGi environment) and `resolve` needs to be invoked on the
+combined preferences to execute the substitutions. Doing this is responsibility of the user.
 
 ## Caveats / further work
 
@@ -62,8 +71,6 @@ with fidelity.
        `./conf` where `.` is the current directory of JVM. This could be made configurable using
        JVM system properties. 
    *   Java properties and JSON files are currently not supported by the plugin.
-   *   All configuration properties are passed to ConfigurationAdmin as Strings. Adding support for 
-       primitive types and arrays would be quite easy. 
    *   Writing configuration changes back to disk is not supported. Felix File Install has the 
        capability to write configurations changed at runtime 
        (using [Felix Web Console](http://felix.apache.org/documentation/subprojects/apache-felix-web-console.html) 

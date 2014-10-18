@@ -13,6 +13,7 @@ import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 
 import com.typesafe.config.Config;
+import com.typesafe.config.ConfigException;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigValue;
 
@@ -145,12 +146,16 @@ public class ConfigurationHandler {
 	}
 
 	private Dictionary<String, Object> loadConfig(Path path) {
-		Config config = ConfigFactory.load(ConfigFactory.parseFile(basePath
-				.resolve(path).toFile()));
+		Config config = ConfigFactory
+				.parseFile(basePath.resolve(path).toFile());
 		Dictionary<String, Object> dict = new Hashtable<>();
 		for (java.util.Map.Entry<java.lang.String, ConfigValue> entry : config
 				.entrySet()) {
-			dict.put(entry.getKey(), entry.getValue().unwrapped());
+			try {
+				dict.put(entry.getKey(), entry.getValue().unwrapped());
+			} catch (ConfigException.NotResolved e) {
+				dict.put(entry.getKey() + ".expr", entry.getValue().render());
+			}
 			dict.put(entry.getKey() + ".origin", entry.getValue().origin()
 					.description());
 		}

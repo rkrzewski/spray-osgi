@@ -18,7 +18,7 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
 
   val akkaClassLoader = classOf[ActorSystem].getClassLoader()
 
-  val akkaConfig = config.withFallback(ConfigFactory.load(akkaClassLoader))
+  val akkaConfig = config.withFallback(ConfigFactory.load(akkaClassLoader)).resolve
 
   val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
 

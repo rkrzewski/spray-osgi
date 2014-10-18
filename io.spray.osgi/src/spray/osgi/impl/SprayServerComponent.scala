@@ -50,7 +50,7 @@ class SprayServerComponent {
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
     val classloader = BundleDelegatingClassLoader(ctx)
-    val config = ConfigRecovery.fromProperties(properties).withFallback(ConfigFactory.load(classloader))
+    val config = ConfigRecovery.fromProperties(properties).withFallback(ConfigFactory.load(classloader)).resolve
     sprayServer = new SprayServer(config, actorSystem, ctx)
     routeManagerReg = ctx.registerService(classOf[RouteManager], sprayServer, null)
     resourcesTracker = new BundleResourcesTracker(ctx, sprayServer, config.getConfig("spray.can.resources"))
