@@ -37,11 +37,14 @@ class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfi
   // Members declared in akka.actor.ActorRefFactory   
 
   def actorOf(props: Props, name: String): akka.actor.ActorRef =
-    dynamicConfig.run(context,
-      system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig), name))
+    dynamicConfig.run(context) {
+      system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig), name)
+    }
 
   def actorOf(props: akka.actor.Props): akka.actor.ActorRef =
-    dynamicConfig.run(context, system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig)))
+    dynamicConfig.run(context) {
+      system.actorOf(Props(classOf[ActorFacade], props, dynamicConfig))
+    }
 
   def stop(actor: akka.actor.ActorRef): Unit =
     system.stop(actor)
@@ -90,7 +93,9 @@ class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfi
     system.hasExtension(ext)
 
   def registerExtension[T <: akka.actor.Extension](ext: akka.actor.ExtensionId[T]): T =
-    dynamicConfig.run(context, system.registerExtension(ext))
+    dynamicConfig.run(context) {
+      system.registerExtension(ext)
+    }
 
   def shutdown(): Unit =
     system.shutdown()
@@ -103,12 +108,12 @@ class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfi
 
   def registerOnTermination(code: Runnable): Unit =
     system.registerOnTermination {
-      dynamicConfig.run(context, code)
+      dynamicConfig.run(context)(code)
     }
 
   def registerOnTermination[T](code: ⇒ T): Unit =
     system.registerOnTermination {
-      dynamicConfig.run(context, code)
+      dynamicConfig.run(context)(code)
     }
 
   def isTerminated: Boolean =

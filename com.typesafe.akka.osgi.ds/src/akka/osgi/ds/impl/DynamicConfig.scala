@@ -68,8 +68,8 @@ class DynamicConfig(default: Config) {
    * @param clazz the Class used to determine which configuration should be used.
    * @param code the code to execute.
    */
-  def run[T](clazz: Class[_], code: ⇒ T): T =
-    run(configs.getOrElse(getBundle(clazz).getBundleContext, default), code)
+  def run[T](clazz: Class[_])(code: ⇒ T): T =
+    run(configs.getOrElse(getBundle(clazz).getBundleContext, default))(code)
 
   /**
    * Execute a block of code, using configuration appropriate for a given bundle.
@@ -77,8 +77,8 @@ class DynamicConfig(default: Config) {
    * @param context BundleContext used to determine which configuration should be used.
    * @param code the code to execute.
    */
-  def run[T](context: BundleContext, code: ⇒ T): T =
-    run(configs.getOrElse(context, default), code)
+  def run[T](context: BundleContext)(code: ⇒ T): T =
+    run(configs.getOrElse(context, default))(code)
 
   /**
    * Execute a block of code, using a specific configuration.
@@ -86,7 +86,7 @@ class DynamicConfig(default: Config) {
    * @param config the configuration to use.
    * @param code the code to execute.
    */
-  private def run[T](config: Config, code: ⇒ T): T =
+  private def run[T](config: Config)(code: ⇒ T): T =
     try {
       current.set(config)
       code

@@ -47,23 +47,33 @@ class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
   /** Ensures that enclosed `Actor`'s `receive` is executed within `DynamicContext.run`. */
   override def aroundReceive(receive: Actor.Receive, msg: Any): Unit =
-    dynamicConfig.run(props.clazz, actor.aroundReceive(behaviorStack.head, msg))
+    dynamicConfig.run(props.clazz) {
+      actor.aroundReceive(behaviorStack.head, msg)
+    }
 
   /** Ensures that enclosed `Actor`'s `preStart` is executed within `DynamicContext.run`. */
   override def aroundPreStart() =
-    dynamicConfig.run(props.clazz, actor.aroundPreStart())
+    dynamicConfig.run(props.clazz) {
+      actor.aroundPreStart()
+    }
 
   /** Ensures that enclosed `Actor`'s `postStop` is executed within `DynamicContext.run`. */
   override def aroundPostStop() =
-    dynamicConfig.run(props.clazz, actor.aroundPostStop())
+    dynamicConfig.run(props.clazz) {
+      actor.aroundPostStop()
+    }
 
   /** Ensures that enclosed `Actor`'s `preRestart` is executed within `DynamicContext.run`. */
   override def aroundPreRestart(reason: Throwable, message: Option[Any]) =
-    dynamicConfig.run(props.clazz, actor.aroundPreRestart(reason, message))
+    dynamicConfig.run(props.clazz) {
+      actor.aroundPreRestart(reason, message)
+    }
 
   /** Ensures that enclosed `Actor`'s `postRestart` is executed within `DynamicContext.run`. */
   override def aroundPostRestart(reason: Throwable) =
-    dynamicConfig.run(props.clazz, actor.aroundPostRestart(reason))
+    dynamicConfig.run(props.clazz) {
+      actor.aroundPostRestart(reason)
+    }
 
   /**
    * `ActorContextFacade` forwards `become`/`unbecome` to `ActorFacade`'s behavior stack,
