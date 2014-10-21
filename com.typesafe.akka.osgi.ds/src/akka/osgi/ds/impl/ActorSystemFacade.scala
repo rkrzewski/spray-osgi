@@ -12,21 +12,54 @@ import akka.actor.ExtensionId
 import akka.actor.ExtensionIdProvider
 import akka.actor.Props
 
-object ActorSystemFacadeExtension extends ExtensionId[ActorSystemFacadeProvider] with ExtensionIdProvider {
+/**
+ * `ActorSystemFacade` is the view of `ActorSystem` provided by `ActorSystemServiceFactory` to
+ * client bundles.
+ */
+object ActorSystemFacade {
 
-  def lookup = ActorSystemFacadeExtension
+  /**
+   * Akka Extension used to gain access to `ExtendedActorSystem` needed to implement the
+   * functionality of [[ActorSystemFacade!]]
+   */
+  object Extension extends ExtensionId[Provider] with ExtensionIdProvider {
 
-  override def createExtension(system: ExtendedActorSystem) = new ActorSystemFacadeProvider(system)
+    /**
+     * @return `Extension` object instance.
+     */
+    def lookup = Extension
 
+    /**
+     * @return a [[Provider]] instance.
+     */
+    override def createExtension(system: ExtendedActorSystem) = new Provider(system)
+  }
+
+  /**
+   * Helper class for `ActorSystemFacade.Extension` that instantiates `ActorSystemFacade`
+   *
+   * Note that the unqualified name `Extension` in extends clause refers to `akka.actor.Extension`.
+   */
+  class Provider(system: ExtendedActorSystem) extends Extension {
+
+    /**
+     * Instantiates a `ActorSystemFacade`.
+     *
+     * @param dynamicConfig [[DynamicConfig]] that will be used for configuration switching.
+     * @param context `BundleContext` of the client bundle.
+     * @param settings Akka settings built according to client bundle's classpath.
+     */
+    def apply(dynamicConfig: DynamicConfig, context: BundleContext, settings: ActorSystem.Settings) =
+      new ActorSystemFacade(system, dynamicConfig, context, settings)
+  }
 }
 
-class ActorSystemFacadeProvider(system: ExtendedActorSystem) extends Extension {
-  def apply(dynamicConfig: DynamicConfig, context: BundleContext, settings: ActorSystem.Settings) =
-    new ActorSystemFacade(system, dynamicConfig, context, settings)
-}
-
+/**
+ * `ActorSystemFacade` is the view of `ActorSystem` provided by `ActorSystemServiceFactory` to
+ * client bundles.
+ */
 class ActorSystemFacade(system: ExtendedActorSystem, dynamicConfig: DynamicConfig, context: BundleContext, val settings: ActorSystem.Settings)
-  extends ExtendedActorSystem with Extension {
+  extends ExtendedActorSystem {
 
   def provider: akka.actor.ActorRefProvider =
     system.provider
