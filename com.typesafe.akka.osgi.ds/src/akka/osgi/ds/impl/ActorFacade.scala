@@ -12,7 +12,7 @@ import akka.actor.Props
 
 /**
  * `ActorFacade` wraps each `Actor` instance created by a client bundle and ensures that
- * appropriate configuration is visible to `receive` and lifecycle methods by
+ * appropriate configuration is visible to `receive` and various lifecycle methods by
  * wrapping their invocation in [[DynamicConfig.run]].
  *
  * @param props `Props` of the `Actor` the will be wrapped.
@@ -22,13 +22,11 @@ class ActorFacade(props: Props, dynamicConfig: DynamicConfig) extends Actor {
 
   /**
    * We need to implement our own behavior stack, because the stack in the `ActorCell`
-   * of our enclosed `Actor` instance is inaccessible. The stack is initialized with
-   * `instance.receive`, so the incoming messages will be passed there through
-   * our `aroundRecive` callback.
+   * of our enclosed `Actor` instance is inaccessible.
    */
   private var behaviorStack: List[Actor.Receive] = ActorCell.emptyBehaviorStack
 
-  /** Enclosed `Actor` instance. */
+  /** The enclosed `Actor` instance. */
   private val actor = {
     // plug our ActorContextFacade into the context stack of enclosing `ActorCell`
     ActorCell.contextStack.set(new ActorContextFacade(context) :: Nil)
