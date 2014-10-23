@@ -14,21 +14,52 @@ import com.typesafe.config.ConfigFactory
 import akka.actor.ActorSystem
 import akka.osgi.BundleDelegatingClassLoader
 
+/**
+ * `ActorSystemServiceFactory` crates custom instances of `ActorSystem` service for requesting
+ * bundles.
+ *
+ * `ServiceFactory` facility is described in chapter 5.6 of OSGi Core specification.
+ *
+ * @param config user-customized configuration of Akka, used as an override over default
+ * configuration loaded from classpath.
+ */
 class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSystem] {
 
-  val akkaClassLoader = classOf[ActorSystem].getClassLoader()
+  /** The `ClassLoader` of `akka-actor` bundle. */
+  private val akkaClassLoader = classOf[ActorSystem].getClassLoader()
 
-  val akkaConfig = config.withFallback(ConfigFactory.load(akkaClassLoader)).resolve
+  /** Combined Akka coniguration: user overrides with fallback to classpath. */
+  private val akkaConfig = config.withFallback(ConfigFactory.load(akkaClassLoader)).resolve
 
-  val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
+  /**
+   * System actor name. Default value `system` should do just fine, because the purpose
+   *  of `ActorSystemServiceFactory` is to use single `ActorSystem` instance per JVM.
+   */
+  private val actorSystemName = Option(akkaConfig.getString("akka.system-name")).getOrElse("system")
 
-  val dynamicConfig = new DynamicConfig(akkaConfig)
+  /**
+   * The [[DynamicConfig]] instance used for configuration switching, initialized with
+   * combined Akka configuration.
+   */
+  private val dynamicConfig = new DynamicConfig(akkaConfig)
 
-  val actorSystem = ActorSystem(actorSystemName,
+  /**
+   * The underlying `ActorSystem` instance.
+   */
+  private val actorSystem = ActorSystem(actorSystemName,
     Some(dynamicConfig.config),
     Some(akkaClassLoader),
     None)
 
+  /**
+   * Provides a custom `ActorSystem` service to a bundle.
+   *
+   * @param bundle the requesting a service instance.
+   * @param registration the service registration token. Makes it possible to invalidate the
+   * service instance at the provider's discretion.
+   * @return `ActorSystemFacade` instance what will ensure that the bundle can access it's
+   * configuration defined on classpath through `ActorSystem.settings.config`.
+   */
   def getService(bundle: Bundle, registration: ServiceRegistration[ActorSystem]): ActorSystem = {
     val bundleContext = bundle.getBundleContext
     val bundleClassLoader = BundleDelegatingClassLoader(bundleContext, None)
@@ -38,6 +69,13 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
     ActorSystemFacade.Extension(actorSystem)(dynamicConfig, bundleContext, bundleSettings)
   }
 
+  /**
+   * Called when requester bundle releases the service reference.
+   * 
+   * @param bundle that has requested a `ActorSystem` service instance.
+   * @param registration the service registration token.
+   * @param actorSstem the service instance.
+   */
   def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
     dynamicConfig.remove(bundle.getBundleContext)
 

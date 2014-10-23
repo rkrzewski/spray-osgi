@@ -18,21 +18,20 @@ import com.typesafe.config.ConfigValue
 import akka.osgi.BundleDelegatingClassLoader
 
 /**
- * A configuration switchboard, allowing each client bundle using Akka {@code ActorSystem} access
- * it's own configuration through {@code ActorSystem.settings.config}.
+ * A configuration switchboard, allowing each client bundle using Akka `ActorSystem` access
+ * it's own configuration through [[akk.actor.ActorSystem.settings.config]].
  *
- * <p>
- * {@code ActorSystem} is created by {@link ActorSystemServiceFactory} using {@code Config} object
- * facade provided by this class. Then, for each bundle using {@link ActorSystemServiceFactory} a
- * configuration based on the bundle classpath is created and registered with
- * {@link #add(BundleContext, Config)}. Both {@link ActorSystemFacade} and {@link ActorFacade} wrap
- * calls all client-provided code in {@link run(BundleContext, Function0)} /
- * {@link run(Class, Function0)}, which alter the the thread-local delegate for the
- * facade object to the configuration appropriate for the client bundle.
- * </p>
+ * The actual framework-wide `ActorSystem` is created by [[ActorSystemServiceFactory]] using
+ * `Config` object facade provided by this class. Then, for each bundle requesting `ActorSystem`
+ * service from [[ActorSystemServiceFactory]] a configuration based on the bundle's classpath is
+ * created and registered with [[DynadmicConfig.add(BundleContext, Config)]].
+ * Both [[ActorSystemFacade]] and [[ActorFacade]] wrap calls all client-provided code in
+ * [[DynamicConfig.run[T](BundleContext)(:=>T):T]] or [[DynamicConfig.run[T](Class[_])(:=>T):T]]
+ * appropriately, which alter the the thread-local delegate for the facade object to the
+ * configuration appropriate for the client bundle for the duration of client code execution.
  *
  * @param default the default configuration, visible to any code accessing the facade that
- * was not invoked using the provided {@code run} methods.
+ * was not invoked using the `run` methods.
  */
 class DynamicConfig(default: Config) {
 
@@ -60,10 +59,10 @@ class DynamicConfig(default: Config) {
     configs -= bundleContext
 
   /**
-   * Execute a block of code, using configuration appropriate for the bundle that the {@code clazz}
+   * Execute a block of code, using configuration appropriate for the bundle that the `clazz` Class
    * was loaded from.
    *
-   * <p>{@link org.osgi.framework.FrameworkUtil#getBundle(Class)} is used to identify the bundle.</p>
+   * <p>[[org.osgi.framework.FrameworkUtil.getBundle(Class[_])]] is used to identify the bundle.</p>
    *
    * @param clazz the Class used to determine which configuration should be used.
    * @param code the code to execute.
@@ -95,7 +94,7 @@ class DynamicConfig(default: Config) {
     }
 
   /**
-   * Current delegate for the {@link #config} facade.
+   * Current delegate for the configuration facade.
    */
   private val current = new ThreadLocal[Config] {
     override def initialValue = default
@@ -104,16 +103,17 @@ class DynamicConfig(default: Config) {
   /**
    * Configuration facade instance used to initialize ActorSystem.
    *
-   * <p>For any code invoked through provided {@code run} methods, it will delegate calls to
+   * For any code invoked through provided `run` methods, it will delegate calls to
    * the configuration appropriate for the bundle from which the code was loaded. For other
-   * code (most notably Akka internals themselves) it will delegate calls to the {@link #default}
-   * configuration.</p>
+   * code (most notably Akka internals themselves) it will delegate calls to the [[default]]
+   * configuration.
    */
   val config: Config = new ConfigFacade
 
   /**
-   * A facade object that delegates all calls, except {@code withFallback(ConfigMergable)} to
-   * the thread's {@link #current} configuration.
+   * A facade object that delegates all calls, except
+   * [[com.typesafe.config.Config.withFallback(ConfigMergable)]] to the thread's
+   * [[current]] configuration.
    */
   class ConfigFacade extends Config {
 
@@ -241,20 +241,19 @@ class DynamicConfig(default: Config) {
       current.get.root()
 
     /**
-     * This method always returns {@code this}.
+     * This method always returns `this`.
      *
-     * <p>
-     * This is a hack that prevents {@code ActorSystemImpl.Settings} from severing ties
-     * with {@link DynamicConfig facility}. {@code ActorSystemImpl.Settings} call 
-     * {@code withFallback} on {@code Config} object provided to to attach default configuration 
-     * loaded from Akka's classpath. This simplifies usage, because a blank configuration can be 
-     * passed to use default settings. The implementation of the method creates a new configuration 
-     * object that bears no relation to it's ancestor configurations.
-     * </p>
+     * This is a hack that prevents [[akka.actor.ActorSystemImpl.Settings]] from severing ties
+     * with [[DynamicConfig]]. [[akka.actor.ActorSystemImpl.Settings]] constructor calls
+     * `withFallback` method on `Config` object provided, in order to merge it with the default
+     * configuration loaded from Akka's classpath. This simplifies usage, because a blank
+     * configuration can be passed to use default settings. The implementation of `withFallback`
+     * method creates a new configuration object that bears no relation to it's ancestor
+     * configurations.
      *
-     * <p>As a consequence of this hack, the facade object can be used as an argument to
-     * {@code withFallback} call on another configuration, but will ignore any calls of
-     * {@code withFallback} on itself.</p>
+     * As a consequence of this hack, the facade object can be used as an argument to
+     * `withFallback` call on another configuration, but will ignore any calls of `withFallback`
+     * on itself.
      */
     def withFallback(other: ConfigMergeable): Config =
       this
