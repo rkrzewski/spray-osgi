@@ -52,6 +52,13 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
     None)
 
   /**
+   * Service registration tokens for all service instances that where handed out to requester
+   * bundles.
+   */
+  @volatile
+  private var registrations: Set[ServiceRegistration[ActorSystem]] = Set.empty
+
+  /**
    * Provides a custom `ActorSystem` service to a bundle.
    *
    * @param bundle the requesting a service instance.
@@ -66,20 +73,28 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
     val bundleConfig = ConfigFactory.load(bundleClassLoader)
     dynamicConfig.add(bundleContext, bundleConfig)
     val bundleSettings = new ActorSystem.Settings(bundleClassLoader, bundleConfig, actorSystemName)
-    ActorSystemFacade.Extension(actorSystem)(dynamicConfig, bundleContext, bundleSettings)
+    val service = ActorSystemFacade.Extension(actorSystem)(dynamicConfig, bundleContext, bundleSettings)
+    registrations += registration
+    service
   }
 
   /**
    * Called when requester bundle releases the service reference.
-   * 
+   *
    * @param bundle that has requested a `ActorSystem` service instance.
    * @param registration the service registration token.
    * @param actorSstem the service instance.
    */
-  def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit =
+  def ungetService(bundle: Bundle, registration: ServiceRegistration[ActorSystem], actorSystem: ActorSystem): Unit = {
     dynamicConfig.remove(bundle.getBundleContext)
+    registrations -= registration
+  }
 
+  /**
+   * Unregisters all handed out service instances and shuts down underlying `ActorSystem`. 
+   */
   def shutdown(): Unit = {
+    registrations foreach (_.unregister)
     actorSystem.shutdown()
     actorSystem.awaitTermination()
   }
