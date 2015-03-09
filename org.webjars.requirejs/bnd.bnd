@@ -1,4 +1,4 @@
 -include: ${build}/webjar.bnd
-module : requirejs
-version : 2.1.14
-release : 3
+module: requirejs
+version: 2.1.16
+release:

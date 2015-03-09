@@ -1,5 +1,5 @@
 -include: ${build}/webjar.bnd
 module: jquery-ui
-version: 1.11.1
+version: 1.11.2
 release:
 Require-Capability: org.webjars; filter:="(module=jquery")

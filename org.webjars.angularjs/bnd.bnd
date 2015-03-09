@@ -1,4 +1,4 @@
 -include: ${build}/webjar.bnd
 module: angularjs
-version: 1.2.21
+version: 1.3.14
 release:
