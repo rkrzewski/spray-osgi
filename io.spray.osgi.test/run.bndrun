@@ -9,9 +9,7 @@
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)',\
-	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.angular-ui-sortable)',\
-	osgi.identity;filter:='(osgi.identity=org.webjars.angular-ui-bootstrap)'
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)'
 -runfw: org.apache.felix.framework;version='[4.4.1,4.4.1]'
 -runee: JavaSE-1.8
 -runsystempackages: \
