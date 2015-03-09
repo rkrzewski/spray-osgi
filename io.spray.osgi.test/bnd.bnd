@@ -15,5 +15,6 @@ Private-Package:  \
 -dsannotations:  \
 	*
 -includeresource: static=static
-Require-Capability: org.webjars; filter:="(module=angular-ui-bootstrap"),\
+Require-Capability: \
+	org.webjars; filter:="(module=angular-ui-bootstrap"),\
 	org.webjars; filter:="(module=angular-ui-sortable")

@@ -2,4 +2,5 @@
 module: bootstrap
 version: 3.3.2
 release: 2
-Require-Capability: org.webjars; filter:="(&(module=jquery)(version=1.11.1))"; resolution:=optional
+Require-Capability: \
+	org.webjars; filter:="(&(module=jquery)(version>=1.10)(!(version>=2)))"; resolution:=optional
