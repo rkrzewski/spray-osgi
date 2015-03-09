@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1425922453072" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1425940769892" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.chuusai.shapeless.core"/>
@@ -395,37 +395,6 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="com.googlecode.concurrentlinkedhashmap.lru"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.4.0"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="48f823692a8c26414a98b18572b3a07c4099d3cd04afe8babda62337d5540a95"/>
-      <attribute name="url" value="com.googlecode.concurrentlinkedhashmap.lru/com.googlecode.concurrentlinkedhashmap.lru-1.4.0.jar"/>
-      <attribute name="size" type="Long" value="116575"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="com.googlecode.concurrentlinkedhashmap.lru"/>
-      <attribute name="bundle-version" type="Version" value="1.4.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="com.googlecode.concurrentlinkedhashmap.lru"/>
-      <attribute name="bundle-version" type="Version" value="1.4.0"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="com.googlecode.concurrentlinkedhashmap"/>
-      <attribute name="version" type="Version" value="1.4.0"/>
-      <attribute name="bundle-symbolic-name" value="com.googlecode.concurrentlinkedhashmap.lru"/>
-      <attribute name="bundle-version" type="Version" value="1.4.0"/>
-      <directive name="uses" value="sun.misc"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=sun.misc)"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.typesafe.akka.actor"/>
       <attribute name="type" value="osgi.bundle"/>
       <attribute name="version" type="Version" value="2.3.5"/>
@@ -730,118 +699,57 @@
   </resource>
   <resource>
     <capability namespace="osgi.identity">
-      <attribute name="osgi.identity" value="io.spray.caching"/>
-      <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
-    </capability>
-    <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="c7776d926b7cebb38ba7cf64353a54683e4f91734aca40e7de392e72db189625"/>
-      <attribute name="url" value="io.spray.caching/io.spray.caching-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="23292"/>
-      <attribute name="mime" value="application/vnd.osgi.bundle"/>
-    </capability>
-    <capability namespace="osgi.wiring.bundle">
-      <attribute name="osgi.wiring.bundle" value="io.spray.caching"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.host">
-      <attribute name="osgi.wiring.host" value="io.spray.caching"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="spray.caching"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
-      <attribute name="bundle-symbolic-name" value="io.spray.caching"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
-      <directive name="uses" value="com.googlecode.concurrentlinkedhashmap,scala,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util"/>
-    </capability>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.collection.mutable)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.concurrent)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.concurrent.duration)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.runtime)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=com.googlecode.concurrentlinkedhashmap)(version&gt;=1.4.0)(!(version&gt;=2.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=spray.util)"/>
-    </requirement>
-  </resource>
-  <resource>
-    <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.can"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="0f4c127e2f097a67180a7e2a167ff26a291a11b0eb4857618453e6b11545adc5"/>
-      <attribute name="url" value="io.spray.can/io.spray.can-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="716296"/>
+      <attribute name="osgi.content" value="f9234ab9c26f38e6384b3a31e8b6c90b0b97faa37b4c4b849598c7a0c384e418"/>
+      <attribute name="url" value="io.spray.can/io.spray.can-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="718337"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.can"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,akka.io,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can.client,spray.can.server,spray.http,spray.io"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.can.client"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,akka.io,akka.util,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can,spray.can.parsing,spray.can.rendering,spray.http,spray.io,spray.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.can.parsing"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.io,akka.util,com.typesafe.config,org.parboiled.scala.rules,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,spray.http,spray.io,spray.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.can.rendering"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.event,akka.io,scala,scala.collection,scala.reflect,scala.runtime,spray.http"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.can.server"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.can"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,akka.io,akka.spray,akka.util,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.runtime,spray.can,spray.can.parsing,spray.can.rendering,spray.http,spray.io,spray.util"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -887,7 +795,7 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.2))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))"/>
@@ -933,34 +841,34 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.http"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="27da250cd1171a845ac2912eda9bcef6c60505fd70254310c76d352290076152"/>
-      <attribute name="url" value="io.spray.http/io.spray.http-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="1493307"/>
+      <attribute name="osgi.content" value="6e4fa298cad3303209e72e052e0b5710396a1b7d6b9cef7734c5dc6cb9b42975"/>
+      <attribute name="url" value="io.spray.http/io.spray.http-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="1488411"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.http"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.http"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.http"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.http"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.util,scala,scala.collection,scala.collection.generic,scala.collection.immutable,scala.collection.mutable,scala.collection.parallel,scala.collection.parallel.immutable,scala.concurrent.duration,scala.math,scala.reflect,scala.runtime,scala.util,spray.http.parser,spray.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.http.parser"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.http"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="org.parboiled,org.parboiled.matchers,org.parboiled.scala,org.parboiled.scala.rules,org.parboiled.support,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.reflect,scala.runtime,scala.util,spray.http"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -1003,7 +911,7 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.2))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=akka.util)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))"/>
@@ -1046,48 +954,48 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.httpx"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="f9ec97e41b4fd12ecdcdebd8848f9cde57d3cdfa633903a4ae34ee3dc9955afc"/>
-      <attribute name="url" value="io.spray.httpx/io.spray.httpx-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="429913"/>
+      <attribute name="osgi.content" value="081558dec602325d28c3dea961d29e7f665acc795b262ecdf653841b841fcfaa"/>
+      <attribute name="url" value="io.spray.httpx/io.spray.httpx-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="434142"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.httpx"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
-      <directive name="uses" value="akka.actor,akka.event,net.liftweb.json,org.json4s,org.json4s.jackson,org.json4s.native,play.api.data.validation,play.api.libs.json,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.json,twirl.api"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
+      <directive name="uses" value="akka.actor,akka.event,net.liftweb.json,org.json4s,org.json4s.jackson,org.json4s.native,play.api.data.validation,play.api.libs.json,play.twirl.api,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.json,twirl.api"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.httpx.encoding"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="scala,scala.reflect,scala.runtime,spray.http"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.httpx.marshalling"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.spray,akka.util,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,scala.xml,spray.http"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.httpx.unmarshalling"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.httpx"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="org.jvnet.mimepull,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,scala.util,scala.xml,spray.http"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -1115,9 +1023,6 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.concurrent.duration)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.math)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.reflect)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -1139,7 +1044,7 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml.factory)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=spray.json)(version&gt;=1.2.0)(!(version&gt;=2.0.0)))"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=spray.json)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
       <directive name="resolution " value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -1171,7 +1076,11 @@
       <directive name="resolution " value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))"/>
+      <directive name="filter" value="(osgi.wiring.package=play.twirl.api)"/>
+      <directive name="resolution " value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.2))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))"/>
@@ -1214,27 +1123,27 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.io"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="1e3c69c57edac5a7ea28f2bb5419c9dd2f6b11bc36eba354276395b251330861"/>
-      <attribute name="url" value="io.spray.io/io.spray.io-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="186217"/>
+      <attribute name="osgi.content" value="d304bdbf730df0630573f13a18534995b21e7dee6237006d0f839244b2df6a8c"/>
+      <attribute name="url" value="io.spray.io/io.spray.io-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="186190"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.io"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.io"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.io"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.io"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,akka.io,akka.util,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent.duration,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,spray.http,spray.util"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -1302,41 +1211,41 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.routing.shapeless2"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="2e718ec316e690be86dce218677352b1f2025d182883be9dd3b5b801284e9e1a"/>
-      <attribute name="url" value="io.spray.routing.shapeless2/io.spray.routing.shapeless2-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="1063265"/>
+      <attribute name="osgi.content" value="248012c3a62a9a18aa350b48152b52add2bcf5c8609a31451ef151b1cd3250c3"/>
+      <attribute name="url" value="io.spray.routing.shapeless2/io.spray.routing.shapeless2-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="1066180"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.routing.shapeless2"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.routing.shapeless2"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.routing"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.routing.shapeless2"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.io,akka.spray,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.math,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,shapeless.ops,spray.can.server,spray.http,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.io,spray.routing.directives,spray.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.routing.authentication"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.routing.shapeless2"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="com.typesafe.config,javax.naming.directory,javax.naming.ldap,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.reflect,scala.runtime,scala.util,spray.caching,spray.http,spray.routing,spray.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.routing.directives"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.routing.shapeless2"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,scala,scala.collection,scala.collection.immutable,scala.collection.mutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.matching,shapeless,shapeless.ops,spray.caching,spray.http,spray.http.parser,spray.httpx.encoding,spray.httpx.marshalling,spray.httpx.unmarshalling,spray.routing,spray.util"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -1385,19 +1294,23 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.matching)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="filter" value="(osgi.wiring.package=spray.caching)"/>
       <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless.ops)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="filter" value="(osgi.wiring.package=spray.can)"/>
       <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless.syntax)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
+      <directive name="filter" value="(osgi.wiring.package=spray.can.server)"/>
       <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.1))"/>
+      <directive name="filter" value="(osgi.wiring.package=spray.io)"/>
+      <directive name="resolution" value="optional"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.2))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=akka.actor)(version&gt;=2.3.0)(!(version&gt;=2.4.0)))"/>
@@ -1430,13 +1343,13 @@
       <directive name="filter" value="(&amp;(osgi.wiring.package=org.parboiled.common)(version&gt;=1.1.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=spray.caching)"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=spray.can)"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless.ops)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=spray.can.server)"/>
+      <directive name="filter" value="(&amp;(osgi.wiring.package=shapeless.syntax)(version&gt;=2.0.0)(!(version&gt;=3.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=spray.http)"/>
@@ -1454,9 +1367,6 @@
       <directive name="filter" value="(osgi.wiring.package=spray.httpx.unmarshalling)"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(osgi.wiring.package=spray.io)"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=spray.util)"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -1467,41 +1377,41 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="io.spray.util"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="29bd504a80aa2b3d265cd99a6a458118822e6ba1b9a3f2f3776787c0c4c37855"/>
-      <attribute name="url" value="io.spray.util/io.spray.util-1.3.1.jar"/>
-      <attribute name="size" type="Long" value="128380"/>
+      <attribute name="osgi.content" value="2510e9dfe8bef543813d2ab400997c0475a122d47cb858a20b864e3705bba92c"/>
+      <attribute name="url" value="io.spray.util/io.spray.util-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="128191"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="io.spray.util"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="io.spray.util"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.util"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.util"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.event,akka.spray,com.typesafe.config,javax.net.ssl,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.math,scala.reflect,scala.reflect.api,scala.reflect.macros.whitebox,scala.runtime,scala.util,scala.util.control,scala.util.matching,spray.util.pimps"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="spray.util.pimps"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.util"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.util,com.typesafe.config,scala,scala.collection,scala.collection.immutable,scala.concurrent,scala.concurrent.duration,scala.reflect,scala.runtime,scala.util,scala.util.matching"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="akka.spray"/>
-      <attribute name="version" type="Version" value="1.3.1"/>
+      <attribute name="version" type="Version" value="1.3.2"/>
       <attribute name="bundle-symbolic-name" value="io.spray.util"/>
-      <attribute name="bundle-version" type="Version" value="1.3.1"/>
+      <attribute name="bundle-version" type="Version" value="1.3.2"/>
       <directive name="uses" value="akka.actor,akka.dispatch.sysmsg,akka.util,scala,scala.collection,scala.concurrent,scala.reflect,scala.runtime"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
