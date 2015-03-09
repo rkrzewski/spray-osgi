@@ -1,11 +1,10 @@
--runrequires:  \
+-runrequires: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.scr)',\
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.config.osgi)',\
 	osgi.identity;filter:='(osgi.identity=com.typesafe.akka.osgi.ds)',\
-	osgi.identity;filter:='(osgi.identity=com.chuusai.shapeless.core)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)',\

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1425940769892" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1425943972800" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.chuusai.shapeless.core"/>
@@ -957,9 +957,9 @@
       <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="081558dec602325d28c3dea961d29e7f665acc795b262ecdf653841b841fcfaa"/>
+      <attribute name="osgi.content" value="02c1f258de508ccd0feb8727d467303f4162636dfcf505c9ec6e97d39ef7b328"/>
       <attribute name="url" value="io.spray.httpx/io.spray.httpx-1.3.2.jar"/>
-      <attribute name="size" type="Long" value="434142"/>
+      <attribute name="size" type="Long" value="434144"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -999,6 +999,12 @@
       <directive name="uses" value="org.jvnet.mimepull,scala,scala.collection,scala.collection.immutable,scala.reflect,scala.runtime,scala.util,scala.xml,spray.http"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml.factory)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
@@ -1036,12 +1042,6 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=scala.util.control)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=scala.xml.factory)(version&gt;=2.11.0)(!(version&gt;=2.12.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=spray.json)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
