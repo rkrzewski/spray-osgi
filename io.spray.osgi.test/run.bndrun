@@ -22,14 +22,14 @@
 	com.fasterxml.jackson.core.jackson-annotations;version='[2.4.2,2.4.3)',\
 	com.fasterxml.jackson.core.jackson-core;version='[2.4.2,2.4.3)',\
 	com.fasterxml.jackson.core.jackson-databind;version='[2.4.2,2.4.3)',\
-	com.typesafe.akka.actor;version='[2.3.5,2.3.6)',\
-	com.typesafe.akka.osgi;version='[2.3.5,2.3.6)',\
+	com.typesafe.akka.actor;version='[2.3.9,2.3.10)',\
+	com.typesafe.akka.osgi;version='[2.3.9,2.3.10)',\
 	com.typesafe.akka.osgi.ds;version=latest,\
 	com.typesafe.config;version='[1.2.1,1.2.2)',\
 	com.typesafe.config.osgi;version=latest,\
 	io.spray.can;version='[1.3.2,1.3.3)',\
 	io.spray.http;version='[1.3.2,1.3.3)',\
-	io.spray.httpx;version=latest,\
+	io.spray.httpx;version='[1.3.2,1.3.3)',\
 	io.spray.io;version='[1.3.2,1.3.3)',\
 	io.spray.osgi;version=latest,\
 	io.spray.osgi.test;version=latest,\
