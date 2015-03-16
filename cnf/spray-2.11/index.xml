@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1425943972800" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1426545315946" name="Spray" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.chuusai.shapeless.core"/>
@@ -957,9 +957,9 @@
       <attribute name="version" type="Version" value="1.3.2"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="02c1f258de508ccd0feb8727d467303f4162636dfcf505c9ec6e97d39ef7b328"/>
-      <attribute name="url" value="io.spray.httpx/io.spray.httpx-1.3.2.jar"/>
-      <attribute name="size" type="Long" value="434144"/>
+      <attribute name="osgi.content" value="f232d05464761a4df132a196dc2e3ba4aa31b2e9e3d548d0a70a1940e1028c95"/>
+      <attribute name="url" value="io.spray.httpx/spray-httpx_2.11-1.3.2.jar"/>
+      <attribute name="size" type="Long" value="434143"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
@@ -1045,39 +1045,39 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=spray.json)(version&gt;=1.3.0)(!(version&gt;=2.0.0)))"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=net.liftweb.json)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.json4s)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.json4s.jackson)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=org.json4s.native)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=twirl.api)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=play.api.data.validation)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=play.api.libs.json)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(osgi.wiring.package=play.twirl.api)"/>
-      <directive name="resolution " value="optional"/>
+      <directive name="resolution" value="optional"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=akka.spray)(version&gt;=1.3.2))"/>
