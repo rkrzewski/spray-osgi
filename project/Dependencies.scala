@@ -2,8 +2,8 @@ import sbt._
 
 object Dependencies {
 
-	val akkaVersion	  = "2.3.5"
-	val sprayVersion  = "1.3.1"
+	val akkaVersion	  = "2.3.9"
+	val sprayVersion  = "1.3.2"
 	val osgiVersion   = "5.0.0"
 	
 	val typesafeConfig  = "com.typesafe"               %  "config"                   % "1.2.1"

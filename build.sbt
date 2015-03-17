@@ -1,7 +1,7 @@
 import Dependencies._
 
 lazy val basicSettings = Seq(
-	scalaVersion := "2.11.4",
+	scalaVersion := "2.11.6",
 	scalaSource in Compile := baseDirectory.value / "src",
 	scalaSource in Test := baseDirectory.value / "test"
 )
