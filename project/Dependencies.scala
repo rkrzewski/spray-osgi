@@ -10,7 +10,7 @@ object Dependencies {
 	val osgiCore        = "org.osgi"                   %  "org.osgi.core"            % osgiVersion
 	val osgiEnterprise  = "org.osgi"                   %  "org.osgi.enterprise"      % osgiVersion
 	val akkaActor       = "com.typesafe.akka"          %% "akka-actor"               % akkaVersion
-	val akkaOsgi	    = "com.typesafe.akka"          %% "akka-osgi"                % akkaVersion
+	val akkaOsgi	      = "com.typesafe.akka"          %% "akka-osgi"                % akkaVersion
 	val sprayCan        = "io.spray"                   %% "spray-can"                % sprayVersion
 	val sprayRouting    = "io.spray"                   %% "spray-routing-shapeless2" % sprayVersion
 	val jacksonDatabind = "com.fasterxml.jackson.core" %  "jackson-databind"         % "2.4.2"
