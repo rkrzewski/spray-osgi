@@ -3,7 +3,9 @@ import Dependencies._
 lazy val basicSettings = Seq(
 	scalaVersion := "2.11.6",
 	scalaSource in Compile := baseDirectory.value / "src",
-	scalaSource in Test := baseDirectory.value / "test"
+	scalaSource in Test := baseDirectory.value / "test",
+	javaSource in Compile := baseDirectory.value / "src",
+	javaSource in Test := baseDirectory.value / "test"
 )
 
 lazy val configOsgi = (project in file("com.typesafe.config.osgi")).
