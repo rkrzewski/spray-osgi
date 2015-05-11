@@ -3,7 +3,7 @@ Bundle-Version: 0.0.0.${tstamp}
 Require-Capability: org.webjars; filter:="(&(module=requirejs))"; resolution:=optional
 
 -buildpath:  \
-	io.spray.osgi;version=latest,\
+	io.spray.osgi;version=project,\
 	osgi.enterprise;version=5.0,\
 	osgi.core;version=5.0,\
 	io.spray.routing.shapeless2,\

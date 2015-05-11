@@ -1,6 +1,6 @@
 Bundle-Version: 0.0.0.${tstamp}
 -buildpath:  \
-	io.spray.osgi;version=latest,\
+	io.spray.osgi;version=project,\
 	io.spray.routing.shapeless2,\
 	com.chuusai.shapeless.core,\
 	io.spray.http,\
