@@ -8,7 +8,9 @@
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi)',\
 	osgi.identity;filter:='(osgi.identity=io.spray.osgi.webjars)',\
 	osgi.identity;filter:='(osgi.identity=org.webjars.requirejs)',\
-	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)'
+	osgi.identity;filter:='(osgi.identity=io.spray.osgi.test)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)',\
+	osgi.identity;filter:='(osgi.identity=pl.caltha.osgi.log.console)'
 -runfw: org.apache.felix.framework;version='[4.4.1,4.4.1]'
 -runee: JavaSE-1.8
 -runsystempackages: \
@@ -36,6 +38,7 @@
 	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
 	org.apache.felix.gogo.runtime;version='[0.12.1,0.12.2)',\
 	org.apache.felix.gogo.shell;version='[0.10.0,0.10.1)',\
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
 	org.apache.felix.scr;version='[1.8.2,1.8.3)',\
 	org.jvnet.mimepull;version='[1.9.4,1.9.5)',\
 	org.parboiled.core;version='[1.1.6,1.1.7)',\
@@ -50,4 +53,5 @@
 	org.webjars.jquery;version='[1.11.2,1.11.3)',\
 	org.webjars.jquery-ui;version='[1.11.2,1.11.3)',\
 	org.webjars.requirejs;version='[2.1.16,2.1.17)',\
-	osgi.residential;version='[4.3.0,4.3.1)'
+	osgi.residential;version='[4.3.0,4.3.1)',\
+	pl.caltha.osgi.log.console;version='[0.0.0,0.0.1)'

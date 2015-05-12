@@ -7,12 +7,14 @@ import org.osgi.framework.Bundle
 import org.osgi.framework.BundleContext
 import org.osgi.framework.ServiceFactory
 import org.osgi.framework.ServiceRegistration
+import org.osgi.service.log.LogService
 
 import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
 
 import akka.actor.ActorSystem
 import akka.osgi.BundleDelegatingClassLoader
+import akka.osgi.UnregisteringLogService
 
 /**
  * `ActorSystemServiceFactory` crates custom instances of `ActorSystem` service for requesting
@@ -91,7 +93,7 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
   }
 
   /**
-   * Unregisters all handed out service instances and shuts down underlying `ActorSystem`. 
+   * Unregisters all handed out service instances and shuts down underlying `ActorSystem`.
    */
   def shutdown(): Unit = {
     registrations foreach (_.unregister)
@@ -99,4 +101,15 @@ class ActorSystemServiceFactory(config: Config) extends ServiceFactory[ActorSyst
     actorSystem.awaitTermination()
   }
 
+  /**
+   * Publishes events that drive [[akka.osgi.DefaultOSGiLogger]]
+   */
+  def setLogSevice(logService: Option[LogService]) =
+    // DefaultOSGiLogger unsubscribes from UnregisteringLogService event without 
+    // subscribing to it first. This apparently corrupts EventStream subscriber cache
+    // leading to NSEE on publish attempt
+    try actorSystem.eventStream.publish(logService.getOrElse(UnregisteringLogService))
+    catch {
+      case e: NoSuchElementException ⇒
+    }
 }

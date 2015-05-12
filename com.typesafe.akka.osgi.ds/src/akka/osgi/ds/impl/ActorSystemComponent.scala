@@ -14,14 +14,17 @@ import org.osgi.service.component.annotations.Activate
 import org.osgi.service.component.annotations.Component
 import org.osgi.service.component.annotations.ConfigurationPolicy
 import org.osgi.service.component.annotations.Deactivate
-
+import org.osgi.service.component.annotations.Reference
+import org.osgi.service.component.annotations.ReferenceCardinality
+import org.osgi.service.component.annotations.ReferencePolicy
+import org.osgi.service.log.LogService
+import com.typesafe.config.Config
 import com.typesafe.config.ConfigFactory
+import com.typesafe.config.ConfigValueFactory
 import com.typesafe.config.osgi.ConfigRecovery
 
 import akka.actor.ActorSystem
 import akka.osgi.BundleDelegatingClassLoader
-import com.typesafe.config.Config
-import com.typesafe.config.ConfigValueFactory
 
 /**
  * A Declarative Services component that provides [[ActorSystemServiceFactory]] with
@@ -38,37 +41,58 @@ import com.typesafe.config.ConfigValueFactory
 class ActorSystemComponent {
 
   /** Service factory instance. */
-  var serviceFactory: ActorSystemServiceFactory = _
+  var serviceFactory: Option[ActorSystemServiceFactory] = None
 
   /** Registration object for the service factory*/
-  var registration: ServiceRegistration[_] = _
+  var registration: Option[ServiceRegistration[_]] = None
+
+  /** OSGi LogService instance */
+  var logService: Option[LogService] = None
+
+  /**
+   * Invoked by DS runtime when LogService becomes available
+   */
+  @Reference(cardinality = ReferenceCardinality.OPTIONAL, policy = ReferencePolicy.DYNAMIC)
+  def bindLogService(service: LogService) = {
+    logService = Some(service)
+    serviceFactory.foreach(_.setLogSevice(logService))
+  }
+
+  /**
+   * Invoked by DS runtime when LogService disappears
+   */
+  def unbindLogService(service: LogService) = {
+    logService = None
+    serviceFactory.foreach(_.setLogSevice(logService))
+  }
 
   /**
    * Starts up the component.
-   * 
+   *
    * At activation, an [[ActorSystemServiceFactory]] will be created and registered
-   * with OSGi framework. It will provide `ActorSystem` service objects customized for 
+   * with OSGi framework. It will provide `ActorSystem` service objects customized for
    * all requesting bundles.
-   * 
+   *
    * @param ctx `BundleContext` of the `com.typesafe.akka.osgi.ds.impl` bundle
    * @param properties component properties fetched by Declarative Services runtime from
-   * `ConfigurationAdmin`. 
+   * `ConfigurationAdmin`.
    */
   @Activate
   def activate(ctx: BundleContext, properties: java.util.Map[String, _]): Unit = {
-    serviceFactory = new ActorSystemServiceFactory(ConfigRecovery.fromProperties(properties))
-    registration = ctx.registerService(classOf[ActorSystem].getName(), serviceFactory, null)
+    serviceFactory = Some(new ActorSystemServiceFactory(ConfigRecovery.fromProperties(properties)))
+    serviceFactory.foreach(_.setLogSevice(logService))
+    registration = serviceFactory.map(ctx.registerService(classOf[ActorSystem].getName(), _, null))
   }
 
   /**
    * Shuts down the component.
-   * 
+   *
    * At deactivation, all provided service instances will be unregistered, and the `ActorSystem`
    * underlying [[ActorSystemServiceFactory]] will be also shut down.
    */
   @Deactivate
   def deactivate: Unit = {
-    registration.unregister()
-    serviceFactory.shutdown()
+    registration.foreach(_.unregister())
+    serviceFactory.foreach(_.shutdown())
   }
 }
