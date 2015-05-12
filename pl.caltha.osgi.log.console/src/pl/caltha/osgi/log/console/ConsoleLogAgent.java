@@ -1,10 +1,13 @@
 package pl.caltha.osgi.log.console;
 
+import java.util.Enumeration;
+
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogReaderService;
 import org.osgi.service.log.LogService;
@@ -39,7 +42,9 @@ public class ConsoleLogAgent {
 		String levelProp = context.getProperty(LEVEL_PROPERTY);
 		int level = levelProp != null ? Integer.parseInt(levelProp)
 				: LEVEL_DEFAULT;
-		listener = new ConsoleLogListener(level);
+		@SuppressWarnings("unchecked")
+		Enumeration<LogEntry> log = logReader.getLog();
+		listener = new ConsoleLogListener(level, log);
 		logReader.addLogListener(listener);
 	}
 

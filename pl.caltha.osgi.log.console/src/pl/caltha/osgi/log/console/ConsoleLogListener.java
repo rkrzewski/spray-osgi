@@ -4,6 +4,9 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.Instant;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 import org.osgi.framework.Bundle;
 import org.osgi.service.log.LogEntry;
@@ -36,9 +39,18 @@ public class ConsoleLogListener implements LogListener {
 	 * @param maxLevel
 	 *            maximum level of messages that will be printed to the console.
 	 *            See {@link LogService} {@code LOG_...} constants for values.
+	 * @param log
+	 *            LogEntries past log entries, in reverse chronological order
 	 */
-	public ConsoleLogListener(int maxLevel) {
+	public ConsoleLogListener(int maxLevel, Enumeration<LogEntry> log) {
 		this.verbosity = maxLevel;
+		List<LogEntry> entries = new ArrayList<>();
+		while (log.hasMoreElements()) {
+			entries.add(log.nextElement());
+		}
+		for(int i = entries.size() - 1; i >= 0; i--) {
+			logged(entries.get(i));
+		}
 	}
 
 	@Override
