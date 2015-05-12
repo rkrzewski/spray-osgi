@@ -9,6 +9,8 @@ import java.util.Enumeration;
 import java.util.List;
 
 import org.osgi.framework.Bundle;
+import org.osgi.framework.Constants;
+import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogEntry;
 import org.osgi.service.log.LogListener;
 import org.osgi.service.log.LogService;
@@ -48,7 +50,7 @@ public class ConsoleLogListener implements LogListener {
 		while (log.hasMoreElements()) {
 			entries.add(log.nextElement());
 		}
-		for(int i = entries.size() - 1; i >= 0; i--) {
+		for (int i = entries.size() - 1; i >= 0; i--) {
 			logged(entries.get(i));
 		}
 	}
@@ -84,6 +86,18 @@ public class ConsoleLogListener implements LogListener {
 						.append("]");
 			} else {
 				sw.append("<unkown bundle>");
+			}
+			ServiceReference ref = entry.getServiceReference();
+			if (ref != null) {
+				String[] objectClass = (String[]) ref
+						.getProperty(Constants.OBJECTCLASS);
+				sw.append(" service ");
+				for (int i = 0; i < objectClass.length; i++) {
+					sw.append(objectClass[i]);
+					if (i < objectClass.length - 1) {
+						sw.append(", ");
+					}
+				}
 			}
 
 			sw.append(": ").append(entry.getMessage());
